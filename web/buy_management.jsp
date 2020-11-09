@@ -1102,17 +1102,115 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN PAGE HEAD -->
             <div class="page-head">
                 <!-- BEGIN PAGE TITLE -->
-                <div class="page-title">
+                <div align="center">
                     <h1>订单管理</h1>
                 </div>
                 <!-- END PAGE TITLE -->
-            </div>
-            <!-- END PAGE HEAD -->
-            <!-- END PAGE HEADER-->
-            <!-- BEGIN PAGE CONTENT-->
+                <div class="portlet light ">
+<%--                    <div class="portlet-title">--%>
+<%--                        <div class="caption caption-md">--%>
+<%--                            <i class="icon-bar-chart theme-font-color hide"></i> <span--%>
+<%--                                class="caption-subject theme-font-color bold uppercase">行情信息</span>--%>
+<%--                            <span class="caption-helper hide">weekly--%>
+<%--										stats...</span>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+                    <div class="portlet-body">
+                        <div class="row number-stats margin-bottom-30"></div>
+                        <div class="table-scrollable table-scrollable-borderless">
+                            <table class="table table-hover table-light">
+                                <thead>
+                                <tr class="uppercase">
+                                    <th>订单号</th>
+                                    <th>期货编号</th>
+                                    <th>开仓价</th>
+                                    <th>最新价</th>
+                                    <th>创建时间</th>
+                                    <th>数量</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <%
+                                    request.setCharacterEncoding("UTF-8");
+                                    int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
 
-            <!-- END PAGE CONTENT-->
-            </div>
+
+                                    int pageSize = 15;
+                                    int totalPage = 0;
+											/*int countRow = 0;
+											Connection con = null;
+											ResultSet rs = null;
+											try {//连接数据库的操作
+												Class.forName("com.mysql.jdbc.Driver");
+												String url = "jdbc:mysql://localhost:3306/test";
+												con = DriverManager.getConnection(url, "root", "z9682576");
+												Statement stat = con.createStatement();
+												String sql = "select gp_id from gp";
+												rs = stat.executeQuery(sql);
+												while(rs.next()){
+													countRow++;
+												}
+											} catch (Exception e) {
+												e.toString();
+											}
+
+
+											totalPage = countRow % pageSize > 0 ? countRow/pageSize+1 : countRow/pageSize;
+											*/
+                                    totalPage = pg.getTotalPage(pageSize);
+
+                                    int prePage = start - 1 >= 0 ? start - 1 : start + 1;
+                                    int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
+                                    request.setAttribute("totalPage", totalPage);
+                                    request.setAttribute("prePage", prePage);
+                                    request.setAttribute("nextPage", nextPage);
+                                    Page pg1 = new Page(start, pageSize);
+                                    List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1);
+                                    //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
+
+
+                                    for (gp u : currentGp) {
+                                %>
+                                <tr>
+                                    <td><%=u.getgp_id()%>
+                                    </td>
+                                    <td><%=u.getgp_name()%>
+                                    </td>
+                                    <td><%=u.getgp_price()%>
+                                    </td>
+                                    <td><%=u.getgp_adn()%>
+                                    </td>
+                                    <td><%=u.getgp_ad()%>
+                                    </td>
+                                    <td><%=u.getgp_ad()%>
+                                    </td>
+                                    <td>
+                                        <button onclick="">平仓</button>
+                                    </td>
+                                </tr>
+                                <%
+                                    }
+                                %>
+
+                            </table>
+                            <nav>
+                                <ul class="pagination">
+                                    <li><a href="buy_management.jsp?start=0"> <span>首页</span>
+                                    </a></li>
+                                    <li><a href="buy_management.jsp?start=${requestScope.prePage }">
+                                        <span>上一页</span>
+                                    </a></li>
+                                    <li><a href="buy_management.jsp?start=${requestScope.nextPage }">
+                                        <span>下一页</span>
+                                    </a></li>
+                                    <li><a
+                                            href="buy_management.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+                                    </a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
         </div>
         <!-- END CONTENT -->
     </div>

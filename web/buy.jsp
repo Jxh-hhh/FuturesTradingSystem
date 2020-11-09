@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@page import="java.sql.*,java.io.*"%>
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
@@ -523,6 +523,15 @@ License: You must have a valid license purchased only from themeforest(the above
 					<span class="title">个人信息</span>
 					</a>
 				</li>
+				<li><a href="background.jsp"> <i class="icon-users"></i>
+					<span class="title">后台管理</span>
+					<span class="arrow"></span>
+				</a>
+					<ul class="sub-menu">
+						<li><a href="buy_management.jsp">订单管理</a></li>
+						<li><a href="users_management.jsp">用户管理</a></li>
+					</ul>
+				</li>
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>
@@ -556,7 +565,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-12">
-					<form class="form-horizontal form-row-seperated" action="#">
+					<form class="form-horizontal form-row-seperated" action="finish.jsp">
 						<div class="portlet light">
 							<div class="portlet-title">
 								<div class="caption">
@@ -576,41 +585,44 @@ License: You must have a valid license purchased only from themeforest(the above
 												<div class="form-group" >
 													<label class="col-md-2 control-label">您的订单号是: </label>
 													<div class="col-md-10">
-														<input type="text" class="form-control" disabled="disabled" placeholder=""value="1">
+														<input id="gp_orderid" name="gp_orderid" class="form-control"readonly="readonly" placeholder="">
 													</div>
 												</div>
 												<div class="form-group" >
 													<label class="col-md-2 control-label">您的期货编号是: </label>
 													<div class="col-md-10">
-														<input id="gp_id" type="text" class="form-control" disabled="disabled"  placeholder="">
+														<input id="gp_id" name="gp_id" type="text" class="form-control"readonly="readonly" placeholder="">
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-md-2 control-label">您的期货名称是: </label>
 													</label>
 													<div class="col-md-10">
-														<input id="gp_name" type="text" class="form-control" disabled="disabled"  placeholder="">
+														<input id="gp_name" name="gp_name" type="text" class="form-control"readonly="readonly" placeholder="">
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-md-2 control-label">最新价: </label>
 													</label>
 													<div class="col-md-10">
-														<input id="gp_price" type="text" class="form-control" disabled="disabled" placeholder="">
+														<input id="gp_price" name="gp_price"type="text" class="form-control"readonly="readonly" placeholder="">
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-md-2 control-label">订单创建时间: </label>
 													</label>
 													<div class="col-md-10">
-														<input id="current_time" type="text"  class="form-control"  disabled="disabled" >
+														<input id="current_time" name="current_time" type="text"  class="form-control"readonly="readonly" >
 													</div>
 												</div>
 												<div class="form-group">
 													<label class="col-md-2 control-label">请填写你的订单数量: </label>
 													</label>
 													<div class="col-md-10">
-														<input type="text" class="form-control" placeholder="">
+														<input id="gp_number" name="gp_number" type="text" class="form-control" placeholder="">
+													</div>
+													<div align="center" style="margin-top: 50px">
+														<input type="submit" name="submit_btn" value="提交">
 													</div>
 												</div>
 												</div>
@@ -620,10 +632,6 @@ License: You must have a valid license purchased only from themeforest(the above
 							</div>
 						</div>
 					</form>
-					<div align="center">
-						<button onclick="window.location.href='finish.jsp'">完成</button>
-					</div>
-
 				</div>
 			</div>
 		</div>
@@ -700,15 +708,27 @@ License: You must have a valid license purchased only from themeforest(the above
 	var year = t.getFullYear();//获取当前时间年份
 	var month = t.getMonth();//获取当前时间月份
 	var day = t.getDate();//获取当前时间日
-	var week = t.getDay();//获取当前时间星期
-	var arr = new Array ("星期一","星期二","星期三","星期四","星期五","星期六","星期日",);
+	// var week = t.getDay();//获取当前时间星期
+	// var arr = new Array ("星期一","星期二","星期三","星期四","星期五","星期六","星期日",);
 	//上行是为规划星期的输出
 	//下3行分别获得当前时间的时 分 秒
 	var hour = t.getHours();
 	var minute = t.getMinutes();
 	var second = t.getSeconds();
-	var nowTime = year+"/"+month+"/"+day+" "+arr[week]+" "+hour+((minute<10)?":0":":")+minute+((second<10)?":0":":")
-			+second+((hour>12)?".pm":".am");
+	var nowTime = year+"-"+month+"-"+day+" "+" "+hour+((minute<10)?":0":":")+minute+((second<10)?":0":":")
+			+second;
 	a = document.getElementById("current_time");
 	a.value = nowTime;
+</script>
+<script type="text/javascript">
+		var orderid = '';
+		for(var i = 0; i < 16; i++){
+			if(i == 0){
+				orderid += Math.floor(Math.random() * 9 + 1);
+			}else{
+				orderid += Math.floor(Math.random() * 10);
+			}
+		}
+	a = document.getElementById("gp_orderid");
+	a.value = orderid;
 </script>
