@@ -2,3 +2,5 @@
 /web/templates/
 /web/assets/
 /web/sass/
+/src/deal/util/
+/web/WEB-INF/classes/deal/util/
