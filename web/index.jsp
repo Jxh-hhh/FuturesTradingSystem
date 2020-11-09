@@ -88,7 +88,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body
-        class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo" onload="initPage()">
+        class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
@@ -2792,6 +2792,7 @@ License: You must have a valid license purchased only from themeforest(the above
         type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/tasks.js"
         type="text/javascript"></script>
+
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function () {
@@ -2807,6 +2808,7 @@ License: You must have a valid license purchased only from themeforest(the above
 </body>
 <!-- END BODY -->
 </html>
+<script src="js/initializePage.js" type="text/javascript"></script>
 <script type="text/javascript">
     img = document.getElementById("k_img");
 
@@ -2814,8 +2816,6 @@ License: You must have a valid license purchased only from themeforest(the above
         img.src = "/image/" + hh + ".gif";
         console.log(hh);
     }
-
-
     function initPage(){
         getMenu();
         setSpanName()
@@ -2856,12 +2856,9 @@ License: You must have a valid license purchased only from themeforest(the above
         initMenu()
 
     }
-
     window.onload = initPage;
 
     function setSpanName(){
         document.getElementById("nameSpan").innerText="<%=session.getAttribute("loginUsername")%>";
     }
-
-
 </script>
