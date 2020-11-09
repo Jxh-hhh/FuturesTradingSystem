@@ -1254,7 +1254,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
 	<div class="page-footer-inner">
-		 2020@xm20期货交易系统1.0
+		 2020@xm20期货交易系统1.00
 	</div>
 	<div class="scroll-to-top">
 		<i class="icon-arrow-up"></i>
