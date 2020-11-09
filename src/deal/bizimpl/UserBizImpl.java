@@ -29,8 +29,8 @@ public class UserBizImpl implements UserBiz {
 		}
 		// 登录成功后 把当前登录成功后的用户 存入到SESSION中 基本是 所有后台的必备功能
 		request.getSession().setAttribute("user", user);
-		
-	
+		request.getSession().setAttribute("loginUsername", user.getUsername());
+		request.getSession().setAttribute("Authority", user.getAuthority());
 		return UserLoginEnum.USER_LOGIN_SUCCESS.getValue();
 	}
 	

@@ -31,12 +31,16 @@ public class login extends HttpServlet {
 			e.printStackTrace();
 		}
 		try {
+
 			if (result.equals(UserLoginEnum.USER_LOGIN_SUCCESS.getValue())) {
+				//request.setAttribute("loginUsername",username);
+				//request.setAttribute("");
 				request.getRequestDispatcher("index.jsp").forward(
 						request, response);
 			} else {
 				request.getRequestDispatcher("LoginAndRegister.jsp?msg=" + result + "")
 						.forward(request, response);
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

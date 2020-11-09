@@ -6,6 +6,7 @@ import java.util.*;
 import deal.dao.Igp;
 import deal.entity.Page;
 import deal.entity.gp;
+import deal.util.JDBCUtil;
 
 
 public class GpDaoImpl implements Igp{
@@ -18,9 +19,10 @@ public class GpDaoImpl implements Igp{
 		List<gp> arr = new ArrayList();
 		
 		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/ftsdb";
-			con = DriverManager.getConnection(url, "root", "12345678");
+			/*Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/test";
+			con = DriverManager.getConnection(url, "root", "z9682576");*/
+			con = JDBCUtil.getConnection();
 			Statement stat = con.createStatement();
 			String sql = "select * from gp limit ?,?";
 			pst=con.prepareStatement(sql);
@@ -31,7 +33,7 @@ public class GpDaoImpl implements Igp{
 				gp temp = new gp(rs.getString("gp_id"),rs.getString("gp_name"),rs.getString("gp_price"),rs.getString("gp_ADN"),rs.getString("gp_AD"));
 				arr.add(temp);
 			}
-		}catch (ClassNotFoundException e) {
+		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

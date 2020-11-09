@@ -12,13 +12,14 @@ public class UserDAOImpl implements UserDAO {
 	
 	//用户登录，查询用户是否存在
 	public User userLogin(String username, String password) {
+		System.out.println("login!!!!!");
 		User user = null;
 		java.sql.Connection connection = null;
 		java.sql.PreparedStatement preparedStatement = null;
 		java.sql.ResultSet resultSet = null;
 		try {
 			connection = JDBCUtil.getConnection();
-			preparedStatement = connection.prepareStatement("select userid,username,password from users where username=? and password=?");
+			preparedStatement = connection.prepareStatement("select userid,username,password,authority from users where username=? and password=?");
 			preparedStatement.setObject(1, username);
 			preparedStatement.setObject(2, password);
 			resultSet = preparedStatement.executeQuery();
@@ -27,6 +28,7 @@ public class UserDAOImpl implements UserDAO {
 				user.setUserid(resultSet.getInt("USERID"));
 				user.setUsername(resultSet.getString("USERNAME"));
 				user.setPassword(resultSet.getString("PASSWORD"));
+				user.setAuthority(resultSet.getString("AUTHORITY"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

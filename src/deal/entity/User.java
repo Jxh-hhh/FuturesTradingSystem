@@ -8,6 +8,7 @@ public class User implements Serializable{
 	private String username;
 	private String password;
 	private Timestamp createtime;
+	private String authority;
 	public int getUserid() {
 		return userid;
 	}
@@ -32,4 +33,6 @@ public class User implements Serializable{
 	public void setCreatetime(Timestamp createtime) {
 		this.createtime = createtime;
 	}
+	public String getAuthority(){return authority;}
+	public void setAuthority(String authority){this.authority = authority;}
 }

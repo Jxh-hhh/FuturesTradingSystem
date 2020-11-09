@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import deal.dao.IpageDao;
+import deal.util.JDBCUtil;
 
 public class PageDaoImpl implements IpageDao {
 	@Override
@@ -22,9 +23,10 @@ public class PageDaoImpl implements IpageDao {
 		ResultSet rs = null;
 		//System.out.println("totalPage:"+ totalPage);
 		try {//连接数据库的操作
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/ftsdb";
-			con = DriverManager.getConnection(url, "root", "12345678");
+			/*Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/test";
+			con = DriverManager.getConnection(url, "root", "z9682576");*/
+			JDBCUtil.getConnection();
 			Statement stat = con.createStatement();
 			rs = stat.executeQuery(sql);
 			

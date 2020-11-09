@@ -24,7 +24,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8"/>
-    <title>xm20期货交易系统</title>
+    <title>期货交易系统</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="" name="description"/>
@@ -88,7 +88,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body
-        class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo">
+        class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo" onload="initPage()">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
@@ -410,7 +410,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             href="javascript:;" class="dropdown-toggle"
                             data-toggle="dropdown" data-hover="dropdown"
                             data-close-others="true"> <span
-                            class="username username-hide-on-mobile"> Nick </span>
+                            class="username username-hide-on-mobile" id="nameSpan"></span>
                         <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                         <img alt="" class="img-circle"
                              src="assets/admin/layout4/img/avatar9.jpg"/>
@@ -469,28 +469,28 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false"
-                data-auto-scroll="true" data-slide-speed="200">
-                <li class="start active "><a href="index.jsp"> <i
-                        class="icon-home"></i> <span class="title">主页</span>
-                </a></li>
-                <li><a href="futures_menu.jsp"> <i class="icon-graph"></i> <span
-                        class="title">行情</span>
-                </a>
-                </li>
-                <li>
-                    <a href="user_information.jsp"> <i class="icon-user"></i> <span
-                        class="title">个人信息</span>
-                </a>
-                </li>
-                <li><a href="background.jsp"> <i class="icon-users"></i>
-                    <span class="title">后台管理</span>
-                    <span class="arrow"></span>
-                </a>
-                    <ul class="sub-menu">
-                        <li><a href="buy_management.jsp">订单管理</a></li>
-                        <li><a href="users_management.jsp">用户管理</a></li>
-                    </ul>
-                </li>
+                data-auto-scroll="true" data-slide-speed="200" id="menu_div">
+<%--                <li class="start active "><a href="index.jsp"> <i--%>
+<%--                        class="icon-home"></i> <span class="title">主页</span>--%>
+<%--                </a></li>--%>
+<%--                <li><a href="futures_menu.jsp"> <i class="icon-graph"></i> <span--%>
+<%--                        class="title">行情</span>--%>
+<%--                </a>--%>
+<%--                </li>--%>
+<%--                <li>--%>
+<%--                    <a href="user_information.jsp"> <i class="icon-user"></i> <span--%>
+<%--                        class="title">个人信息</span>--%>
+<%--                </a>--%>
+<%--                </li>--%>
+<%--                <li><a href="background.jsp"> <i class="icon-users"></i>--%>
+<%--                    <span class="title">后台管理</span>--%>
+<%--                    <span class="arrow"></span>--%>
+<%--                </a>--%>
+<%--                    <ul class="sub-menu">--%>
+<%--                        <li><a href="buy_management.jsp">订单管理</a></li>--%>
+<%--                        <li><a href="users_management.jsp">用户管理</a></li>--%>
+<%--                    </ul>--%>
+<%--                </li>--%>
 <%--                <li><a href="javascript:;"> <i class="icon-diamond"></i> <span--%>
 <%--                        class="title">UI Features</span> <span class="arrow "></span>--%>
 <%--                </a>--%>
@@ -2807,11 +2807,61 @@ License: You must have a valid license purchased only from themeforest(the above
 </body>
 <!-- END BODY -->
 </html>
-<script>
+<script type="text/javascript">
     img = document.getElementById("k_img");
 
     function show_kline(hh) {
         img.src = "/image/" + hh + ".gif";
         console.log(hh);
     }
+
+
+    function initPage(){
+        getMenu();
+        setSpanName()
+    }
+    function initMenu(){
+        var html="";
+        //var authority=result.authorityData;
+        //var name="${requestScope.loginUsername}";
+        var authority="<%=session.getAttribute("Authority")%>";
+        //alert(authority);
+        html+="<li class=\"start active \"><a href=\"index.jsp\"> <i\n" +
+            "                        class=\"icon-home\"></i> <span class=\"title\">主页</span>\n" +
+            "                </a></li>\n" +
+            "                <li><a href=\"futures_menu.jsp\"> <i class=\"icon-graph\"></i> <span\n" +
+            "                        class=\"title\">行情</span>\n" +
+            "                </a>\n" +
+            "                </li>\n" +
+            "                <li>\n" +
+            "                    <a href=\"user_information.jsp\"> <i class=\"icon-user\"></i> <span\n" +
+            "                        class=\"title\">个人信息</span>\n" +
+            "                </a>\n" +
+            "                </li>"
+        if(authority == "manager") {
+            html += "<li><a href=\"background.jsp\"> <i class=\"icon-users\"></i>\n" +
+                "                    <span class=\"title\">后台管理</span>\n" +
+                "                    <span class=\"arrow\"></span>\n" +
+                "                </a>\n" +
+                "                    <ul class=\"sub-menu\">\n" +
+                "                        <li><a href=\"buy_management.jsp\">订单管理</a></li>\n" +
+                "                        <li><a href=\"users_management.jsp\">用户管理</a></li>\n" +
+                "                    </ul>\n" +
+                "                </li>"
+        }
+        $("#menu_div").html(html);
+    }
+
+    function getMenu(){
+        initMenu()
+
+    }
+
+    window.onload = initPage;
+
+    function setSpanName(){
+        document.getElementById("nameSpan").innerText="<%=session.getAttribute("loginUsername")%>";
+    }
+
+
 </script>
