@@ -24,7 +24,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN HEAD -->
 <head>
 <meta charset="utf-8"/>
-<title>xm20期货交易系统</title>
+<title>期货交易系统</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -1118,7 +1118,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE HEAD -->
 			<div class="page-head">
 				<!-- BEGIN PAGE TITLE -->
-				<div class="page-title">
+				<div align="center">
 					<h1>交易管理</h1>
 				</div>
 				<!-- END PAGE TITLE -->
@@ -1213,7 +1213,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_ad()%>">
 									</td>
 									<td>
-										<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price()%>'">平仓</button>
+										<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price()%>'">开仓</button>
 										<button onclick="window.location.href = 'http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif'">K线图</button>
 									</td>
 								</tr>
