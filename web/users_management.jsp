@@ -547,11 +547,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                 </li>
                 <li>
-                <li id="menu_admin" class="active open">
-                    <a href="background.jsp">
-                        <i class="icon-users"></i>
+                <li class="active open">
+                    <a href="background.jsp"> <i class="icon-users"></i>
                         <span class="title">后台管理</span>
-                        <span class="open arrow"></span>
+                        <span class="arrow open"></span>
                     </a>
                     <ul class="sub-menu">
                         <li><a href="buy_management.jsp">订单管理</a></li>
