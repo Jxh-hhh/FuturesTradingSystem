@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import deal.biz.UserBiz;
 import deal.bizimpl.UserBizImpl;
@@ -35,8 +36,7 @@ public class login extends HttpServlet {
 			if (result.equals(UserLoginEnum.USER_LOGIN_SUCCESS.getValue())) {
 				//request.setAttribute("loginUsername",username);
 				//request.setAttribute("");
-				request.getRequestDispatcher("index.jsp").forward(
-						request, response);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			} else {
 				request.getRequestDispatcher("LoginAndRegister.jsp?msg=" + result + "")
 						.forward(request, response);

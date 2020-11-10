@@ -7,11 +7,19 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="java.sql.*,java.io.*"%>
+<%
+    //判断是否未登录，用的session判断，可用filter，之后再说
+    String name=(String)session.getAttribute("loginUsername");
+    String authority=(String)session.getAttribute("Authority");
+    if(name==null){
+        response.sendRedirect("LoginAndRegister.jsp");
+    }
+%>
 <html>
 <head>
     <title>提交成功</title>
 </head>
-<body>
+<body >
 <%
     //获取add_file.jsp页面提交后传递过来的参数，在form里的参数才能传递过来，注意name和id的区别
     String OI = request.getParameter("gp_orderid");

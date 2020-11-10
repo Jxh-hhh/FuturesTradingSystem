@@ -11,6 +11,14 @@
 <jsp:useBean id="order" scope="page" class="deal.daoimpl.orderImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
 
+<%
+    //判断是否未登录，用的session判断，可用filter，之后再说
+    String name=(String)session.getAttribute("loginUsername");
+    String authority=(String)session.getAttribute("Authority");
+    if(name==null){
+        response.sendRedirect("LoginAndRegister.jsp");
+    }
+%>
 <!DOCTYPE html>
 <!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
@@ -70,7 +78,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="page-header-fixed page-sidebar-closed-hide-logo ">
+<body class="page-header-fixed page-sidebar-closed-hide-logo " onload="initPage('<%=authority%>','<%=name%>')">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
@@ -252,11 +260,6 @@ License: You must have a valid license purchased only from themeforest(the above
                             </li>
                         </ul>
                     </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
                     <!-- END NOTIFICATION DROPDOWN -->
                     <li class="separator hide">
                     </li>
@@ -453,8 +456,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     <li class="dropdown dropdown-user dropdown-dark">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<span class="username username-hide-on-mobile">
-						Nick </span>
+                            <span id="nameSpan" class="username username-hide-on-mobile"></span>
                             <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                             <img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
                         </a>
@@ -486,8 +488,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <i class="icon-lock"></i> Lock Screen </a>
                             </li>
                             <li>
-                                <a href="login.html">
-                                    <i class="icon-key"></i> Log Out </a>
+                                <a href="LoginAndRegister.jsp">
+                                    <i class="icon-key"></i> 注销 </a>
                             </li>
                         </ul>
                     </li>
@@ -538,7 +540,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                 </li>
                 <li>
-                <li class="active open">
+                <li id="menu_admin" class="active open">
                     <a href="background.jsp">
                         <i class="icon-users"></i>
                     <span class="title">后台管理</span>
@@ -611,26 +613,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
                                     int pageSize = 15;
                                     int totalPage = 0;
-											/*int countRow = 0;
-											Connection con = null;
-											ResultSet rs = null;
-											try {//连接数据库的操作
-												Class.forName("com.mysql.jdbc.Driver");
-												String url = "jdbc:mysql://localhost:3306/test";
-												con = DriverManager.getConnection(url, "root", "z9682576");
-												Statement stat = con.createStatement();
-												String sql = "select gp_id from gp";
-												rs = stat.executeQuery(sql);
-												while(rs.next()){
-													countRow++;
-												}
-											} catch (Exception e) {
-												e.toString();
-											}
-
-
-											totalPage = countRow % pageSize > 0 ? countRow/pageSize+1 : countRow/pageSize;
-											*/
                                     totalPage = pg.getTotalPage(pageSize);
 
                                     int prePage = start - 1 >= 0 ? start - 1 : start + 1;
@@ -641,8 +623,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                     Page pg1 = new Page(start, pageSize);
                                     List<order> currentOrder = (List<order>) order.queryOrderByPage(pg1);
                                     //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-
-
                                     for (order u : currentOrder) {
                                 %>
                                 <tr>
@@ -730,6 +710,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="assets/global/scripts/datatable.js"></script>
     <script src="assets/admin/pages/scripts/ecommerce-orders.js"></script>
     <!-- END PAGE LEVEL SCRIPTS -->
+    <script src="js/global/initializePage.js" type="text/javascript"></script>
+    <script src="js/buy_management.js" type="text/javascript"></script>
     <script>
         jQuery(document).ready(function() {
             Metronic.init(); // init metronic core components
@@ -742,6 +724,3 @@ License: You must have a valid license purchased only from themeforest(the above
 </body>
 <!-- END BODY -->
 </html>
-
-<script>
-</script>

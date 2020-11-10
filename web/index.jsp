@@ -4,6 +4,15 @@
 <jsp:useBean id="gp" scope="page" class="deal.daoimpl.GpDaoImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
 
+<%
+    //判断是否未登录，用的session判断，可用filter，之后再说
+    String name=(String)session.getAttribute("loginUsername");
+    String authority=(String)session.getAttribute("Authority");
+    if(name==null){
+        response.sendRedirect("LoginAndRegister.jsp");
+    }
+%>
+
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
@@ -75,8 +84,7 @@
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body
-        class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo" onload="initPage()">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-sidebar-closed-hide-logo" onload="initPage('<%=authority%>','<%=name%>')">
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
@@ -420,9 +428,9 @@
                             <li><a href="extra_lock.html"> <i class="icon-lock"></i>
                                 Lock Screen
                             </a></li>
-                            <li><a href="login.html"> <i class="icon-key"></i> Log
-                                Out
-                            </a></li>
+                            <li>
+                                <a href="LoginAndRegister.jsp"><i class="icon-key"></i> 注销 </a>
+                            </li>
                         </ul>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
@@ -457,7 +465,33 @@
             <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu " data-keep-expanded="false"
-                data-auto-scroll="true" data-slide-speed="200" id="menu_div">
+                data-auto-scroll="true" data-slide-speed="200">
+                <li class="start ">
+                    <a href="index.jsp">
+                        <i class="icon-home"></i>
+                        <span class="title">主页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="futures_menu.jsp">
+                        <i class="icon-graph"></i>
+                        <span class="title">行情</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="user_information.jsp"> <i class="icon-user"></i> <span
+                            class="title">个人信息</span>
+                    </a>
+                </li>
+                <li id="menu_admin"><a href="background.jsp"> <i class="icon-users"></i>
+                    <span class="title">后台管理</span>
+                    <span class="arrow"></span>
+                </a>
+                    <ul class="sub-menu">
+                        <li><a href="buy_management.jsp">订单管理</a></li>
+                        <li><a href="users_management.jsp">用户管理</a></li>
+                    </ul>
+                </li>
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>
@@ -2421,8 +2455,9 @@
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
+<script src="js/global/initializePage.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
-
+<script src="js/index.js" type="text/javascript"></script>
 <script>
     jQuery(document).ready(function () {
         Metronic.init(); // init metronic core componets
@@ -2437,54 +2472,3 @@
 </body>
 <!-- END BODY -->
 </html>
-<script type="text/javascript">
-    img = document.getElementById("k_img");
-
-    function show_kline(hh) {
-        img.src = "/image/" + hh + ".gif";
-        console.log(hh);
-    }
-
-
-    function initPage(){
-        getMenu();
-        setSpanName()
-    }
-    function initMenu(){
-        var html="";
-        //var name="${requestScope.loginUsername}";
-        var authority="<%=session.getAttribute("Authority")%>";
-        //alert(authority);
-        html+="<li class=\"start active \"><a href=\"index.jsp\"> <i\n" +
-            "                        class=\"icon-home\"></i> <span class=\"title\">主页</span>\n" +
-            "                </a></li>\n" +
-            "                <li><a href=\"futures_menu.jsp\"> <i class=\"icon-graph\"></i> <span\n" +
-            "                        class=\"title\">行情</span>\n" +
-            "                </a>\n" +
-            "                </li>\n" +
-            "                <li>\n" +
-            "                    <a href=\"user_information.jsp\"> <i class=\"icon-user\"></i> <span\n" +
-            "                        class=\"title\">个人信息</span>\n" +
-            "                </a>\n" +
-            "                </li>"
-        if(authority == "manager") {
-            html += "<li><a href=\"background.jsp\"> <i class=\"icon-users\"></i>\n" +
-                "                    <span class=\"title\">后台管理</span>\n" +
-                "                    <span class=\"arrow\"></span>\n" +
-                "                </a>\n" +
-                "                    <ul class=\"sub-menu\">\n" +
-                "                        <li><a href=\"buy_management.jsp\">订单管理</a></li>\n" +
-                "                        <li><a href=\"users_management.jsp\">用户管理</a></li>\n" +
-                "                    </ul>\n" +
-                "                </li>"
-        }
-        $("#menu_div").html(html);
-    }
-    function getMenu(){
-        initMenu();
-    }
-    window.onload = initPage;
-    function setSpanName(){
-        document.getElementById("nameSpan").innerText="<%=session.getAttribute("loginUsername")%>";
-    }
-</script>

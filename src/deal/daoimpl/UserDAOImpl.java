@@ -12,7 +12,6 @@ public class UserDAOImpl implements UserDAO {
 	
 	//用户登录，查询用户是否存在
 	public User userLogin(String username, String password) {
-		System.out.println("login!!!!!");
 		User user = null;
 		java.sql.Connection connection = null;
 		java.sql.PreparedStatement preparedStatement = null;

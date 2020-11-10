@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
+	session.invalidate();
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
@@ -189,7 +190,7 @@
 		type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/login.js"
 		type="text/javascript"></script>
-<script src="js/login.js" type="text/javascript"></script>
+<script src="js/LoginAndRegister.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 	jQuery(document).ready(function() {

@@ -1,5 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="java.sql.*,java.io.*"%>
+<%
+	//判断是否未登录，用的session判断，可用filter，之后再说
+	String name=(String)session.getAttribute("loginUsername");
+	String authority=(String)session.getAttribute("Authority");
+	if(name==null){
+		response.sendRedirect("LoginAndRegister.jsp");
+	}
+%>
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
@@ -61,7 +69,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="page-header-fixed page-sidebar-closed-hide-logo ">
+<body class="page-header-fixed page-sidebar-closed-hide-logo " onload="initPage('<%=authority%>','<%=name%>')">
 
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
@@ -440,8 +448,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 					<li class="dropdown dropdown-user dropdown-dark">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-						<span class="username username-hide-on-mobile">
-						Nick </span>
+							<span id="nameSpan" class="username username-hide-on-mobile"></span>
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
 						<img alt="" class="img-circle" src="assets/admin/layout4/img/avatar9.jpg"/>
 						</a>
@@ -473,8 +480,8 @@ License: You must have a valid license purchased only from themeforest(the above
 								<i class="icon-lock"></i> Lock Screen </a>
 							</li>
 							<li>
-								<a href="login.html">
-								<i class="icon-key"></i> Log Out </a>
+								<a href="LoginAndRegister.jsp">
+								<i class="icon-key"></i> 注销 </a>
 							</li>
 						</ul>
 					</li>
@@ -523,7 +530,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<span class="title">个人信息</span>
 					</a>
 				</li>
-				<li><a href="background.jsp"> <i class="icon-users"></i>
+				<li id="menu_admin"><a href="background.jsp"> <i class="icon-users"></i>
 					<span class="title">后台管理</span>
 					<span class="arrow"></span>
 				</a>
@@ -676,24 +683,13 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="assets/global/scripts/datatable.js"></script>
 <script src="assets/admin/pages/scripts/ecommerce-products-edit.js"></script>
+<script src="js/global/initializePage.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>
-<script type="text/javascript" src="js/getUrlParam.js"></script>
-<script>
-	function jump()
-	{
-		window.location.href  = "finish.jsp";
-		console.log("跳转成功");
-	}
-	var gp_id = UrlParam.paramValues("gp_id");
-	var gp_name = UrlParam.paramValues("gp_name");
-	var gp_price = UrlParam.paramValues("gp_price");
-	id = document.getElementById("gp_id").value = gp_id[0];
-	name = document.getElementById("gp_name").value = gp_name[0];
-	price = document.getElementById("gp_price").value = gp_price[0];
-</script>
+<script type="text/javascript" src="js/global/getUrlParam.js"></script>
+<script type="text/javascript" src="js/buy.js"></script>
 <script>
 	jQuery(document).ready(function() {
 		Metronic.init(); // init metronic core components
@@ -703,32 +699,6 @@ License: You must have a valid license purchased only from themeforest(the above
 	});
 </script>
 <!-- END JAVASCRIPTS -->
-<script type="text/javascript">
-	var t = new Date();//获取当前时间
-	var year = t.getFullYear();//获取当前时间年份
-	var month = t.getMonth();//获取当前时间月份
-	var day = t.getDate();//获取当前时间日
-	// var week = t.getDay();//获取当前时间星期
-	// var arr = new Array ("星期一","星期二","星期三","星期四","星期五","星期六","星期日",);
-	//上行是为规划星期的输出
-	//下3行分别获得当前时间的时 分 秒
-	var hour = t.getHours();
-	var minute = t.getMinutes();
-	var second = t.getSeconds();
-	var nowTime = year+"-"+month+"-"+day+" "+" "+hour+((minute<10)?":0":":")+minute+((second<10)?":0":":")
-			+second;
-	a = document.getElementById("current_time");
-	a.value = nowTime;
-</script>
-<script type="text/javascript">
-		var orderid = '';
-		for(var i = 0; i < 16; i++){
-			if(i == 0){
-				orderid += Math.floor(Math.random() * 9 + 1);
-			}else{
-				orderid += Math.floor(Math.random() * 10);
-			}
-		}
-	a = document.getElementById("gp_orderid");
-	a.value = orderid;
+<script>
+	js_buy();
 </script>
