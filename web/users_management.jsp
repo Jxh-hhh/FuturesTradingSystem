@@ -591,11 +591,71 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN PAGE HEAD -->
             <div class="page-head">
-                <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>个人信息管理</h1>
+                    <h1>用户管理 <small>用户信息列表</small></h1>
                 </div>
+            </div>
+            <ul class="page-breadcrumb breadcrumb">
+                <li>
+                    <a href="index.jsp">主页</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <a href="#">后台管理</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <a href="#">用户管理</a>
+                </li>
+            </ul>
                 <!-- END PAGE TITLE -->
+            <div class="portlet light ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-basket font-green-sharp"></i>
+                        <span class="caption-subject font-green-sharp bold uppercase">用户信息列表</span>
+                        <span class="caption-helper"></span>
+                    </div>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-default">
+                            <i class="fa fa-plus"></i>
+                            <span class="hidden-480">新增用户</span>
+                        </a>
+                        <a href="javascript:;" class="btn btn-circle btn-default">
+                            <i class="fa fa-minus"></i>
+                            <span class="hidden-480">删除用户</span>
+                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">
+                                <i class="fa fa-share"></i>
+                                <span class="hidden-480">工具 </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="javascript:;" onclick="">导出到excel </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" onclick="">导出到csv </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;" onclick="">导出到xml </a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="javascript:;" onclick="">打印 </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="row number-stats margin-bottom-30"></div>
+                    <div class="table-scrollable table-scrollable-borderless"></div>
+
+<%--                    table TODO.....--%>
+                </div>
             </div>
             <!-- END PAGE HEAD -->
             <!-- END PAGE HEADER-->
