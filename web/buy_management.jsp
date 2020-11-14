@@ -578,6 +578,9 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!-- /.modal-dialog -->
             </div>
+        </div>
+    </div>
+</div>
             <!-- /.modal -->
             <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
             <!-- BEGIN PAGE HEADER-->
@@ -666,6 +669,7 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
         <!-- END CONTENT -->
     </div>
+
     <!-- END CONTAINER -->
     <!-- BEGIN FOOTER -->
     <div class="page-footer">
@@ -720,5 +724,6 @@ License: You must have a valid license purchased only from themeforest(the above
     </script>
     <!-- END JAVASCRIPTS -->
 </body>
+
 <!-- END BODY -->
 </html>
