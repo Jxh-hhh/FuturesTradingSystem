@@ -554,7 +554,6 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END SIDEBAR MENU -->
         </div>
     </div>
-    askdjaldjla
     <!-- END SIDEBAR -->
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
