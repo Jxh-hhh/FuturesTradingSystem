@@ -7,8 +7,8 @@ public class User implements Serializable{
 	private int userid;
 	private String username;
 	private String password;
-	private Timestamp createtime;
 	private String authority;
+	private String createtime;
 	public int getUserid() {
 		return userid;
 	}
@@ -27,12 +27,23 @@ public class User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Timestamp getCreatetime() {
+	public String  getCreatetime() {
 		return createtime;
 	}
-	public void setCreatetime(Timestamp createtime) {
+	public void setCreatetime(String createtime) {
 		this.createtime = createtime;
 	}
 	public String getAuthority(){return authority;}
 	public void setAuthority(String authority){this.authority = authority;}
+	public User(int userid,String username,String password,String authority,String createtime){
+		super();
+		this.userid=userid;
+		this.username=username;
+		this.password=password;
+		this.authority=authority;
+		this.createtime=createtime;
+	}
+	public User(){
+		super();
+	}
 }

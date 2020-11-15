@@ -579,9 +579,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!-- /.modal-dialog -->
             </div>
-        </div>
-    </div>
-</div>
             <!-- /.modal -->
             <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
             <!-- BEGIN PAGE HEADER-->
@@ -640,7 +637,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <li class="divider">
                                     </li>
                                     <li>
-                                        <a href="javascript:;" onclick="">打印 </a>
+                                        <a href="javascript:;" onclick="jumpToPrint()" id="buyManagement">打印 </a>
                                     </li>
                                 </ul>
                             </div>
@@ -723,7 +720,6 @@ License: You must have a valid license purchased only from themeforest(the above
         </div>
         <!-- END CONTENT -->
     </div>
-
     <!-- END CONTAINER -->
     <!-- BEGIN FOOTER -->
     <div class="page-footer">
@@ -768,6 +764,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END PAGE LEVEL SCRIPTS -->
     <script src="js/global/initializePage.js" type="text/javascript"></script>
     <script src="js/buy_management.js" type="text/javascript"></script>
+    <script src="js/global/Printing.js" type="text/javascript"></script>
     <script>
         jQuery(document).ready(function() {
             Metronic.init(); // init metronic core components
@@ -776,8 +773,8 @@ License: You must have a valid license purchased only from themeforest(the above
             EcommerceOrders.init();
         });
     </script>
+
     <!-- END JAVASCRIPTS -->
 </body>
-
 <!-- END BODY -->
 </html>

@@ -1,6 +1,11 @@
 package deal.dao;
 
+import deal.entity.Page;
 import deal.entity.User;
+import deal.entity.order;
+
+import java.sql.SQLException;
+import java.util.List;
 
 public interface UserDAO {
 	// 阿里规范 公开 的 抽象的 这两个 描述 不需要手动的写出来
@@ -12,4 +17,6 @@ public interface UserDAO {
 		
 		//判断注册用户名存在否
 		User userToRegister(String username);
+
+		public List<User> queryUserByPage(Page page) throws SQLException;
 }

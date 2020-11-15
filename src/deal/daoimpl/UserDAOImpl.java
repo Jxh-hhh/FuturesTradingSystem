@@ -1,9 +1,13 @@
 package deal.daoimpl;
 
-import java.sql.Date;
+import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import deal.dao.UserDAO;
+import deal.entity.Page;
+import deal.entity.User;
 import deal.entity.User;
 import deal.util.JDBCUtil;
 
@@ -89,6 +93,47 @@ public class UserDAOImpl implements UserDAO {
 			JDBCUtil.closeUpdate(preparedStatement, connection);
 		}
 		return executeCount;
+	}
+
+	public Connection con=null;
+	public PreparedStatement pst=null;
+	public Statement sm=null;
+	public ResultSet rs=null;
+	@Override
+	public List<User> queryUserByPage(Page page) throws SQLException {
+
+		List<User> arr = new ArrayList();
+
+		try{
+			/*Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/test";
+			con = DriverManager.getConnection(url, "root", "z9682576");*/
+			con = JDBCUtil.getConnection();
+			Statement stat = con.createStatement();
+			String sql = "select * from users limit ?,?";
+			pst=con.prepareStatement(sql);
+			pst.setInt(1, page.getIndex()*page.getPageSize());
+			pst.setInt(2, page.getPageSize());
+			rs=pst.executeQuery();
+			while(rs.next()){
+				User temp = new User(Integer.parseInt(rs.getString("userid")),rs.getString("username"),rs.getString("password"),rs.getString("authority"),rs.getString("createTime"));
+				arr.add(temp);
+			}
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {//关闭连接
+			if (rs != null) {
+				rs.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return arr;
 	}
 
 }

@@ -17,6 +17,7 @@
         contentType="text/html; charset=UTF-8" %>
 <jsp:useBean id="gp" scope="page" class="deal.daoimpl.GpDaoImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
+<jsp:useBean id="user" scope="page" class="deal.daoimpl.UserDAOImpl"/>
 <%
     //判断是否未登录，用的session判断，可用filter，之后再说
     String name=(String)session.getAttribute("loginUsername");
@@ -643,7 +644,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <li class="divider">
                                 </li>
                                 <li>
-                                    <a href="javascript:;" onclick="">打印 </a>
+                                    <a href="javascript:;" id="usersManagement" onclick="jumpToPrint(id)">打印 </a>
                                 </li>
                             </ul>
                         </div>
@@ -707,6 +708,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/global/scripts/datatable.js"></script>
 <script src="assets/admin/pages/scripts/ecommerce-orders.js"></script>
 <script src="js/global/initializePage.js" type="text/javascript"></script>
+<script src="js/global/Printing.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
     jQuery(document).ready(function() {
