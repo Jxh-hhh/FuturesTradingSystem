@@ -578,9 +578,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!-- /.modal-dialog -->
             </div>
-        </div>
-    </div>
-</div>
             <!-- /.modal -->
             <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
             <!-- BEGIN PAGE HEADER-->
@@ -628,7 +625,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                                 <ul class="dropdown-menu pull-right">
                                     <li>
-                                        <a href="javascript:;" onclick="">导出到excel </a>
+                                        <a href="javascript:;" onclick="window.open('exportExcel.jsp')">导出到excel </a>
                                     </li>
                                     <li>
                                         <a href="javascript:;" onclick="">导出到csv </a>
