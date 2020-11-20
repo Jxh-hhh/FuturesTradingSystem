@@ -98,7 +98,7 @@
 	</div>
 	<!-- END LOGIN FORM -->
 	<!-- BEGIN FORGOT PASSWORD FORM -->
-	<form class="forget-form" action="index.jsp" method="post">
+	<form class="forget-form" action="sendMailServlet" method="post">
 		<h3>Forget Password ?</h3>
 		<p>Enter your e-mail address below to reset your password.</p>
 		<div class="form-group">
@@ -191,6 +191,7 @@
 <script src="assets/admin/pages/scripts/login.js"
 		type="text/javascript"></script>
 <script src="js/LoginAndRegister.js" type="text/javascript"></script>
+<script src="js/submitMailbox.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
 	jQuery(document).ready(function() {
