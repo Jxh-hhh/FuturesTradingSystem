@@ -15,8 +15,9 @@
 <%@page language="java"
         import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="gp" scope="page" class="deal.daoimpl.GpDaoImpl"/>
+<jsp:useBean id="usershow" scope="page" class="deal.daoimpl.usershowImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
+
 <%
     //判断是否未登录，用的session判断，可用filter，之后再说
     String name=(String)session.getAttribute("loginUsername");
@@ -632,7 +633,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </a>
                             <ul class="dropdown-menu pull-right">
                                 <li>
-                                    <a href="javascript:;" onclick="">导出到excel </a>
+                                    <a href="javascript:;" onclick="window.open('exportExcel1.jsp')">导出到excel </a>
                                 </li>
                                 <li>
                                     <a href="javascript:;" onclick="">导出到csv </a>
@@ -651,9 +652,69 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <div class="portlet-body">
                     <div class="row number-stats margin-bottom-30"></div>
-                    <div class="table-scrollable table-scrollable-borderless"></div>
+                    <div class="table-scrollable table-scrollable-borderless">
+                        <table class="table table-hover table-light">
+                            <thead>
+                            <tr class="uppercase">
+                                <th>用户id</th>
+                                <th>用户名</th>
+                                <th>密码</th>
+                                <th>角色</th>
+                                <th>创建时间</th>
+                            </tr>
+                            </thead>
+                            <%
+                                request.setCharacterEncoding("UTF-8");
+                                int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
 
-<%--                    table TODO.....--%>
+
+                                int pageSize = 15;
+                                int totalPage = 0;
+                                totalPage = pg.getTotalPage(pageSize);
+
+                                int prePage = start - 1 >= 0 ? start - 1 : start + 1;
+                                int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
+                                request.setAttribute("totalPage", totalPage);
+                                request.setAttribute("prePage", prePage);
+                                request.setAttribute("nextPage", nextPage);
+                                Page pg1 = new Page(start, pageSize);
+                                List<usershow> currentUsershow = (List<usershow>) usershow.queryUsershowByPage(pg1);
+                                //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
+                                for (usershow u : currentUsershow) {
+                            %>
+                            <tr>
+                                <td><%=u.getshow_userid()%>
+                                </td>
+                                <td><%=u.getshow_username()%>
+                                </td>
+                                <td><%=u.getshow_password()%>
+                                </td>
+                                <td><%=u.getshow_authority()%>
+                                </td>
+                                <td><%=u.getshow_createTime()%>
+                                </td>
+                            </tr>
+                            <%
+                                }
+                            %>
+
+                        </table>
+                        <nav>
+                            <ul class="pagination">
+                                <li><a href="buy_management.jsp?start=0"> <span>首页</span>
+                                </a></li>
+                                <li><a href="buy_management.jsp?start=${requestScope.prePage }">
+                                    <span>上一页</span>
+                                </a></li>
+                                <li><a href="buy_management.jsp?start=${requestScope.nextPage }">
+                                    <span>下一页</span>
+                                </a></li>
+                                <li><a
+                                        href="buy_management.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+                                </a></li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
             <!-- END PAGE HEAD -->
