@@ -8,6 +8,7 @@
 <%@page language="java"
         import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
+<jsp:useBean id="usershow" scope="page" class="deal.daoimpl.usershowImpl"/>
 <jsp:useBean id="order" scope="page" class="deal.daoimpl.orderImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
 
@@ -250,7 +251,48 @@ License: You must have a valid license purchased only from themeforest(the above
             %>
 
         }else if(id=="usersManagement"){
-            html+="";
+            html+="<thead>\n" +
+                "                            <tr class=\"uppercase\">\n" +
+                "                                <th>用户id</th>\n" +
+                "                                <th>用户名</th>\n" +
+                "                                <th>密码</th>\n" +
+                "                                <th>角色</th>\n" +
+                "                                <th>创建时间</th>\n" +
+                "                            </tr>\n" +
+                "                            </thead>";
+            <%
+                                request.setCharacterEncoding("UTF-8");
+                                start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
+
+
+                                pageSize = 9999999;
+                                totalPage = 0;
+                                totalPage = pg.getTotalPage(pageSize);
+
+                                prePage = start - 1 >= 0 ? start - 1 : start + 1;
+                                nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
+                                request.setAttribute("totalPage", totalPage);
+                                request.setAttribute("prePage", prePage);
+                                request.setAttribute("nextPage", nextPage);
+                                pg1 = new Page(start, pageSize);
+                                List<usershow> currentUsershow = (List<usershow>) usershow.queryUsershowByPage(pg1);
+                                //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
+                                for (usershow u : currentUsershow) {
+            %>
+            html+="<tr>\n" +
+                "                                <td><%=u.getshow_userid()%>\n" +
+                "                                </td>\n" +
+                "                                <td><%=u.getshow_username()%>\n" +
+                "                                </td>\n" +
+                "                                <td><%=u.getshow_password()%>\n" +
+                "                                </td>\n" +
+                "                                <td><%=u.getshow_authority()%>\n" +
+                "                                </td>\n" +
+                "                                <td><%=u.getshow_createTime()%>\n" +
+                "                                </td>\n" +
+                "                            </tr>";
+                <%}%>
+
         }
         console.log(html);
         jQuery("#toBePrinted").html(html);
