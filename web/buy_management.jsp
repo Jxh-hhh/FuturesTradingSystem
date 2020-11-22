@@ -637,7 +637,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <li class="divider">
                                     </li>
                                     <li>
-                                        <a href="javascript:;" onclick="jumpToPrint()" id="buyManagement">打印 </a>
+                                        <a href="javascript:;" id="buyManagement" onclick="jumpToPrint(id)" >打印 </a>
                                     </li>
                                 </ul>
                             </div>
