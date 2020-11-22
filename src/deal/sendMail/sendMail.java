@@ -23,10 +23,17 @@ public class sendMail extends Thread {
     private String password = "yuehailin99";
     //发送邮件的服务器地址
     private String host = "smtp.163.com";
+    private String verifyCode = "";
 
     private String mailbox;
-    public sendMail(String mailbox){
+
+    public  sendMail(String mailbox){
         this.mailbox = mailbox;
+        verifyCode = createVerifyCode();
+    }
+
+    public String getVerifyCode(){
+        return this.verifyCode;
     }
 
     /* 重写run方法的实现，在run方法中发送邮件给指定的用户
@@ -50,7 +57,15 @@ public class sendMail extends Thread {
             throw new RuntimeException(e);
         }
     }
-
+    private String createVerifyCode(){
+        String ret="";
+        for(int i = 1;i <= 4; i++){
+            int temp = (int)(Math.random()*10.0);
+            System.out.println(temp);
+            ret += Integer.toString(temp);
+        }
+        return ret;
+    }
 
     public Message createEmail(Session session, String mailbox) throws Exception{
 
@@ -58,8 +73,8 @@ public class sendMail extends Thread {
         message.setFrom(new InternetAddress(from));
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(mailbox));
         message.setSubject("找回密码邮件");
-
-        String info = "这是重新设置密码的网址:XXX";
+        String info = "这是重新设置密码的验证码:";
+        info += this.verifyCode;
         message.setContent(info, "text/html;charset=UTF-8");
         message.saveChanges();
         return message;
