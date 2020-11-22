@@ -626,7 +626,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                                 <ul class="dropdown-menu pull-right">
                                     <li>
-                                        <a href="javascript:;" onclick="">导出到excel </a>
+                                        <a href="javascript:;" onclick="window.open('exportExcel.jsp')">导出到excel </a>
                                     </li>
                                     <li>
                                         <a href="javascript:;" onclick="">导出到csv </a>

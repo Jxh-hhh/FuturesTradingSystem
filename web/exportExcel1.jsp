@@ -1,7 +1,7 @@
 <%@page language="java"
         import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="order" scope="page" class="deal.daoimpl.orderImpl"/>
+<jsp:useBean id="usershow" scope="page" class="deal.daoimpl.usershowImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
 <html>
 <head>
@@ -15,19 +15,18 @@
             && exportToExcel.toString().equalsIgnoreCase("YES")) {
         response.setContentType("application/vnd.ms-excel");
         response.setHeader("Content-Disposition", "inline; filename="
-                + "orderlist.xls");
+                + "userslist.xls");
 
     }
 %>
 <table align="left" border="2">
     <thead>
     <tr bgcolor="lightgreen">
-        <th>订单号</th>
-        <th>期货编号</th>
-        <th>开仓价</th>
-        <th>最新价</th>
+        <th>用户id</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>角色</th>
         <th>创建时间</th>
-        <th>数量</th>
     </tr>
     </thead>
     <%
@@ -45,22 +44,20 @@
         request.setAttribute("prePage", prePage);
         request.setAttribute("nextPage", nextPage);
         Page pg1 = new Page(start, pageSize);
-        List<order> currentOrder = (List<order>) order.queryOrderByPage(pg1);
+        List<usershow> currentUsershow = (List<usershow>) usershow.queryUsershowByPage(pg1);
         //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-        for (order u : currentOrder) {
+        for (usershow u : currentUsershow) {
     %>
     <tr>
-        <td><%=u.getorder_OI()%>
+        <td><%=u.getshow_userid()%>
         </td>
-        <td><%=u.getorder_FI()%>
+        <td><%=u.getshow_username()%>
         </td>
-        <td><%=u.getorder_OP()%>
+        <td><%=u.getshow_password()%>
         </td>
-        <td><%=u.getorder_NP()%>
+        <td><%=u.getshow_authority()%>
         </td>
-        <td><%=u.getorder_CT()%>
-        </td>
-        <td><%=u.getorder_NM()%>
+        <td><%=u.getshow_createTime()%>
         </td>
     </tr>
     <%
@@ -72,7 +69,7 @@
 <%
     if (exportToExcel == null) {
 %>
-<a href="exportExcel.jsp?exportToExcel=YES">Export to Excel</a>
+<a href="exportExcel1.jsp?exportToExcel=YES">Export to Excel</a>
 <%
     }
 %>
