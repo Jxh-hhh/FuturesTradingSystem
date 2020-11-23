@@ -805,15 +805,14 @@
                         <div class="portlet-title">
                             <div class="caption caption-md">
                                 <i class="icon-bar-chart theme-font-color hide"></i> <span
-                                    class="caption-subject theme-font-color bold uppercase">TASKS</span>
-                                <span class="caption-helper">16 pending</span>
+                                    class="caption-subject theme-font-color bold uppercase">天气</span>
+                                <span class="caption-helper">地点</span>
                             </div>
                             <div class="inputs">
                                 <div class="portlet-input input-small input-inline">
                                     <div class="input-icon right">
-                                        <i class="icon-magnifier"></i> <input type="text"
-                                                                              class="form-control form-control-solid"
-                                                                              placeholder="search...">
+                                        <i class="icon-magnifier"></i>
+                                        <input type="text" class="form-control form-control-solid" placeholder="这个框可以搜索城市天气">
                                     </div>
                                 </div>
                             </div>
@@ -1121,15 +1120,14 @@
                         <div class="portlet-title">
                             <div class="caption caption-md">
                                 <i class="icon-bar-chart theme-font-color hide"></i> <span
-                                    class="caption-subject theme-font-color bold uppercase">Customer
-										Support</span> <span class="caption-helper">45 pending</span>
+                                    class="caption-subject theme-font-color bold uppercase">财经新闻</span>
+                                <span class="caption-helper">显示新闻数</span>
                             </div>
                             <div class="inputs">
                                 <div class="portlet-input input-inline input-small ">
                                     <div class="input-icon right">
-                                        <i class="icon-magnifier"></i> <input type="text"
-                                                                              class="form-control form-control-solid"
-                                                                              placeholder="search...">
+                                        <i class="icon-magnifier"></i>
+                                        <input type="text" class="form-control form-control-solid" placeholder="search...">
                                     </div>
                                 </div>
                             </div>

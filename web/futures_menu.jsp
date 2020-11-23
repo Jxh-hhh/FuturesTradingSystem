@@ -566,12 +566,19 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE HEADER-->
 			<!-- BEGIN PAGE HEAD -->
 			<div class="page-head">
-				<!-- BEGIN PAGE TITLE -->
-				<div align="center">
-					<h1>交易管理</h1>
+				<div class="page-title">
+					<h1>行情 <small>行情列表</small></h1>
 				</div>
-				<!-- END PAGE TITLE -->
 			</div>
+			<ul class="page-breadcrumb breadcrumb">
+				<li>
+					<a href="index.jsp">主页</a>
+					<i class="fa fa-circle"></i>
+				</li>
+				<li>
+					<a href="#">行情</a>
+				</li>
+			</ul>
 			<!-- END PAGE HEAD -->
 			<!-- END PAGE HEADER-->
 			<!-- BEGIN PAGE CONTENT-->

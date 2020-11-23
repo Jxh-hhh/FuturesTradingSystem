@@ -513,6 +513,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="clearfix">
 </div>
 <!-- BEGIN CONTAINER -->
+
 <div class="page-container">
     <!-- BEGIN SIDEBAR -->
     <div class="page-sidebar-wrapper">
@@ -583,12 +584,19 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN PAGE HEADER-->
             <!-- BEGIN PAGE HEAD -->
             <div class="page-head">
-                <!-- BEGIN PAGE TITLE -->
                 <div class="page-title">
-                    <h1>个人信息</h1>
+                    <h1>个人信息 <small>个人信息</small></h1>
                 </div>
-                <!-- END PAGE TITLE -->
             </div>
+            <ul class="page-breadcrumb breadcrumb">
+                <li>
+                    <a href="index.jsp">主页</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <a href="#">个人信息</a>
+                </li>
+            </ul>
             <!-- END PAGE HEAD -->
             <!-- END PAGE HEADER-->
             <!-- BEGIN PAGE CONTENT-->
