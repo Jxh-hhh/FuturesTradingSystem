@@ -28,7 +28,7 @@ public class UserDAOImpl implements UserDAO {
 			resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				user = new User();
-				user.setUserid(resultSet.getInt("USERID"));
+				user.setUserid(resultSet.getString("USERID"));
 				user.setUsername(resultSet.getString("USERNAME"));
 				user.setPassword(resultSet.getString("PASSWORD"));
 				user.setAuthority(resultSet.getString("AUTHORITY"));
@@ -116,8 +116,8 @@ public class UserDAOImpl implements UserDAO {
 			pst.setInt(2, page.getPageSize());
 			rs=pst.executeQuery();
 			while(rs.next()){
-				User temp = new User(Integer.parseInt(rs.getString("userid")),rs.getString("username"),rs.getString("password"),rs.getString("authority"),rs.getString("createTime"));
-				arr.add(temp);
+				//User temp = new User(Integer.parseInt(rs.getString("userid")),rs.getString("username"),rs.getString("password"),rs.getString("authority"),rs.getString("createTime"));
+				//arr.add(temp);
 			}
 		}catch (Exception e) {
 			// TODO Auto-generated catch block

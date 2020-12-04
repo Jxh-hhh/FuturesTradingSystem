@@ -479,9 +479,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user_information.jsp"> <i class="icon-user"></i> <span
-                            class="title">个人信息</span>
+                    <a href="">
+                        <i class="icon-user"></i>
+                        <span class="title">个人信息</span>
+                        <span class="arrow"></span>
                     </a>
+                    <ul class="sub-menu">
+                        <li>
+                            <a href="users_money.jsp">资产管理</a>
+                        </li>
+                        <li>
+                            <a href="users_oder.jsp">订单管理</a>
+                        </li>
+                    </ul>
                 </li>
                 <li id="menu_admin">
                 </li>
