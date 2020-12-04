@@ -15,7 +15,7 @@ function initMenu(authority){
             "                        <li><a href=\"users_management.jsp\">用户管理</a></li>\n" +
             "                    </ul>";
         //$("#menu_admin").hide();
-        $("#menu_admin").html(html);
+        jQuery("#menu_admin").html(html);
     }
 }
 
