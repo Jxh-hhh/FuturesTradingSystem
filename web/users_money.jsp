@@ -576,7 +576,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
                 <div class="col-md-12">
-                    <form class="form-horizontal form-row-seperated" action="finish1.jsp">
+                    <form class="form-horizontal form-row-seperated" action="deposit">
                         <div class="portlet light">
                             <div class="portlet-title">
                                 <div class="caption">
@@ -613,7 +613,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <div class="form-group" >
                                                     <label class="col-md-2 control-label">您的余额为: </label>
                                                     <div class="col-md-10">
-                                                        <input id="vancancy" name="vancancy" class="form-control"readonly="readonly" placeholder='<%=money%>'>
+                                                        <input id="remain_money" name="remain_money" class="form-control"readonly="readonly" placeholder='<%=money%>'>
                                                     </div>
                                                 </div>
 
