@@ -4,15 +4,15 @@ import java.io.Serializable;
 import java.security.Timestamp;
 
 public class User implements Serializable{
-	private int userid;
+	private String userid;
 	private String username;
 	private String password;
 	private String authority;
 	private String createtime;
-	public int getUserid() {
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public String getUsername() {
@@ -35,7 +35,7 @@ public class User implements Serializable{
 	}
 	public String getAuthority(){return authority;}
 	public void setAuthority(String authority){this.authority = authority;}
-	public User(int userid,String username,String password,String authority,String createtime){
+	public User(String userid,String username,String password,String authority,String createtime){
 		super();
 		this.userid=userid;
 		this.username=username;
