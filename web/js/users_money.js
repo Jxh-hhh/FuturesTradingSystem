@@ -7,8 +7,7 @@ function deposit_ok()
         data_type:'json',
         global:false,
         success:function (){
-            $("#deposit").hide();
-            $("#deposit_ok").show();
+            alert("充值成功！");
         },
         error:function (){
             console.log("提交失败");

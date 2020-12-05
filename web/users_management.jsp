@@ -674,6 +674,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <th>密码</th>
                                 <th>角色</th>
                                 <th>创建时间</th>
+                                <th>余额</th>
                             </tr>
                             </thead>
                             <%
