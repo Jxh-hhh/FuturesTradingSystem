@@ -47,3 +47,22 @@ function getOrderId()
     a = document.getElementById("gp_orderid");
     a.value = orderid;
 }
+
+function buy_ok() {
+    $.ajax({
+        url:'buy',
+        data:$("#form_buy").serialize(),
+        type:'post',
+        data_type:'json',
+        global:false,
+        success:function (message){
+            if (message = "1")
+                alert("购买成功！");
+            else
+                alert("余额不足！");
+        },
+        error:function (){
+            console.log("提交失败");
+        }
+    });
+}

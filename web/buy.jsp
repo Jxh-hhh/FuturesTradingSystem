@@ -563,7 +563,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-12">
-					<form class="form-horizontal form-row-seperated" action="finish.jsp">
+					<form id="form_buy" class="form-horizontal form-row-seperated" action="">
 						<div class="portlet light">
 							<div class="portlet-title">
 								<div class="caption">
@@ -620,7 +620,7 @@ License: You must have a valid license purchased only from themeforest(the above
 														<input id="gp_number" name="gp_number" type="text" class="form-control" placeholder="">
 													</div>
 													<div align="center" style="margin-top: 50px">
-														<input type="submit" name="submit_btn" value="提交">
+														<button type="submit" name="submit_btn" onclick="buy_ok()">提交</button>
 													</div>
 												</div>
 												</div>
