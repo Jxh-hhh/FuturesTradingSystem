@@ -563,7 +563,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- BEGIN PAGE CONTENT-->
 			<div class="row">
 				<div class="col-md-12">
-					<form id="form_buy" class="form-horizontal form-row-seperated" action="">
+					<div id="form_buy" class="form-horizontal form-row-seperated" action="">
 						<div class="portlet light">
 							<div class="portlet-title">
 								<div class="caption">
@@ -629,7 +629,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								</div>
 							</div>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>

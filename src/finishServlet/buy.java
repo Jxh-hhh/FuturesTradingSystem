@@ -1,6 +1,8 @@
 package finishServlet;
 
 import deal.util.JDBCUtil;
+import deal.enums.buyEnum;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,22 +27,32 @@ public class buy extends HttpServlet {
     public String gp_price = null;
     public String current_time = null;
     public String gp_number = null;
-    public String message = null;
+    public String gp_name = null;
+    public String msg = null;
     public int money = 0;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
         response.setContentType("text/json; charset=utf-8");
+        request.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         name = (String)session.getAttribute("loginUsername");
-        System.out.println(name);
         gp_orderid = request.getParameter("gp_orderid");
         gp_id = request.getParameter("gp_id");
         gp_price= request.getParameter("gp_price");
         current_time = request.getParameter("current_time");
+        gp_name = request.getParameter("gp_name");
         gp_number= request.getParameter("gp_number");
-        request.setCharacterEncoding("UTF-8");
+
         Connection con = JDBCUtil.getConnection();
         try {
+            int num = Integer.valueOf(gp_number).intValue();
+            if(num <= 0){
+                msg = buyEnum.NUM_ERROR.getValue();
+                JSONObject data = new JSONObject();
+                data.put("msg",msg);
+                out.print(data);
+                return;
+            }
             sm = con.createStatement();
             String sql = "select money from users where username = '" +name+ "'";
             rs = sm.executeQuery(sql);
@@ -50,15 +62,18 @@ public class buy extends HttpServlet {
             Double price = Double.parseDouble(gp_price);
             int number = Integer.valueOf(gp_number).intValue();
             if( money < price * number){
-                message = "0";
-                out.println(message);
+                msg = buyEnum.BUY_FAILED.getValue();
+                JSONObject data = new JSONObject();
+                data.put("msg",msg);
+                out.print(data);
             }
             else{
-                message = "1";
-                out.println(message);
+                msg = buyEnum.BUY_SUCCESS.getValue();
+                JSONObject data = new JSONObject();
+                data.put("msg",msg);
+                out.print(data);
                 sql = "insert into gp_ordermanagement(gp_OI,gp_FI,gp_CT,gp_ON,gp_OP,gp_NM,username) values('"
-                        + gp_orderid + "','" + gp_id + "','" + current_time +"','" + gp_number +"','" + gp_price +"','" + gp_number +"','" + name +"')";
-                System.out.println(sql);
+                        + gp_orderid + "','" + gp_id + "','" + current_time +"','" + gp_name +"','" + gp_price +"','" + gp_number +"','" + name +"')";
                 sm.executeUpdate(sql);
                 money = (int) (money - price * number);
                 sql =  "UPDATE users SET money = "+ money + " WHERE username = '"+ name + "'";

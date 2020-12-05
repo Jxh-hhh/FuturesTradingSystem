@@ -51,15 +51,19 @@ function getOrderId()
 function buy_ok() {
     $.ajax({
         url:'buy',
-        data:$("#form_buy").serialize(),
+        data:{
+            "gp_orderid": $('#gp_orderid').val(),
+            "gp_id": $('#gp_id').val(),
+            "gp_price": $('#gp_price').val(),
+            "current_time": $('#current_time').val(),
+            "gp_number": $('#gp_number').val(),
+            "gp_name": $('#gp_name').val()
+        },
         type:'post',
         data_type:'json',
         global:false,
         success:function (message){
-            if (message == "1")
-                alert("购买成功！");
-            else
-                alert("余额不足！");
+            alert(message.msg);
         },
         error:function (){
             console.log("提交失败");

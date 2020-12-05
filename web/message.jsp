@@ -127,7 +127,7 @@
         type="text/javascript"></script>
 <script src="assets/admin/layout/scripts/demo.js"
         type="text/javascript"></script>
-<script src="assets/admin/pages/scripts/login.js"
+<script src="js/login.js"
         type="text/javascript"></script>
 <script src="js/LoginAndRegister.js" type="text/javascript"></script>
 <script src="js/submitMailbox.js" type="text/javascript"></script>
