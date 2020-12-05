@@ -31,7 +31,7 @@ public class usershowImpl implements Iuser {
             pst.setInt(2, page.getPageSize());
             rs=pst.executeQuery();
             while(rs.next()){
-                usershow temp = new usershow(rs.getString("userid"),rs.getString("username"),rs.getString("password"),rs.getString("authority"),rs.getString("createTime"));
+                usershow temp = new usershow(rs.getString("userid"),rs.getString("username"),rs.getString("password"),rs.getString("authority"),rs.getString("createTime"),rs.getInt("money"));
                 arr.add(temp);
             }
         }catch (Exception e) {

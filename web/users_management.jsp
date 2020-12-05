@@ -706,6 +706,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </td>
                                 <td><%=u.getshow_createTime()%>
                                 </td>
+                                <td><%=u.getshow_money()%>
+                                </td>
                             </tr>
                             <%
                                 }
@@ -714,16 +716,16 @@ License: You must have a valid license purchased only from themeforest(the above
                         </table>
                         <nav>
                             <ul class="pagination">
-                                <li><a href="buy_management.jsp?start=0"> <span>首页</span>
+                                <li><a href="users_management.jsp?start=0"> <span>首页</span>
                                 </a></li>
-                                <li><a href="buy_management.jsp?start=${requestScope.prePage }">
+                                <li><a href="users_management.jsp?start=${requestScope.prePage }">
                                     <span>上一页</span>
                                 </a></li>
-                                <li><a href="buy_management.jsp?start=${requestScope.nextPage }">
+                                <li><a href="users_management.jsp?start=${requestScope.nextPage }">
                                     <span>下一页</span>
                                 </a></li>
                                 <li><a
-                                        href="buy_management.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+                                        href="users_management.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
                                 </a></li>
                             </ul>
                         </nav>

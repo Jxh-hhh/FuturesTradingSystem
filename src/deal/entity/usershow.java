@@ -9,7 +9,8 @@ public class usershow{
     private String show_password;
     private String show_authority;
     private String show_createTime;
-    public usershow(String showUserid,String showUsername,String showPassword,String showAuthority,String showCreateTime) {
+    private int show_money;
+    public usershow(String showUserid,String showUsername,String showPassword,String showAuthority,String showCreateTime,int showMoney) {
         // TODO Auto-generated constructor stub
         super();
         this.show_userid = showUserid;
@@ -17,6 +18,7 @@ public class usershow{
         this.show_password = showPassword;
         this.show_authority = showAuthority;
         this.show_createTime = showCreateTime;
+        this.show_money = showMoney;
     }
     public usershow(){
         super();
@@ -51,5 +53,11 @@ public class usershow{
     }
     public void setshow_createTime(String show_createTime) {
         this.show_createTime = show_createTime;
+    }
+    public int getshow_money() {
+        return show_money;
+    }
+    public void setShow_money(int show_money) {
+        this.show_money = show_money;
     }
 }

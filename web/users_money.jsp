@@ -576,7 +576,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
                 <div class="col-md-12">
-                    <form class="form-horizontal form-row-seperated" action="deposit">
+                    <form id="form_deposit"class="form-horizontal form-row-seperated" action="">
                         <div class="portlet light">
                             <div class="portlet-title">
                                 <div class="caption">
@@ -600,20 +600,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                 }
                             %>
                             <div class="portlet-body">
-                                <div class="tabbable">
+                                <div id="deposit" class="tabbable">
                                     <div class="tab-content no-space">
                                         <div class="tab-pane active" id="tab_general">
                                             <div class="form-body">
                                                 <div class="form-group" >
                                                     <label class="col-md-2 control-label">您的用户名为: </label>
                                                     <div class="col-md-10">
-                                                        <input id="Username" name="Username" class="form-control"readonly="readonly" placeholder='<%=name%>'>
+                                                        <input id="Username" name="Username" class="form-control"readonly="readonly" value='<%=name%>'>
                                                     </div>
                                                 </div>
                                                 <div class="form-group" >
                                                     <label class="col-md-2 control-label">您的余额为: </label>
                                                     <div class="col-md-10">
-                                                        <input id="remain_money" name="remain_money" class="form-control"readonly="readonly" placeholder='<%=money%>'>
+                                                        <input id="remain_money" name="remain_money" class="form-control"readonly="readonly" value='<%=money%>'>
                                                     </div>
                                                 </div>
 
@@ -624,13 +624,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <input id="input_money" name="input_money" type="text" class="form-control" placeholder="">
                                                     </div>
                                                     <div align="center" style="margin-top: 50px">
-                                                        <input type="submit" name="submit_btn" value="提交">
+                                                        <button type="submit" name="submit_btn" onclick="deposit_ok()">提交</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div name="deposit_ok" class="tabbable" style="display: none">
+                                充值成功！
                             </div>
                         </div>
                     </form>
@@ -684,7 +687,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END BODY -->
 </html>
 <script type="text/javascript" src="js/global/getUrlParam.js"></script>
-<script type="text/javascript" src="js/money.js"></script>
+<script type="text/javascript" src="js/users_money.js"></script>
 <script>
     jQuery(document).ready(function() {
         Metronic.init(); // init metronic core components
