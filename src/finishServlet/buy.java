@@ -63,9 +63,10 @@ public class buy extends HttpServlet {
                 money = (int) (money - price * number);
                 sql =  "UPDATE users SET money = "+ money + " WHERE username = '"+ name + "'";
                 sm.executeUpdate(sql);
-                sm.close();
-                con.close();
             }
+            rs.close();
+            sm.close();
+            con.close();
         }
         catch (Exception e) {
             e.printStackTrace();

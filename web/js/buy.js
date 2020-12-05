@@ -56,7 +56,7 @@ function buy_ok() {
         data_type:'json',
         global:false,
         success:function (message){
-            if (message = "1")
+            if (message == "1")
                 alert("购买成功！");
             else
                 alert("余额不足！");
