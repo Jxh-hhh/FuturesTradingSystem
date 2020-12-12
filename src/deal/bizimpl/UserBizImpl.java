@@ -8,6 +8,7 @@ import deal.daoimpl.UserDAOImpl;
 import deal.entity.User;
 import deal.enums.UserLoginEnum;
 import deal.enums.UserRegisterEnum;
+import deal.enums.resetPasswordEnum;
 import deal.util.StringUtil;
 
 public class UserBizImpl implements UserBiz {
@@ -60,6 +61,24 @@ public class UserBizImpl implements UserBiz {
 			return UserRegisterEnum.USER_REGISTER_SUCCESS.getValue();
 		}
 		return null;
+	}
+	public String userResetPassword(String passwordOne, String passwordTwo, HttpServletRequest req){
+		if (StringUtil.isEmpty(passwordOne)) {
+			return resetPasswordEnum.NEW_PASSWORD_IS_NUll.getValue();
+		}
+		if (StringUtil.isEmpty(passwordTwo)) {
+			return resetPasswordEnum.RETYPED_PASSWORD_IS_NULL.getValue();
+		}
+		if(!passwordOne.equals(passwordTwo)){
+			return resetPasswordEnum.TWO_PASSWORDS_ARE_UNEQUAL.getValue();
+		}
+
+		int executeCount=0;
+		executeCount = userDAO.resetUserPassword(passwordOne,req);
+		if (executeCount == 0) {
+			return resetPasswordEnum.RESET_PASSWORD_IS_FAILED.getValue();
+		}
+		return resetPasswordEnum.RESET_PASSWORD_IS_SUCCESS.getValue();
 	}
 
 

@@ -4,6 +4,7 @@ import deal.entity.Page;
 import deal.entity.User;
 import deal.entity.order;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,6 +18,9 @@ public interface UserDAO {
 		
 		//判断注册用户名存在否
 		User userToRegister(String username);
+
+		//进行密码更改
+		int resetUserPassword(String newPassword, HttpServletRequest request);
 
 		public List<User> queryUserByPage(Page page) throws SQLException;
 }

@@ -45,4 +45,13 @@
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>resetPasswordServlet</servlet-name>
+        <servlet-class>deal.resetPassword.resetPasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>resetPasswordServlet</servlet-name>
+        <url-pattern>/resetPasswordServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

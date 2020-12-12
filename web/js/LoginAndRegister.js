@@ -1,13 +1,28 @@
+function initLoginAndRegisterPage(){
+    jQuery('.forget-form').hide();
+    jQuery('.resetPassword-form').hide();
+}
+
+
 jQuery('#register-btn').click(function() {
     jQuery('.login-form').hide();
+    jQuery('.create-account').hide();
     jQuery('.register-form').show();
 });
 
 jQuery('#forget-password').click(function() {
     jQuery('.login-form').hide();
+    jQuery('.create-account').hide();
     jQuery('.forget-form').show();
 });
-
+jQuery('#sendEmail-back-btn').click(function (){
+    jQuery('.forget-form').hide();
+    jQuery('.login-form').show();
+});
+jQuery('#forget-back-btn').click(function (){
+    jQuery('.resetPassword-form').hide();
+    jQuery('.login-form').show();
+});
 jQuery('#back-btn').click(function() {
     jQuery('.login-form').show();
     jQuery('.forget-form').hide();
@@ -17,7 +32,6 @@ jQuery('#register-back-btn').click(function() {
     jQuery('.login-form').show();
     jQuery('.register-form').hide();
 });
-
 jQuery('#register-submit-btn').click(function (){
     $.ajax({
         url:'register',
@@ -39,4 +53,67 @@ jQuery('#register-submit-btn').click(function (){
             console.log("提交失败");
         }
     });
+});
+jQuery('#sendEmail-submit-btn').click(function (){
+    $.ajax({
+        url:'sendMailServlet',
+        data:{
+           "email":$('#send-mail').val(),
+        },
+        type:'post',
+        datatype:'json',
+        success:function (message){
+           alert(message.msg);
+           if(message.msg == "邮件发送成功！"){
+               jQuery('.forget-form').hide();
+               jQuery('.resetPassword-form').show();
+           }
+           else {
+               window.location.href= 'LoginAndRegister.jsp'
+           }
+        },
+        error:function (){
+            console.log("邮件发送失败！");
+        }
+    });
+});
+jQuery('#login-submit-btn').click(function (){
+   $.ajax({
+       url:'login',
+       data:{
+           "login_username":$('#login-username').val(),
+           "login_password":$('#login-password').val(),
+       },
+       type:'post',
+       datatype:'json',
+       success:function(message){
+           if(message.msg == "登录成功"){
+               window.location.href='index.jsp';
+           }
+           else {
+               alert(message.msg);
+           }
+       },
+       error:function (){
+           console.log("登录失败！")
+       }
+   });
+});
+jQuery('#resetPassword-submit-btn').click(function (){
+   $.ajax({
+       url:'resetPasswordServlet',
+       data:{
+           'new_password_one':$('#new-password-one').val(),
+           'new_password_two':$('#new-password-two').val(),
+       },
+       type:'post',
+       datatype:'json',
+       success:function (message){
+           alert(message.msg);
+           window.location.href='LoginAndRegister.jsp';
+       },
+       error:function (){
+           console.log("修改密码失败!");
+       }
+   });
 });

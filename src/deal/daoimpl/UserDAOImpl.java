@@ -11,6 +11,8 @@ import deal.entity.User;
 import deal.entity.User;
 import deal.util.JDBCUtil;
 
+import javax.servlet.http.HttpServletRequest;
+
 public class UserDAOImpl implements UserDAO {
 
 	
@@ -87,6 +89,34 @@ public class UserDAOImpl implements UserDAO {
 			preparedStatement.setObject(4, date);
 			executeCount = preparedStatement.executeUpdate();
 			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			JDBCUtil.closeUpdate(preparedStatement, connection);
+		}
+		return executeCount;
+	}
+
+	//用户重置密码的过程
+	@Override
+	public int resetUserPassword(String newPassword, HttpServletRequest request){
+		java.sql.Connection connection = null;
+		java.sql.PreparedStatement preparedStatement = null;
+		java.sql.ResultSet resultSet = null;
+		String mailBox=request.getSession().getAttribute("usersEmail").toString();
+		System.out.println(mailBox);
+		int executeCount = 0;
+
+		try {
+			connection = JDBCUtil.getConnection();
+
+			preparedStatement = connection.prepareStatement("update users set password=? where mailbox=?");
+			preparedStatement.setObject(1, newPassword);
+			preparedStatement.setObject(2, mailBox);
+
+			executeCount =preparedStatement.executeUpdate();
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

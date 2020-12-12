@@ -1,6 +1,7 @@
 package deal.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import deal.biz.UserBiz;
 import deal.bizimpl.UserBizImpl;
 import deal.enums.UserLoginEnum;
+import org.json.JSONObject;
 
 /**
  * Servlet implementation class login
@@ -19,7 +21,11 @@ import deal.enums.UserLoginEnum;
 public class login extends HttpServlet {
 	
 	//@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		response.setContentType("text/json; charset=utf-8");
+		request.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+
 		String result = null;
 		String username = request.getParameter("login_username");
 		String password = request.getParameter("login_password");
@@ -28,23 +34,13 @@ public class login extends HttpServlet {
 		try {
 			UserBiz userBiz = new UserBizImpl();
 			result = userBiz.userLogin(username, password, request);
+			JSONObject returnData = new JSONObject();
+			returnData.put("msg",result);
+			out.print(returnData);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		try {
 
-			if (result.equals(UserLoginEnum.USER_LOGIN_SUCCESS.getValue())) {
-				//request.setAttribute("loginUsername",username);
-				//request.setAttribute("");
-				request.getRequestDispatcher("index.jsp").forward(request, response);
-			} else {
-				request.getRequestDispatcher("LoginAndRegister.jsp?msg=" + result + "")
-						.forward(request, response);
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 }
 
