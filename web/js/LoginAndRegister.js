@@ -100,17 +100,20 @@ jQuery('#login-submit-btn').click(function (){
    });
 });
 jQuery('#resetPassword-submit-btn').click(function (){
-   $.ajax({
+    $.ajax({
        url:'resetPasswordServlet',
        data:{
            'new_password_one':$('#new-password-one').val(),
            'new_password_two':$('#new-password-two').val(),
+           'forget_verify_code':$('#forget-verify-code').val(),
        },
        type:'post',
        datatype:'json',
        success:function (message){
            alert(message.msg);
-           window.location.href='LoginAndRegister.jsp';
+           if (message.msg == '更改密码成功！'){
+               window.location.href='LoginAndRegister.jsp';
+           }
        },
        error:function (){
            console.log("修改密码失败!");

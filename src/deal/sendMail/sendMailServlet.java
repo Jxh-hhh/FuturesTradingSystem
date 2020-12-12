@@ -30,6 +30,7 @@ public class sendMailServlet extends HttpServlet {
 
             //提前保存验证码防止进入线程后提取不出来
             String verifyCode = send.getVerifyCode();
+            request.getSession().setAttribute("verifyCode",verifyCode);
 
             //启动线程，线程启动之后就会执行run方法来发送邮件
             send.start();

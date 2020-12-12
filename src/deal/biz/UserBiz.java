@@ -11,6 +11,6 @@ public interface UserBiz {
 	String userRegister(String username, String password, String againpassword,HttpServletRequest request);
 
 	//用户修改密码
-	String userResetPassword(String passwordOne, String passwordTwo, HttpServletRequest request);
+	String userResetPassword(String passwordOne, String passwordTwo,String verifyCode, HttpServletRequest request);
 
 }

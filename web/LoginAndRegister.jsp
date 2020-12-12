@@ -117,6 +117,10 @@
             <label class="control-label visible-ie8 visible-ie9">New Password</label>
             <input id="new-password-two" class="form-control placeholder-no-fix" type="password" placeholder="Please Retype The New Password" name="ResetPasswordTwo" />
         </div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">verify code</label>
+			<input id="forget-verify-code" class="form-control placeholder-no-fix" type="text" placeholder="Please enter the verify code" name="forget_verify_code" />
+		</div>
         <div class="form-actions">
             <button type="button" id="forget-back-btn" class="btn btn-default">Back</button>
             <button type="button" id="resetPassword-submit-btn" class="btn btn-success uppercase pull-right">Submit</button>
