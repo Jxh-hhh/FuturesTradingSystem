@@ -17,6 +17,7 @@ jQuery('#forget-password').click(function() {
 });
 jQuery('#sendEmail-back-btn').click(function (){
     jQuery('.forget-form').hide();
+    jQuery('.create-account').show();
     jQuery('.login-form').show();
 });
 jQuery('#forget-back-btn').click(function (){
