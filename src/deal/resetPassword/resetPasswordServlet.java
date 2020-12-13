@@ -22,16 +22,15 @@ public class resetPasswordServlet extends  HttpServlet{
         PrintWriter out = response.getWriter();
 
         String result = null;
+        String accountNumber = request.getParameter("forget_account_number");
         String passwordOne = request.getParameter("new_password_one");
         String passwordTwo = request.getParameter("new_password_two");
         String verifyCode = request.getParameter("forget_verify_code");
-        System.out.println("12312312313");
-        System.out.println(verifyCode);
 
 
         try {
             UserBiz userBiz = new UserBizImpl();
-            result = userBiz.userResetPassword(passwordOne, passwordTwo,verifyCode, request);
+            result = userBiz.userResetPassword(accountNumber,passwordOne, passwordTwo,verifyCode, request);
 
             JSONObject returnData = new JSONObject();
             returnData.put("msg",result);

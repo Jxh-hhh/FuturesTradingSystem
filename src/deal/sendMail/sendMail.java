@@ -72,8 +72,8 @@ public class sendMail extends Thread {
         MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(from));
         message.setRecipient(Message.RecipientType.TO, new InternetAddress(mailbox));
-        message.setSubject("找回密码邮件");
-        String info = "这是重新设置密码的验证码:";
+        message.setSubject("验证码邮件");
+        String info = "这是您此次操作的验证码:";
         info += this.verifyCode;
         message.setContent(info, "text/html;charset=UTF-8");
         message.saveChanges();

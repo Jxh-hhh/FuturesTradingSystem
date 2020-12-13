@@ -21,24 +21,43 @@ jQuery('#sendEmail-back-btn').click(function (){
 });
 jQuery('#forget-back-btn').click(function (){
     jQuery('.resetPassword-form').hide();
+    jQuery('.create-account').show();
     jQuery('.login-form').show();
 });
 jQuery('#back-btn').click(function() {
     jQuery('.login-form').show();
+    jQuery('.create-account').show();
     jQuery('.forget-form').hide();
 });
 
 jQuery('#register-back-btn').click(function() {
     jQuery('.login-form').show();
+    jQuery('.create-account').show();
     jQuery('.register-form').hide();
+});
+jQuery('#register-sendmail-btn').click(function (){
+    $.ajax({
+       url:'sendMailServlet',
+       data:{
+           "email":$('#register_mailbox').val(),
+       },
+       type:'post',
+        datatype:'json',
+        success:function (message){
+           alert(message.msg);
+        }
+    });
 });
 jQuery('#register-submit-btn').click(function (){
     $.ajax({
         url:'register',
         data:{
+            "register_fullname":$('#register_fullname').val(),
+            "register_mailbox":$('#register_mailbox').val(),
             "register_username": $('#register_username').val(),
             "register_password": $('#register_password').val(),
             "rpassword": $('#rpassword').val(),
+            "register_verifycode":$('#register-verify-code').val(),
         },
         type:'post',
         datatype:'json',
@@ -103,6 +122,7 @@ jQuery('#resetPassword-submit-btn').click(function (){
     $.ajax({
        url:'resetPasswordServlet',
        data:{
+           'forget_account_number':$('#forget-account-number').val(),
            'new_password_one':$('#new-password-one').val(),
            'new_password_two':$('#new-password-two').val(),
            'forget_verify_code':$('#forget-verify-code').val(),

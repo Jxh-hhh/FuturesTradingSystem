@@ -37,8 +37,14 @@ public class UserBizImpl implements UserBiz {
 	
 	
 	//用户注册
-	public String userRegister(String username, String password, String againpassword,HttpServletRequest req) {
-		
+	public String userRegister(String username, String password, String againpassword, String mailbox,String fullname,String verifycode,HttpServletRequest req) {
+		if(StringUtil.isEmpty(fullname)){
+			return UserRegisterEnum.USER_REGISTER_NAME_IS_NULL.getValue();
+		}
+		if(StringUtil.isEmpty(mailbox)){
+			return UserRegisterEnum.USER_REGISTER_MAILBOX_IS_NULL.getValue();
+		}
+
 		if (StringUtil.isEmpty(username)) {
 			return UserRegisterEnum.USER_REGISTER_NAME_IS_NULL.getValue();
 		}
@@ -48,6 +54,9 @@ public class UserBizImpl implements UserBiz {
 		if(!password.equals(againpassword)){
 			return UserRegisterEnum.USER_REGISTER_AGAINPASSWORD_IS_DIFFERENT.getValue();
 		}
+		if(!verifycode.equals(req.getSession().getAttribute("verifyCode"))){
+			return UserRegisterEnum.USER_REGISTER_VERIFYCODE_IS_INCORRECT.getValue();
+		}
 		
 		User user = null;
 		user = userDAO.userToRegister(username);
@@ -56,13 +65,16 @@ public class UserBizImpl implements UserBiz {
 		}
 		
 		Integer executeCount =  null;
-		executeCount = userDAO.userRegister(username, password);
+		executeCount = userDAO.userRegister(username, password,mailbox,fullname);
 		if(executeCount != null){
 			return UserRegisterEnum.USER_REGISTER_SUCCESS.getValue();
 		}
 		return null;
 	}
-	public String userResetPassword(String passwordOne, String passwordTwo, String verifyCode,HttpServletRequest req){
+	public String userResetPassword(String accountNumber,String passwordOne, String passwordTwo, String verifyCode,HttpServletRequest req){
+		if(StringUtil.isEmpty(accountNumber)){
+			return resetPasswordEnum.USER_ACCOUNT_IS_NUll.getValue();
+		}
 		if (StringUtil.isEmpty(passwordOne)) {
 			return resetPasswordEnum.NEW_PASSWORD_IS_NUll.getValue();
 		}
@@ -72,8 +84,7 @@ public class UserBizImpl implements UserBiz {
 		if(!passwordOne.equals(passwordTwo)){
 			return resetPasswordEnum.TWO_PASSWORDS_ARE_UNEQUAL.getValue();
 		}
-		System.out.println("verifyCode:");
-		System.out.println(verifyCode);
+
 		if(StringUtil.isEmpty(verifyCode)){
 			return resetPasswordEnum.VERIFYCODE_IS_NULL.getValue();
 		}
@@ -84,7 +95,7 @@ public class UserBizImpl implements UserBiz {
 
 
 		int executeCount=0;
-		executeCount = userDAO.resetUserPassword(passwordOne,req);
+		executeCount = userDAO.resetUserPassword(accountNumber,passwordOne,req);
 		if (executeCount == 0) {
 			return resetPasswordEnum.RESET_PASSWORD_IS_FAILED.getValue();
 		}

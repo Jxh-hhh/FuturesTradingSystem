@@ -14,13 +14,13 @@ public interface UserDAO {
 		User userLogin(String username, String password);
 		
 		//用户注册
-		int userRegister(String username, String password);
+		int userRegister(String username, String password,String mailbox,String fullname);
 		
 		//判断注册用户名存在否
 		User userToRegister(String username);
 
 		//进行密码更改
-		int resetUserPassword(String newPassword, HttpServletRequest request);
+		int resetUserPassword(String accountNumber,String newPassword, HttpServletRequest request);
 
 		public List<User> queryUserByPage(Page page) throws SQLException;
 }

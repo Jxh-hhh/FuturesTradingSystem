@@ -71,7 +71,7 @@ public class UserDAOImpl implements UserDAO {
 
 	
 	//用户注册过程，创建新用户
-	public int userRegister(String username, String password) {
+	public int userRegister(String username, String password,String mailbox,String fullname) {
 		User user = null;
 		java.sql.Connection connection = null;
 		java.sql.PreparedStatement preparedStatement = null;
@@ -82,11 +82,13 @@ public class UserDAOImpl implements UserDAO {
 			SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 			Date date = new Date(System.currentTimeMillis());
 
-			preparedStatement = connection.prepareStatement("insert into users (username,password,authority,createTime) values(?,?,?,?)");
+			preparedStatement = connection.prepareStatement("insert into users (username,password,mailbox,authority,createTime,fullname) values(?,?,?,?,?,?)");
 			preparedStatement.setObject(1, username);
 			preparedStatement.setObject(2, password);
-			preparedStatement.setObject(3, "user");
-			preparedStatement.setObject(4, date);
+			preparedStatement.setObject(3,mailbox);
+			preparedStatement.setObject(4, "user");
+			preparedStatement.setObject(5, date);
+			preparedStatement.setObject(6,fullname);
 			executeCount = preparedStatement.executeUpdate();
 			
 		} catch (Exception e) {
@@ -99,7 +101,7 @@ public class UserDAOImpl implements UserDAO {
 
 	//用户重置密码的过程
 	@Override
-	public int resetUserPassword(String newPassword, HttpServletRequest request){
+	public int resetUserPassword(String accountNumber,String newPassword, HttpServletRequest request){
 		java.sql.Connection connection = null;
 		java.sql.PreparedStatement preparedStatement = null;
 		java.sql.ResultSet resultSet = null;
@@ -110,9 +112,10 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			connection = JDBCUtil.getConnection();
 
-			preparedStatement = connection.prepareStatement("update users set password=? where mailbox=?");
+			preparedStatement = connection.prepareStatement("update users set password=? where username=? and mailbox=?");
 			preparedStatement.setObject(1, newPassword);
-			preparedStatement.setObject(2, mailBox);
+			preparedStatement.setObject(2, accountNumber);
+			preparedStatement.setObject(3,mailBox);
 
 			executeCount =preparedStatement.executeUpdate();
 

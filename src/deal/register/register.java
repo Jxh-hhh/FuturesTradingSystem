@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import deal.biz.UserBiz;
 import deal.bizimpl.UserBizImpl;
+import deal.sendMail.*;
 import deal.enums.UserRegisterEnum;
 import org.json.JSONObject;
 
@@ -43,9 +44,17 @@ public class register extends HttpServlet {
 		String username = request.getParameter("register_username");
 		String password = request.getParameter("register_password");
 		String againpassword = request.getParameter("rpassword");
+		String mailbox = request.getParameter("register_mailbox");
+		String fullname = request.getParameter("register_fullname");
+		String verifycode = request.getParameter("register_verifycode");
+
+		System.out.println(verifycode);
+
+
+
 		try {
 			UserBiz userBIZ = new UserBizImpl();
-			String result = userBIZ.userRegister(username, password, againpassword,request);
+			String result = userBIZ.userRegister(username, password, againpassword,mailbox,fullname,verifycode,request);
 			JSONObject data = new JSONObject();
 			data.put("msg",result);
 			out.print(data);

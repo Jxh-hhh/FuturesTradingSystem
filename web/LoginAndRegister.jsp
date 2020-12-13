@@ -108,7 +108,11 @@
 	</div>
     <div id="form_reset_password" class="resetPassword-form" action="" method="post">
         <h3>Reset your password</h3>
-        <p>Please enter the new password below:</p>
+        <p>Please enter the account details below:</p>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">New Password</label>
+			<input id="forget-account-number" class="form-control placeholder-no-fix" type="text" placeholder="Please Enter Your Account" name="ForgetAccountNumber" />
+		</div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">New Password</label>
             <input id="new-password-one" class="form-control placeholder-no-fix" type="password" placeholder="Please Enter The New Password" name="ResetPasswordOne" />
@@ -134,12 +138,12 @@
 		<p class="hint">Enter your personal details below:</p>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Full Name</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname" />
+			<input id="register_fullname" class="form-control placeholder-no-fix" type="text" placeholder="Full Name" name="fullname" />
 		</div>
 		<div class="form-group">
 			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 			<label class="control-label visible-ie8 visible-ie9">Email</label>
-			<input class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email" />
+			<input id="register_mailbox" class="form-control placeholder-no-fix" type="text" placeholder="Email" name="email" />
 		</div>
 
 
@@ -156,8 +160,17 @@
 			<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
 			<input id="rpassword" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword" />
 		</div>
-
-		<div class="form-actions">
+        <div class="form-group">
+			<div style="float:left">
+            	<label class="control-label visible-ie8 visible-ie9">verify code</label>
+            	<input id="register-verify-code" style="width:200px" class="form-control placeholder-no-fix" type="text" placeholder="Verification code" name="register_verify_code" />
+			</div>
+			<div>
+				<label class="control-label visible-ie8 visible-ie9">SendMail</label>
+				<button type="button" id="register-sendmail-btn" style="height: 43px" class="btn btn-success uppercase pull-right">SendMail</button>
+			</div>
+		</div>
+		<div style="margin-top: 70px">
 			<button type="button" id="register-back-btn" class="btn btn-default">Back</button>
 			<button type="button" id="register-submit-btn" class="btn btn-success uppercase pull-right">Submit</button>
 		</div>

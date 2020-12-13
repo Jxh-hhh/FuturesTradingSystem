@@ -6,6 +6,7 @@ public enum resetPasswordEnum {
     // ctrl + shift + y + x  (大小写转换)
     // 一个功能如果 有涉及到业务场景 那么这个时候 我们就要考虑到封装一个枚举文件 用来记录这些业务场景，而不是
     // 让开发开发人员去死记硬背 这些 单词
+    USER_ACCOUNT_IS_NUll("账户不能为空！","user_account_is_null"),
     NEW_PASSWORD_IS_NUll("新密码不能为空！","new_password_is_null"),
     RETYPED_PASSWORD_IS_NULL("重新输入的密码不能为空！","retyped_password_is_null"),
     TWO_PASSWORDS_ARE_UNEQUAL("两次输入的密码不相同！","two_passwords_are_unequal"),
