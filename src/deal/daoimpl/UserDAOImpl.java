@@ -79,8 +79,8 @@ public class UserDAOImpl implements UserDAO {
 		
 		try {
 			connection = JDBCUtil.getConnection();
-			SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-			Date date = new Date(System.currentTimeMillis());
+			SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String date = formatter.format(new Date(System.currentTimeMillis()));
 
 			preparedStatement = connection.prepareStatement("insert into users (username,password,mailbox,authority,createTime,fullname) values(?,?,?,?,?,?)");
 			preparedStatement.setObject(1, username);

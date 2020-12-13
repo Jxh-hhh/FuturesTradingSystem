@@ -17,6 +17,7 @@ jQuery('#forget-password').click(function() {
 });
 jQuery('#sendEmail-back-btn').click(function (){
     jQuery('.forget-form').hide();
+    jQuery('.create-account').show();
     jQuery('.login-form').show();
 });
 jQuery('#forget-back-btn').click(function (){
@@ -65,6 +66,7 @@ jQuery('#register-submit-btn').click(function (){
             alert(message.msg);
             if(message.msg == "注册成功"){
                 jQuery('.login-form').show();
+                jQuery('.create-account').show();
                 jQuery('.register-form').hide();
             }
         },
