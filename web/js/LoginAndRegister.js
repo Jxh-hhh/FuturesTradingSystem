@@ -66,6 +66,7 @@ jQuery('#register-submit-btn').click(function (){
             alert(message.msg);
             if(message.msg == "注册成功"){
                 jQuery('.login-form').show();
+                jQuery('.create-account').show();
                 jQuery('.register-form').hide();
             }
         },
