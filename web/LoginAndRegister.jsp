@@ -85,11 +85,11 @@
 				<input type="checkbox" name="remember" value="1" />Remember
 			</label> <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
 		</div>
-	</div>
-	<div class="create-account">
-		<p>
-			<a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
-		</p>
+		<div class="create-account">
+			<p>
+				<a href="javascript:;" id="register-btn" class="uppercase">Create an account</a>
+			</p>
+		</div>
 	</div>
 	<!-- END LOGIN FORM -->
 	<!-- BEGIN FORGOT PASSWORD FORM -->
