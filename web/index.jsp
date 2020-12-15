@@ -489,7 +489,7 @@
                             <a href="users_money.jsp">资产管理</a>
                         </li>
                         <li>
-                            <a href="users_oder.jsp">订单管理</a>
+                            <a href="users_order.jsp">订单管理</a>
                         </li>
                     </ul>
                 </li>

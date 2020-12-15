@@ -10,7 +10,8 @@ public class order{
       private String order_NP;
       private String order_CT;
       private int order_NM;
-    public order(String orderOI,String orderFI,String orderOP,String orderNP,String orderCT,int orderNM) {
+      private String username;
+    public order(String orderOI,String orderFI,String orderOP,String orderNP,String orderCT,int orderNM,String username) {
         // TODO Auto-generated constructor stub
         super();
         this.order_OI = orderOI;
@@ -19,6 +20,7 @@ public class order{
         this.order_NP = orderNP;
         this.order_CT = orderCT;
         this.order_NM = orderNM;
+        this.username = username;
     }
     public order(){
         super();
@@ -58,5 +60,11 @@ public class order{
     }
     public void setorder_NM(int order_NM) {
         this.order_NM = order_NM;
+    }
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

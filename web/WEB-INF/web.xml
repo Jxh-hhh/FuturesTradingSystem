@@ -54,4 +54,13 @@
         <url-pattern>/resetPasswordServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>sell</servlet-name>
+        <servlet-class>finishServlet.sell</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sell</servlet-name>
+        <url-pattern>/sell</url-pattern>
+    </servlet-mapping>
+
 </web-app>

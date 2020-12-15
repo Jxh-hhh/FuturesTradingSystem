@@ -530,6 +530,21 @@ License: You must have a valid license purchased only from themeforest(the above
 					<span class="title">个人信息</span>
 					</a>
 				</li>
+				<li>
+					<a href="">
+						<i class="icon-user"></i>
+						<span class="title">个人信息</span>
+						<span class="arrow"></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="users_money.jsp">资产管理</a>
+						</li>
+						<li>
+							<a href="users_order.jsp">订单管理</a>
+						</li>
+					</ul>
+				</li>
 			</ul>
 			<!-- END SIDEBAR MENU -->
 		</div>

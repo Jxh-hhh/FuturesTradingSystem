@@ -544,7 +544,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <a href="users_money.jsp">资产管理</a>
                         </li>
                         <li>
-                            <a href="users_oder.jsp">订单管理</a>
+                            <a href="users_order.jsp">订单管理</a>
                         </li>
                     </ul>
                 </li>
@@ -664,7 +664,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <th>最新价</th>
                                     <th>创建时间</th>
                                     <th>数量</th>
-                                    <th>操作</th>
+                                    <th>用户名</th>
                                 </tr>
                                 </thead>
                                 <%
@@ -684,7 +684,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     Page pg1 = new Page(start, pageSize);
                                     List<order> currentOrder = (List<order>) order.queryOrderByPage(pg1);
                                     //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-                                    for (order u : currentOrder)  if(u.getorder_NM()==2){
+                                    for (order u : currentOrder){
                                 %>
                                 <tr>
                                     <td><%=u.getorder_OI()%>
@@ -699,8 +699,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </td>
                                     <td><%=u.getorder_NM()%>
                                     </td>
-                                    <td>
-                                        <button onclick="">平仓</button>
+                                    <td><%=u.getUsername()%>
                                     </td>
                                 </tr>
                                 <%
