@@ -638,6 +638,9 @@ License: You must have a valid license purchased only from themeforest(the above
 									<th width="10%">
 										今日最低价
 									</th>
+									<th width="10%">
+										操作
+									</th>
 								</tr>
 <%--								<%--%>
 <%--									request.setCharacterEncoding("UTF-8");--%>
@@ -726,6 +729,9 @@ License: You must have a valid license purchased only from themeforest(the above
 										</th>
 										<th width="10%">
 											今日最低价
+										</th>
+										<th width="10%">
+											操作
 										</th>
 									</tr>
 									</thead>

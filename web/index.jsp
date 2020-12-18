@@ -735,56 +735,73 @@
                         </div>
                         <div class="portlet-body">
                             <div class="row number-stats margin-bottom-30"></div>
-                            <div class="table-scrollable table-scrollable-borderless">
+                            <ul class="nav nav-tabs nav-tabs-lg">
+                                <li class="active">
+                                    <a href="#SHA" data-toggle="tab">上指</a>
+                                </li>
+                                <li>
+                                    <a href="#SZA" data-toggle="tab">深指</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_3" data-toggle="tab">创业板</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_3" data-toggle="tab">大盘指数</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                            <div id="SHA" class="table-scrollable table-scrollable-borderless tab-pane active">
                                 <table class="table table-hover table-light">
                                     <thead>
                                     <tr class="uppercase">
-                                        <th>股票代码</th>
-                                        <th>股票名称</th>
-                                        <th>股票现价</th>
-                                        <th>股票涨跌额</th>
-                                        <th>股票涨跌率</th>
+                                        <th>代码</th>
+                                        <th>名称</th>
+                                        <th>今日开盘价</th>
+                                        <th>昨日收盘价</th>
+                                        <th>当前价</th>
+                                        <th>今日最高价</th>
+                                        <th>今日最低价</th>
                                         <th>K线图信息</th>
                                     </tr>
                                     </thead>
-                                    <%
-                                        request.setCharacterEncoding("UTF-8");
-                                        int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
+<%--                                    <%--%>
+<%--                                        request.setCharacterEncoding("UTF-8");--%>
+<%--                                        int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));--%>
 
 
-                                        int pageSize = 3;
-                                        int totalPage = 0;
-                                        totalPage = pg.getTotalPage(pageSize);
+<%--                                        int pageSize = 3;--%>
+<%--                                        int totalPage = 0;--%>
+<%--                                        totalPage = pg.getTotalPage(pageSize);--%>
 
-                                        int prePage = start - 1 >= 0 ? start - 1 : start + 1;
-                                        int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
-                                        request.setAttribute("totalPage", totalPage);
-                                        request.setAttribute("prePage", prePage);
-                                        request.setAttribute("nextPage", nextPage);
-                                        Page pg1 = new Page(start, pageSize);
-                                        List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1);
+<%--                                        int prePage = start - 1 >= 0 ? start - 1 : start + 1;--%>
+<%--                                        int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;--%>
+<%--                                        request.setAttribute("totalPage", totalPage);--%>
+<%--                                        request.setAttribute("prePage", prePage);--%>
+<%--                                        request.setAttribute("nextPage", nextPage);--%>
+<%--                                        Page pg1 = new Page(start, pageSize);--%>
+<%--                                        List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1);--%>
 
 
-                                        for (gp u : currentGp) {
-                                    %>
-                                    <tr>
-                                        <td><%=u.getgp_id()%>
-                                        </td>
-                                        <td><%=u.getgp_name()%>
-                                        </td>
-                                        <td><%=u.getgp_price()%>
-                                        </td>
-                                        <td><%=u.getgp_adn()%>
-                                        </td>
-                                        <td><%=u.getgp_ad()%>
-                                        </td>
-                                        <td>
-                                            <button onclick="show_kline('<%=u.getgp_id()%>')">K线</button>
-                                        </td>
-                                    </tr>
-                                    <%
-                                        }
-                                    %>
+<%--                                        for (gp u : currentGp) {--%>
+<%--                                    %>--%>
+<%--                                    <tr>--%>
+<%--                                        <td><%=u.getgp_id()%>--%>
+<%--                                        </td>--%>
+<%--                                        <td><%=u.getgp_name()%>--%>
+<%--                                        </td>--%>
+<%--                                        <td><%=u.getgp_price()%>--%>
+<%--                                        </td>--%>
+<%--                                        <td><%=u.getgp_adn()%>--%>
+<%--                                        </td>--%>
+<%--                                        <td><%=u.getgp_ad()%>--%>
+<%--                                        </td>--%>
+<%--                                        <td>--%>
+<%--                                            <button onclick="show_kline('<%=u.getgp_id()%>')">K线</button>--%>
+<%--                                        </td>--%>
+<%--                                    </tr>--%>
+<%--                                    <%--%>
+<%--                                        }--%>
+<%--                                    %>--%>
 
                                 </table>
                                 <nav>
@@ -802,6 +819,38 @@
                                         </a></li>
                                     </ul>
                                 </nav>
+                            </div>
+                                <div id="SZA" class="table-scrollable table-scrollable-borderless tab-pane">
+                                    <table class="table table-hover table-light">
+                                        <thead>
+                                        <tr class="uppercase">
+                                            <th>代码</th>
+                                            <th>名称</th>
+                                            <th>今日开盘价</th>
+                                            <th>昨日收盘价</th>
+                                            <th>当前价</th>
+                                            <th>今日最高价</th>
+                                            <th>今日最低价</th>
+                                            <th>K线图信息</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    <nav>
+                                        <ul class="pagination">
+                                            <li><a href="index.jsp?start=0"> <span>首页</span>
+                                            </a></li>
+                                            <li><a href="index.jsp?start=${requestScope.prePage }">
+                                                <span>上一页</span>
+                                            </a></li>
+                                            <li><a href="index.jsp?start=${requestScope.nextPage }">
+                                                <span>下一页</span>
+                                            </a></li>
+                                            <li><a
+                                                    href="index.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+                                            </a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
