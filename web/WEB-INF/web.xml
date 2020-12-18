@@ -63,4 +63,8 @@
         <url-pattern>/sell</url-pattern>
     </servlet-mapping>
 
+    <listener>
+        <listener-class>listener.GetGPListener</listener-class>
+    </listener>
+
 </web-app>

@@ -598,72 +598,90 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="portlet light">
 						<div class="portlet-title">
 						<div class="portlet-body">
-							<div class="table-container">
-								<table class="table table-striped table-bordered table-hover" id="datatable_orders">
+							<ul class="nav nav-tabs nav-tabs-lg">
+								<li class="active">
+									<a href="#SHA" data-toggle="tab">上指</a>
+								</li>
+								<li>
+									<a href="#SZA" data-toggle="tab">深指</a>
+								</li>
+								<li>
+									<a href="#tab_3" data-toggle="tab">创业板</a>
+								</li>
+								<li>
+									<a href="#tab_3" data-toggle="tab">大盘指数</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+							<div id="SHA" class="table-container tab-pane active">
+								<table class="table table-striped table-bordered table-hover" id="datatable_SHA">
 								<thead>
 								<tr role="row" class="heading">
 									<th width="10%">
-										 编号
+										 上指编号
 									</th>
 									<th width="10%">
 										股票名称
 									</th>
 									<th width="10%">
-										最新价
+										今日开盘价
 									</th>
 									<th width="10%">
-										涨跌额
+										昨日收盘价
 									</th>
 									<th width="10%">
-										 涨跌幅
+										 当前价
 									</th>
 									<th width="10%">
-										交易操作
+										今日最高价
+									</th>
+									<th width="10%">
+										今日最低价
 									</th>
 								</tr>
-								<%
-									request.setCharacterEncoding("UTF-8");
-									int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
+<%--								<%--%>
+<%--									request.setCharacterEncoding("UTF-8");--%>
+<%--									int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));--%>
 
 
-									int pageSize = 15;
-									int totalPage = 0;
-									totalPage = pg.getTotalPage(pageSize);
+<%--									int pageSize = 15;--%>
+<%--									int totalPage = 0;--%>
+<%--									totalPage = pg.getTotalPage(pageSize);--%>
 
-									int prePage = start - 1 >= 0 ? start - 1 : start + 1;
-									int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
-									request.setAttribute("totalPage", totalPage);
-									request.setAttribute("prePage", prePage);
-									request.setAttribute("nextPage", nextPage);
-									Page pg1 = new Page(start, pageSize);
-									List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1);
-									//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-									for (gp u : currentGp) {
-								%>
-								<tr role="row" class="filter">
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_id()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_name()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getgp_adn()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_ad()%>">
-									</td>
-									<td>
-										<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price()%>'">开仓</button>
-										<button onclick="window.open('http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif')">K线图</button>
-									</td>
-								</tr>
-								<%
-									}
-								%>
+<%--									int prePage = start - 1 >= 0 ? start - 1 : start + 1;--%>
+<%--									int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;--%>
+<%--									request.setAttribute("totalPage", totalPage);--%>
+<%--									request.setAttribute("prePage", prePage);--%>
+<%--									request.setAttribute("nextPage", nextPage);--%>
+<%--									Page pg1 = new Page(start, pageSize);--%>
+<%--									List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1);--%>
+<%--									//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");--%>
+<%--									for (gp u : currentGp) {--%>
+<%--								%>--%>
+<%--								<tr role="row" class="filter">--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_id()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_name()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getgp_adn()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_ad()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price()%>'">开仓</button>--%>
+<%--										<button onclick="window.open('http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif')">K线图</button>--%>
+<%--									</td>--%>
+<%--								</tr>--%>
+<%--								<%--%>
+<%--									}--%>
+<%--								%>--%>
 								</thead>
 								<tbody>
 								</tbody>
@@ -683,6 +701,53 @@ License: You must have a valid license purchased only from themeforest(the above
 										</a></li>
 									</ul>
 								</nav>
+							</div>
+							<div id="SZA" class="table-container tab-pane">
+								<table class="table table-striped table-bordered table-hover" id="datatable_SZA">
+									<thead>
+									<tr role="row" class="heading">
+										<th width="10%">
+											深指编号
+										</th>
+										<th width="10%">
+											股票名称
+										</th>
+										<th width="10%">
+											今日开盘价
+										</th>
+										<th width="10%">
+											昨日收盘价
+										</th>
+										<th width="10%">
+											当前价
+										</th>
+										<th width="10%">
+											今日最高价
+										</th>
+										<th width="10%">
+											今日最低价
+										</th>
+									</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+								<nav>
+									<ul class="pagination">
+										<li><a href="futures_menu.jsp?start=0"> <span>首页</span>
+										</a></li>
+										<li><a href="futures_menu.jsp?start=${requestScope.prePage }">
+											<span>上一页</span>
+										</a></li>
+										<li><a href="futures_menu.jsp?start=${requestScope.nextPage }">
+											<span>下一页</span>
+										</a></li>
+										<li><a
+												href="futures_menu.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+										</a></li>
+									</ul>
+								</nav>
+							</div>
 							</div>
 						</div>
 					</div>
@@ -735,6 +800,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="assets/global/scripts/datatable.js"></script>
 <script src="js/global/initializePage.js" type="text/javascript"></script>
+<script src="js/futures_menu.js" type="text/javascript"></script>
 <%--<script src="assets/admin/pages/scripts/ecommerce-orders.js"></script>--%>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
