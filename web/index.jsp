@@ -779,7 +779,7 @@
 <%--                                        request.setAttribute("prePage", prePage);--%>
 <%--                                        request.setAttribute("nextPage", nextPage);--%>
 <%--                                        Page pg1 = new Page(start, pageSize);--%>
-<%--                                        List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1);--%>
+<%--                                        List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1, "SHA");--%>
 
 
 <%--                                        for (gp u : currentGp) {--%>

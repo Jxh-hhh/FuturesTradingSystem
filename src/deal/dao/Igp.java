@@ -7,5 +7,5 @@ import deal.entity.*;
 import deal.entity.Page;
 
 public interface Igp {
-	public List<gp> queryGpByPage(Page page) throws SQLException;
+	public List<gp> queryGpByPage(Page page, String type) throws SQLException;
 }
