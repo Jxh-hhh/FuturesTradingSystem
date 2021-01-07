@@ -57,10 +57,9 @@ public class gp{
 		return gp_price_MAX;
 	}
 	public void setgp_price_MAX(String gp_price_MAX) { this.gp_price_MAX = gp_price_MAX; }
-	public String getgp_price_MIN() {
-		return gp_price_MIN;
+	public String getgp_price_MIN() { return gp_price_MIN;
 	}
-	public void gp_price_MIN(String gp_id) {
+	public void setgp_price_MIN(String gp_price_MIN) {
 		this.gp_price_MIN = gp_price_MIN;
 	}
 }

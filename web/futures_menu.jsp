@@ -672,6 +672,9 @@ License: You must have a valid license purchased only from themeforest(the above
 										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_today()%>">
 									</td>
 									<td>
+										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_yesterday()%>">
+									</td>
+									<td>
 										<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getgp_price_current()%>">
 									</td>
 									<td>
@@ -767,13 +770,16 @@ License: You must have a valid license purchased only from themeforest(the above
 											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_today()%>">
 										</td>
 										<td>
-											<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getgp_price_current()%>">
+											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_yesterday()%>">
+										</td>
+										<td>
+											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_current()%>">
 										</td>
 										<td>
 											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MAX()%>">
 										</td>
 										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MIN()%>">
+											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="11<%=u.getgp_price_MIN()%>">
 										</td>
 										<td>
 											<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price_current()%>'">开仓</button>

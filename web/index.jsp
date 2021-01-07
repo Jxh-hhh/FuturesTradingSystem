@@ -763,46 +763,53 @@
                                         <th>今日最低价</th>
                                         <th>K线图信息</th>
                                     </tr>
+                                    <%
+                                        request.setCharacterEncoding("UTF-8");
+                                        int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
+
+
+                                        int pageSize = 15;
+                                        int totalPage = 0;
+                                        totalPage = pg.getTotalPage(pageSize);
+
+                                        int prePage = start - 1 >= 0 ? start - 1 : start + 1;
+                                        int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
+                                        request.setAttribute("totalPage", totalPage);
+                                        request.setAttribute("prePage", prePage);
+                                        request.setAttribute("nextPage", nextPage);
+                                        Page pg2 = new Page(start, pageSize);
+                                        List<gp> currentGp1 = (List<gp>) gp.queryGpByPage(pg2, "SZA");
+                                        //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
+                                        for (gp u : currentGp1) {
+                                    %>
+                                    <tr role="row" class="filter">
+                                        <td>
+                                            <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_id()%>">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_name()%>">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_today()%>">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_current()%>">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MAX()%>">
+                                        </td>
+                                        <td>
+                                            <input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MIN()%>">
+                                        </td>
+                                        <td>
+                                            <button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price_current()%>'">开仓</button>
+                                            <button onclick="window.open('http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif')">K线图</button>
+                                        </td>
+                                    </tr>
+                                    <%
+                                        }
+                                    %>
                                     </thead>
-<%--                                    <%--%>
-<%--                                        request.setCharacterEncoding("UTF-8");--%>
-<%--                                        int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));--%>
-
-
-<%--                                        int pageSize = 3;--%>
-<%--                                        int totalPage = 0;--%>
-<%--                                        totalPage = pg.getTotalPage(pageSize);--%>
-
-<%--                                        int prePage = start - 1 >= 0 ? start - 1 : start + 1;--%>
-<%--                                        int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;--%>
-<%--                                        request.setAttribute("totalPage", totalPage);--%>
-<%--                                        request.setAttribute("prePage", prePage);--%>
-<%--                                        request.setAttribute("nextPage", nextPage);--%>
-<%--                                        Page pg1 = new Page(start, pageSize);--%>
-<%--                                        List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1, "SHA");--%>
-
-
-<%--                                        for (gp u : currentGp) {--%>
-<%--                                    %>--%>
-<%--                                    <tr>--%>
-<%--                                        <td><%=u.getgp_id()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td><%=u.getgp_name()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td><%=u.getgp_price()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td><%=u.getgp_adn()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td><%=u.getgp_ad()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td>--%>
-<%--                                            <button onclick="show_kline('<%=u.getgp_id()%>')">K线</button>--%>
-<%--                                        </td>--%>
-<%--                                    </tr>--%>
-<%--                                    <%--%>
-<%--                                        }--%>
-<%--                                    %>--%>
-
                                 </table>
                                 <nav>
                                     <ul class="pagination">
