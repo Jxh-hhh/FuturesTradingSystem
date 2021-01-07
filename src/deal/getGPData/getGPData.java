@@ -62,7 +62,7 @@ public class getGPData {
     }
 
     public static void getDataToDB(String type){
-        String filePath = "C:\\Users\\jxh\\IdeaProjects\\FuturesTradingSystem\\web\\WEB-INF\\gp_code.txt";
+        String filePath = "D:\\IDEAprojects\\FuturesTradingSystem\\web\\WEB-INF\\gp_code.txt";
         String[] fileContent = readTxtFile(filePath, 2);
         String[] code = null;
         String tableName = null;
