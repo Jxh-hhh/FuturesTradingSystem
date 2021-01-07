@@ -524,12 +524,12 @@ License: You must have a valid license purchased only from themeforest(the above
 					<span class="title">行情</span>
 					</a>
 				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-user"></i>
-					<span class="title">个人信息</span>
-					</a>
-				</li>
+<%--				<li>--%>
+<%--					<a href="javascript:;">--%>
+<%--					<i class="icon-user"></i>--%>
+<%--					<span class="title">个人信息</span>--%>
+<%--					</a>--%>
+<%--				</li>--%>
 				<li>
 					<a href="">
 						<i class="icon-user"></i>

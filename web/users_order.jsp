@@ -660,6 +660,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <tr class="uppercase">
                                 <th>订单号</th>
                                 <th>期货编号</th>
+                                <th>股票名称</th>
                                 <th>开仓价</th>
                                 <th>最新价</th>
                                 <th>创建时间</th>
@@ -690,6 +691,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <td><%=u.getorder_OI()%>
                                 </td>
                                 <td><%=u.getorder_FI()%>
+                                </td>
+                                <td><%=u.getorder_ON()%>
                                 </td>
                                 <td><%=u.getorder_OP()%>
                                 </td>
@@ -746,7 +749,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--[if lt IE 9]>
 <script src="assets/global/plugins/respond.min.js"></script>
 <script src="assets/global/plugins/excanvas.min.js"></script>
-<![endif]-->
+-+rtg<![endif]-->
 <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
 <script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
 <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->

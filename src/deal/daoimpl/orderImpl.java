@@ -33,7 +33,7 @@ public class orderImpl implements Iorder {
             pst.setInt(2, page.getPageSize());
             rs=pst.executeQuery();
             while(rs.next()){
-                order temp = new order(rs.getString("gp_OI"),rs.getString("gp_FI"),rs.getString("gp_OP"),rs.getString("gp_NP"),rs.getString("gp_CT"),rs.getInt("gp_NM"),rs.getString("username"));
+                order temp = new order(rs.getString("gp_OI"),rs.getString("gp_FI"),rs.getString("gp_ON"),rs.getString("gp_OP"),rs.getString("gp_NP"),rs.getString("gp_CT"),rs.getInt("gp_NM"),rs.getString("username"));
                 arr.add(temp);
             }
         }catch (Exception e) {
