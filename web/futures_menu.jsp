@@ -647,47 +647,44 @@ License: You must have a valid license purchased only from themeforest(the above
 									int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
 
 
-									int pageSize = 15;
-									int totalPage = 0;
-									totalPage = pg.getTotalPage(pageSize);
+<%--									int pageSize = 15;--%>
+<%--									int totalPage = 0;--%>
+<%--									totalPage = pg.getTotalPage(pageSize);--%>
 
-									int prePage = start - 1 >= 0 ? start - 1 : start + 1;
-									int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
-									request.setAttribute("totalPage", totalPage);
-									request.setAttribute("prePage", prePage);
-									request.setAttribute("nextPage", nextPage);
-									Page pg1 = new Page(start, pageSize);
-									List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1, "SHA");
-									//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-									for (gp u : currentGp) {
-								%>
-								<tr role="row" class="filter">
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_id()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_name()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_today()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getgp_price_current()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MAX()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MIN()%>">
-									</td>
-									<td>
-										<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price_current()%>'">开仓</button>
-										<button onclick="window.open('http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif')">K线图</button>
-									</td>
-								</tr>
-								<%
-									}
-								%>
+<%--									int prePage = start - 1 >= 0 ? start - 1 : start + 1;--%>
+<%--									int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;--%>
+<%--									request.setAttribute("totalPage", totalPage);--%>
+<%--									request.setAttribute("prePage", prePage);--%>
+<%--									request.setAttribute("nextPage", nextPage);--%>
+<%--									Page pg1 = new Page(start, pageSize);--%>
+<%--									List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1);--%>
+<%--									//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");--%>
+<%--									for (gp u : currentGp) {--%>
+<%--								%>--%>
+<%--								<tr role="row" class="filter">--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_id()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_name()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getgp_adn()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_ad()%>">--%>
+<%--									</td>--%>
+<%--									<td>--%>
+<%--										<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price()%>'">开仓</button>--%>
+<%--										<button onclick="window.open('http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif')">K线图</button>--%>
+<%--									</td>--%>
+<%--								</tr>--%>
+<%--								<%--%>
+<%--									}--%>
+<%--								%>--%>
 								</thead>
 								<tbody>
 								</tbody>
@@ -737,52 +734,6 @@ License: You must have a valid license purchased only from themeforest(the above
 											操作
 										</th>
 									</tr>
-									<%
-										request.setCharacterEncoding("UTF-8");
-										int start1 = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
-
-
-										int pageSize1 = 15;
-										int totalPage1 = 0;
-										totalPage = pg.getTotalPage(pageSize);
-
-										int prePage1 = start - 1 >= 0 ? start - 1 : start + 1;
-										int nextPage1 = start + 1 < totalPage ? start + 1 : totalPage - 1;
-										request.setAttribute("totalPage", totalPage);
-										request.setAttribute("prePage", prePage);
-										request.setAttribute("nextPage", nextPage);
-										Page pg2 = new Page(start, pageSize);
-										List<gp> currentGp1 = (List<gp>) gp.queryGpByPage(pg2, "SZA");
-										//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-										for (gp u : currentGp1) {
-									%>
-									<tr role="row" class="filter">
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_id()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_name()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_today()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getgp_price_current()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MAX()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MIN()%>">
-										</td>
-										<td>
-											<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price_current()%>'">开仓</button>
-											<button onclick="window.open('http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif')">K线图</button>
-										</td>
-									</tr>
-									<%
-										}
-									%>
 									</thead>
 									<tbody>
 									</tbody>
