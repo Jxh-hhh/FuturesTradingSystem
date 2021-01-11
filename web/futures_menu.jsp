@@ -742,15 +742,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</tr>
 									<%
 										request.setCharacterEncoding("UTF-8");
-										int start1 = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
-
-
-										int pageSize1 = 15;
-										int totalPage1 = 0;
 										totalPage = pg.getTotalPage(pageSize);
-
-										int prePage1 = start - 1 >= 0 ? start - 1 : start + 1;
-										int nextPage1 = start + 1 < totalPage ? start + 1 : totalPage - 1;
 										request.setAttribute("totalPage", totalPage);
 										request.setAttribute("prePage", prePage);
 										request.setAttribute("nextPage", nextPage);
