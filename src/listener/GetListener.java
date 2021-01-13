@@ -1,25 +1,24 @@
 package listener;
 
-import deal.getGPData.getGPData;
+import deal.getData.getGPData;
+import deal.getData.getWeatherData;
 
+import javax.net.ssl.HandshakeCompletedEvent;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
-import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.*;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 @WebListener()
-public class GetGPListener implements ServletContextListener,
+public class GetListener implements ServletContextListener,
         HttpSessionListener, HttpSessionAttributeListener {
 
     // Public constructor is required by servlet spec
-    public GetGPListener() {
+    public GetListener() {
     }
 
     // -------------------------------------------------------
@@ -46,7 +45,6 @@ public class GetGPListener implements ServletContextListener,
             // 若当前时间没有超过defaultdate时间，则将执行时间sendDate改为defaultdate
             sendDate = defaultdate;
         }
-
         Timer qTimer = new Timer();
         qTimer.schedule(new TimerTask() {
 
@@ -58,6 +56,17 @@ public class GetGPListener implements ServletContextListener,
                 System.out.println("每1min运行一次");
             }
         }, defaultdate,  60 * 1000);// 定时每1min
+
+        Timer hTimer = new Timer();
+        hTimer.schedule(new TimerTask() {
+
+            @Override
+            public void run() {
+                // TODO 写你的逻辑
+                getWeatherData.getWeatherToDB();
+                System.out.println("每3h运行一次");
+            }
+        }, defaultdate,  3 * 60 * 60 * 1000);// 定时每3h运行一次
     }
 
     public void contextDestroyed(ServletContextEvent sce) {

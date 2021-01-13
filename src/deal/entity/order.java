@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.security.Timestamp;
 
 public class order{
-      private String order_OI;
-      private String order_FI;
-      private String order_OP;
-      private String order_NP;
-      private String order_CT;
-      private String order_ON;
-      private int order_NM;
-      private String username;
+    public String order_OI;
+    public String order_FI;
+    public String order_OP;
+    public String order_NP;
+    public String order_CT;
+    public String order_ON;
+    public int order_NM;
+    public String username;
     public order(String orderOI,String orderFI,String orderON,String orderOP,String orderNP,String orderCT,int orderNM,String username) {
         // TODO Auto-generated constructor stub
         super();

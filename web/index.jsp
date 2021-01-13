@@ -106,48 +106,11 @@
         <!-- END RESPONSIVE MENU TOGGLER -->
         <!-- BEGIN PAGE ACTIONS -->
         <!-- DOC: Remove "hide" class to enable the page header actions -->
-        <div class="page-actions">
-            <div class="btn-group">
-                <button type="button" class="btn red-haze btn-sm dropdown-toggle"
-                        data-toggle="dropdown" data-hover="dropdown"
-                        data-close-others="true">
-                    <span class="hidden-sm hidden-xs">Actions&nbsp;</span><i
-                        class="fa fa-angle-down"></i>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="javascript:;"> <i class="icon-docs"></i> New
-                        Post
-                    </a></li>
-                    <li><a href="javascript:;"> <i class="icon-tag"></i> New
-                        Comment
-                    </a></li>
-                    <li><a href="javascript:;"> <i class="icon-share"></i>
-                        Share
-                    </a></li>
-                    <li class="divider"></li>
-                    <li><a href="javascript:;"> <i class="icon-flag"></i>
-                        Comments <span class="badge badge-success">4</span>
-                    </a></li>
-                    <li><a href="javascript:;"> <i class="icon-users"></i>
-                        Feedbacks <span class="badge badge-danger">2</span>
-                    </a></li>
-                </ul>
-            </div>
-        </div>
         <!-- END PAGE ACTIONS -->
         <!-- BEGIN PAGE TOP -->
         <div class="page-top">
             <!-- BEGIN HEADER SEARCH BOX -->
             <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-            <form class="search-form" action="extra_search.html" method="GET">
-                <div class="input-group">
-                    <input type="text" class="form-control input-sm"
-                           placeholder="Search..." name="query"> <span
-                        class="input-group-btn"> <a href="javascript:;"
-                                                    class="btn submit"><i class="icon-magnifier"></i></a>
-						</span>
-                </div>
-            </form>
             <!-- END HEADER SEARCH BOX -->
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="top-menu">
@@ -155,250 +118,6 @@
                     <li class="separator hide"></li>
                     <!-- BEGIN NOTIFICATION DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <li
-                            class="dropdown dropdown-extended dropdown-notification dropdown-dark"
-                            id="header_notification_bar"><a href="javascript:;"
-                                                            class="dropdown-toggle" data-toggle="dropdown"
-                                                            data-hover="dropdown" data-close-others="true"> <i
-                            class="icon-bell"></i> <span class="badge badge-success">
-									7 </span>
-                    </a>
-                        <ul class="dropdown-menu">
-                            <li class="external">
-                                <h3>
-                                    <span class="bold">12 pending</span> notifications
-                                </h3> <a href="extra_profile.html">view all</a>
-                            </li>
-                            <li>
-                                <ul class="dropdown-menu-list scroller" style="height: 250px;"
-                                    data-handle-color="#637283">
-                                    <li><a href="javascript:;"> <span class="time">just
-													now</span> <span class="details"> <span
-                                            class="label label-sm label-icon label-success"> <i
-                                            class="fa fa-plus"></i>
-												</span> New user registered.
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="time">3
-													mins</span> <span class="details"> <span
-                                            class="label label-sm label-icon label-danger"> <i
-                                            class="fa fa-bolt"></i>
-												</span> Server #12 overloaded.
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="time">10
-													mins</span> <span class="details"> <span
-                                            class="label label-sm label-icon label-warning"> <i
-                                            class="fa fa-bell-o"></i>
-												</span> Server #2 not responding.
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="time">14
-													hrs</span> <span class="details"> <span
-                                            class="label label-sm label-icon label-info"> <i
-                                            class="fa fa-bullhorn"></i>
-												</span> Application error.
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="time">2
-													days</span> <span class="details"> <span
-                                            class="label label-sm label-icon label-danger"> <i
-                                            class="fa fa-bolt"></i>
-												</span> Database overloaded 68%.
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="time">3
-													days</span> <span class="details"> <span
-                                            class="label label-sm label-icon label-danger"> <i
-                                            class="fa fa-bolt"></i>
-												</span> A user IP blocked.
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="time">4
-													days</span> <span class="details"> <span
-                                            class="label label-sm label-icon label-warning"> <i
-                                            class="fa fa-bell-o"></i>
-												</span> Storage Server #4 not responding dfdfdfd.
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="time">5
-													days</span> <span class="details"> <span
-                                            class="label label-sm label-icon label-info"> <i
-                                            class="fa fa-bullhorn"></i>
-												</span> System Error.
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="time">9
-													days</span> <span class="details"> <span
-                                            class="label label-sm label-icon label-danger"> <i
-                                            class="fa fa-bolt"></i>
-												</span> Storage server failed.
-											</span>
-                                    </a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- END NOTIFICATION DROPDOWN -->
-                    <li class="separator hide"></li>
-                    <!-- BEGIN INBOX DROPDOWN -->
-                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <li
-                            class="dropdown dropdown-extended dropdown-inbox dropdown-dark"
-                            id="header_inbox_bar"><a href="javascript:;"
-                                                     class="dropdown-toggle" data-toggle="dropdown"
-                                                     data-hover="dropdown" data-close-others="true"> <i
-                            class="icon-envelope-open"></i> <span class="badge badge-danger">
-									4 </span>
-                    </a>
-                        <ul class="dropdown-menu">
-                            <li class="external">
-                                <h3>
-                                    You have <span class="bold">7 New</span> Messages
-                                </h3> <a href="inbox.html">view all</a>
-                            </li>
-                            <li>
-                                <ul class="dropdown-menu-list scroller" style="height: 275px;"
-                                    data-handle-color="#637283">
-                                    <li><a href="inbox.html?a=view"> <span class="photo">
-													<img src="assets/admin/layout3/img/avatar2.jpg"
-                                                         class="img-circle" alt="">
-											</span> <span class="subject"> <span class="from">
-														Lisa Wong </span> <span class="time">Just Now </span>
-											</span> <span class="message"> Vivamus sed auctor nibh congue
-													nibh. auctor nibh auctor nibh... </span>
-                                    </a></li>
-                                    <li><a href="inbox.html?a=view"> <span class="photo">
-													<img src="assets/admin/layout3/img/avatar3.jpg"
-                                                         class="img-circle" alt="">
-											</span> <span class="subject"> <span class="from">
-														Richard Doe </span> <span class="time">16 mins </span>
-											</span> <span class="message"> Vivamus sed congue nibh auctor
-													nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a></li>
-                                    <li><a href="inbox.html?a=view"> <span class="photo">
-													<img src="assets/admin/layout3/img/avatar1.jpg"
-                                                         class="img-circle" alt="">
-											</span> <span class="subject"> <span class="from"> Bob
-														Nilson </span> <span class="time">2 hrs </span>
-											</span> <span class="message"> Vivamus sed nibh auctor nibh
-													congue nibh. auctor nibh auctor nibh... </span>
-                                    </a></li>
-                                    <li><a href="inbox.html?a=view"> <span class="photo">
-													<img src="assets/admin/layout3/img/avatar2.jpg"
-                                                         class="img-circle" alt="">
-											</span> <span class="subject"> <span class="from">
-														Lisa Wong </span> <span class="time">40 mins </span>
-											</span> <span class="message"> Vivamus sed auctor 40% nibh
-													congue nibh... </span>
-                                    </a></li>
-                                    <li><a href="inbox.html?a=view"> <span class="photo">
-													<img src="assets/admin/layout3/img/avatar3.jpg"
-                                                         class="img-circle" alt="">
-											</span> <span class="subject"> <span class="from">
-														Richard Doe </span> <span class="time">46 mins </span>
-											</span> <span class="message"> Vivamus sed congue nibh auctor
-													nibh congue nibh. auctor nibh auctor nibh... </span>
-                                    </a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- END INBOX DROPDOWN -->
-                    <li class="separator hide"></li>
-                    <!-- BEGIN TODO DROPDOWN -->
-                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <li
-                            class="dropdown dropdown-extended dropdown-tasks dropdown-dark"
-                            id="header_task_bar"><a href="javascript:;"
-                                                    class="dropdown-toggle" data-toggle="dropdown"
-                                                    data-hover="dropdown" data-close-others="true"> <i
-                            class="icon-calendar"></i> <span class="badge badge-primary">
-									3 </span>
-                    </a>
-                        <ul class="dropdown-menu extended tasks">
-                            <li class="external">
-                                <h3>
-                                    You have <span class="bold">12 pending</span> tasks
-                                </h3> <a href="page_todo.html">view all</a>
-                            </li>
-                            <li>
-                                <ul class="dropdown-menu-list scroller" style="height: 275px;"
-                                    data-handle-color="#637283">
-                                    <li><a href="javascript:;"> <span class="task">
-													<span class="desc">New release v1.2 </span> <span
-                                            class="percent">30%</span>
-											</span> <span class="progress"> <span style="width: 40%;"
-                                                                                  class="progress-bar progress-bar-success"
-                                                                                  aria-valuenow="40" aria-valuemin="0"
-                                                                                  aria-valuemax="100"><span
-                                            class="sr-only">40% Complete</span></span>
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="task">
-													<span class="desc">Application deployment</span> <span
-                                            class="percent">65%</span>
-											</span> <span class="progress"> <span style="width: 65%;"
-                                                                                  class="progress-bar progress-bar-danger"
-                                                                                  aria-valuenow="65"
-                                                                                  aria-valuemin="0" aria-valuemax="100"><span
-                                            class="sr-only">65% Complete</span></span>
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="task">
-													<span class="desc">Mobile app release</span> <span
-                                            class="percent">98%</span>
-											</span> <span class="progress"> <span style="width: 98%;"
-                                                                                  class="progress-bar progress-bar-success"
-                                                                                  aria-valuenow="98" aria-valuemin="0"
-                                                                                  aria-valuemax="100"><span
-                                            class="sr-only">98% Complete</span></span>
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="task">
-													<span class="desc">Database migration</span> <span
-                                            class="percent">10%</span>
-											</span> <span class="progress"> <span style="width: 10%;"
-                                                                                  class="progress-bar progress-bar-warning"
-                                                                                  aria-valuenow="10" aria-valuemin="0"
-                                                                                  aria-valuemax="100"><span
-                                            class="sr-only">10% Complete</span></span>
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="task">
-													<span class="desc">Web server upgrade</span> <span
-                                            class="percent">58%</span>
-											</span> <span class="progress"> <span style="width: 58%;"
-                                                                                  class="progress-bar progress-bar-info"
-                                                                                  aria-valuenow="58"
-                                                                                  aria-valuemin="0" aria-valuemax="100"><span
-                                            class="sr-only">58% Complete</span></span>
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="task">
-													<span class="desc">Mobile development</span> <span
-                                            class="percent">85%</span>
-											</span> <span class="progress"> <span style="width: 85%;"
-                                                                                  class="progress-bar progress-bar-success"
-                                                                                  aria-valuenow="85" aria-valuemin="0"
-                                                                                  aria-valuemax="100"><span
-                                            class="sr-only">85% Complete</span></span>
-											</span>
-                                    </a></li>
-                                    <li><a href="javascript:;"> <span class="task">
-													<span class="desc">New UI release</span> <span
-                                            class="percent">38%</span>
-											</span> <span class="progress progress-striped"> <span
-                                            style="width: 38%;"
-                                            class="progress-bar progress-bar-important"
-                                            aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"><span
-                                            class="sr-only">38% Complete</span></span>
-											</span>
-                                    </a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
                     <!-- END TODO DROPDOWN -->
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
@@ -412,22 +131,13 @@
                              src="assets/admin/layout4/img/avatar9.jpg"/>
                     </a>
                         <ul class="dropdown-menu dropdown-menu-default">
-                            <li><a href="extra_profile.html"> <i class="icon-user"></i>
-                                My Profile
+                            <li><a href="users_money.jsp"> <i class="icon-user"></i>
+                                我的余额
                             </a></li>
-                            <li><a href="page_calendar.html"> <i
-                                    class="icon-calendar"></i> My Calendar
-                            </a></li>
-                            <li><a href="inbox.html"> <i class="icon-envelope-open"></i>
-                                My Inbox <span class="badge badge-danger"> 3 </span>
-                            </a></li>
-                            <li><a href="page_todo.html"> <i class="icon-rocket"></i>
-                                My Tasks <span class="badge badge-success"> 7 </span>
+                            <li><a href="users_order.jsp"> <i class="icon-envelope-open"></i>
+                                我的订单
                             </a></li>
                             <li class="divider"></li>
-                            <li><a href="extra_lock.html"> <i class="icon-lock"></i>
-                                Lock Screen
-                            </a></li>
                             <li>
                                 <a href="LoginAndRegister.jsp"><i class="icon-key"></i> 注销 </a>
                             </li>
@@ -436,8 +146,8 @@
                     <!-- END USER LOGIN DROPDOWN -->
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-extended quick-sidebar-toggler">
-                        <span class="sr-only">Toggle Quick Sidebar</span> <i
-                            class="icon-logout"></i>
+                        <span class="sr-only">Toggle Quick Sidebar</span>
+                        <i onclick="window.location.href='LoginAndRegister.jsp'" class="icon-logout"></i>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                 </ul>
@@ -490,6 +200,9 @@
                         </li>
                         <li>
                             <a href="users_order.jsp">订单管理</a>
+                        </li>
+                        <li>
+                            <a href="users_order_history.jsp">历史订单管理</a>
                         </li>
                     </ul>
                 </li>
@@ -709,1229 +422,93 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12">
                     <!-- BEGIN PORTLET-->
-                    <div class="portlet light ">
-                        <div class="portlet-title">
-                            <div class="caption caption-md">
-                                <i class="icon-bar-chart theme-font-color hide"></i> <span
-                                    class="caption-subject theme-font-color bold uppercase">k线图显示(右侧选择股票)</span>
-                                <span class="caption-helper hide">weekly
-										stats...</span>
-                            </div>
-                        </div>
-                        <img id="k_img" src="/image/sh000001.gif"/>
-                    </div>
-                    <!-- END PORTLET-->
-                </div>
-                <div class="col-md-6 col-sm-12">
-                    <!-- BEGIN PORTLET-->
-                    <div class="portlet light ">
-                        <div class="portlet-title">
-                            <div class="caption caption-md">
-                                <i class="icon-bar-chart theme-font-color hide"></i> <span
-                                    class="caption-subject theme-font-color bold uppercase">行情信息</span>
-                                        <span class="caption-helper hide">weekly
-										stats...</span>
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-                            <div class="row number-stats margin-bottom-30"></div>
-                            <ul class="nav nav-tabs nav-tabs-lg">
-                                <li class="active">
-                                    <a href="#SHA" data-toggle="tab">上指</a>
-                                </li>
-                                <li>
-                                    <a href="#SZA" data-toggle="tab">深指</a>
-                                </li>
-                                <li>
-                                    <a href="#tab_3" data-toggle="tab">创业板</a>
-                                </li>
-                                <li>
-                                    <a href="#tab_3" data-toggle="tab">大盘指数</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                            <div id="SHA" class="table-scrollable table-scrollable-borderless tab-pane active">
-                                <table class="table table-hover table-light">
-                                    <thead>
-                                    <tr class="uppercase">
-                                        <th>代码</th>
-                                        <th>名称</th>
-                                        <th>今日开盘价</th>
-                                        <th>昨日收盘价</th>
-                                        <th>当前价</th>
-                                        <th>今日最高价</th>
-                                        <th>今日最低价</th>
-                                        <th>K线图信息</th>
-                                    </tr>
-                                    </thead>
-<%--                                    <%--%>
-<%--                                        request.setCharacterEncoding("UTF-8");--%>
-<%--                                        int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));--%>
-
-
-<%--                                        int pageSize = 3;--%>
-<%--                                        int totalPage = 0;--%>
-<%--                                        totalPage = pg.getTotalPage(pageSize);--%>
-
-<%--                                        int prePage = start - 1 >= 0 ? start - 1 : start + 1;--%>
-<%--                                        int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;--%>
-<%--                                        request.setAttribute("totalPage", totalPage);--%>
-<%--                                        request.setAttribute("prePage", prePage);--%>
-<%--                                        request.setAttribute("nextPage", nextPage);--%>
-<%--                                        Page pg1 = new Page(start, pageSize);--%>
-<%--                                        List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1, "SHA");--%>
-
-
-<%--                                        for (gp u : currentGp) {--%>
-<%--                                    %>--%>
-<%--                                    <tr>--%>
-<%--                                        <td><%=u.getgp_id()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td><%=u.getgp_name()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td><%=u.getgp_price()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td><%=u.getgp_adn()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td><%=u.getgp_ad()%>--%>
-<%--                                        </td>--%>
-<%--                                        <td>--%>
-<%--                                            <button onclick="show_kline('<%=u.getgp_id()%>')">K线</button>--%>
-<%--                                        </td>--%>
-<%--                                    </tr>--%>
-<%--                                    <%--%>
-<%--                                        }--%>
-<%--                                    %>--%>
-
-                                </table>
-                                <nav>
-                                    <ul class="pagination">
-                                        <li><a href="index.jsp?start=0"> <span>首页</span>
-                                        </a></li>
-                                        <li><a href="index.jsp?start=${requestScope.prePage }">
-                                            <span>上一页</span>
-                                        </a></li>
-                                        <li><a href="index.jsp?start=${requestScope.nextPage }">
-                                            <span>下一页</span>
-                                        </a></li>
-                                        <li><a
-                                                href="index.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
-                                        </a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                                <div id="SZA" class="table-scrollable table-scrollable-borderless tab-pane">
-                                    <table class="table table-hover table-light">
-                                        <thead>
-                                        <tr class="uppercase">
-                                            <th>代码</th>
-                                            <th>名称</th>
-                                            <th>今日开盘价</th>
-                                            <th>昨日收盘价</th>
-                                            <th>当前价</th>
-                                            <th>今日最高价</th>
-                                            <th>今日最低价</th>
-                                            <th>K线图信息</th>
-                                        </tr>
-                                        </thead>
-                                    </table>
-                                    <nav>
-                                        <ul class="pagination">
-                                            <li><a href="index.jsp?start=0"> <span>首页</span>
-                                            </a></li>
-                                            <li><a href="index.jsp?start=${requestScope.prePage }">
-                                                <span>上一页</span>
-                                            </a></li>
-                                            <li><a href="index.jsp?start=${requestScope.nextPage }">
-                                                <span>下一页</span>
-                                            </a></li>
-                                            <li><a
-                                                    href="index.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
-                                            </a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END PORTLET-->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <!-- BEGIN PORTLET-->
                     <div class="portlet light tasks-widget">
                         <div class="portlet-title">
                             <div class="caption caption-md">
                                 <i class="icon-bar-chart theme-font-color hide"></i> <span
                                     class="caption-subject theme-font-color bold uppercase">天气</span>
-                                <span class="caption-helper">地点</span>
                             </div>
                             <div class="inputs">
                                 <div class="portlet-input input-small input-inline">
                                     <div class="input-icon right">
-                                        <i class="icon-magnifier"></i>
-                                        <input type="text" class="form-control form-control-solid" placeholder="这个框可以搜索城市天气">
+                                        <input id="city_name" name="city_name" style="float:left;width: 110px" type="text" class="form-control form-control-solid" placeholder="搜索城市">
+                                        <button id="search" style="float:right">搜索</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="portlet-body">
-                            <div class="task-content">
-                                <div class="scroller" style="height: 282px;"
-                                     data-always-visible="1" data-rail-visible1="0"
-                                     data-handle-color="#D7DCE2">
-                                    <!-- START TASK LIST -->
-                                    <ul class="task-list">
-                                        <li>
-                                            <div class="task-checkbox">
-                                                <input type="hidden" value="1" name="test"/> <input
-                                                    type="checkbox" class="liChild" value="2" name="test"/>
-                                            </div>
-                                            <div class="task-title">
-													<span class="task-title-sp"> Present 2013 Year IPO
-														Statistics at Board Meeting </span> <span
-                                                    class="label label-sm label-success">Company</span> <span
-                                                    class="task-bell"> <i class="fa fa-bell-o"></i>
-													</span>
-                                            </div>
-                                            <div class="task-config">
-                                                <div class="task-config-btn btn-group">
-                                                    <a class="btn btn-xs default" href="javascript:;"
-                                                       data-toggle="dropdown" data-hover="dropdown"
-                                                       data-close-others="true"> <i class="fa fa-cog"></i><i
-                                                            class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-check"></i> Complete
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-pencil"></i> Edit
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-trash-o"></i> Cancel
-                                                        </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="task-checkbox">
-                                                <input type="checkbox" class="liChild" value=""/>
-                                            </div>
-                                            <div class="task-title">
-													<span class="task-title-sp"> Hold An Interview for
-														Marketing Manager Position </span> <span
-                                                    class="label label-sm label-danger">Marketing</span>
-                                            </div>
-                                            <div class="task-config">
-                                                <div class="task-config-btn btn-group">
-                                                    <a class="btn btn-xs default" href="javascript:;"
-                                                       data-toggle="dropdown" data-hover="dropdown"
-                                                       data-close-others="true"> <i class="fa fa-cog"></i><i
-                                                            class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-check"></i> Complete
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-pencil"></i> Edit
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-trash-o"></i> Cancel
-                                                        </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="task-checkbox">
-                                                <input type="checkbox" class="liChild" value=""/>
-                                            </div>
-                                            <div class="task-title">
-													<span class="task-title-sp"> AirAsia Intranet System
-														Project Internal Meeting </span> <span
-                                                    class="label label-sm label-success">AirAsia</span> <span
-                                                    class="task-bell"> <i class="fa fa-bell-o"></i>
-													</span>
-                                            </div>
-                                            <div class="task-config">
-                                                <div class="task-config-btn btn-group">
-                                                    <a class="btn btn-xs default" href="javascript:;"
-                                                       data-toggle="dropdown" data-hover="dropdown"
-                                                       data-close-others="true"> <i class="fa fa-cog"></i><i
-                                                            class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-check"></i> Complete
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-pencil"></i> Edit
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-trash-o"></i> Cancel
-                                                        </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="task-checkbox">
-                                                <input type="checkbox" class="liChild" value=""/>
-                                            </div>
-                                            <div class="task-title">
-													<span class="task-title-sp"> Technical Management
-														Meeting </span> <span class="label label-sm label-warning">Company</span>
-                                            </div>
-                                            <div class="task-config">
-                                                <div class="task-config-btn btn-group">
-                                                    <a class="btn btn-xs default" href="javascript:;"
-                                                       data-toggle="dropdown" data-hover="dropdown"
-                                                       data-close-others="true"> <i class="fa fa-cog"></i><i
-                                                            class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-check"></i> Complete
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-pencil"></i> Edit
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-trash-o"></i> Cancel
-                                                        </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="task-checkbox">
-                                                <input type="checkbox" class="liChild" value=""/>
-                                            </div>
-                                            <div class="task-title">
-													<span class="task-title-sp"> Kick-off Company CRM
-														Mobile App Development </span> <span
-                                                    class="label label-sm label-info">Internal Products</span>
-                                            </div>
-                                            <div class="task-config">
-                                                <div class="task-config-btn btn-group">
-                                                    <a class="btn btn-xs default" href="javascript:;"
-                                                       data-toggle="dropdown" data-hover="dropdown"
-                                                       data-close-others="true"> <i class="fa fa-cog"></i><i
-                                                            class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-check"></i> Complete
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-pencil"></i> Edit
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-trash-o"></i> Cancel
-                                                        </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="task-checkbox">
-                                                <input type="checkbox" class="liChild" value=""/>
-                                            </div>
-                                            <div class="task-title">
-													<span class="task-title-sp"> Prepare Commercial
-														Offer For SmartVision Website Rewamp </span> <span
-                                                    class="label label-sm label-danger">SmartVision</span>
-                                            </div>
-                                            <div class="task-config">
-                                                <div class="task-config-btn btn-group">
-                                                    <a class="btn btn-xs default" href="javascript:;"
-                                                       data-toggle="dropdown" data-hover="dropdown"
-                                                       data-close-others="true"> <i class="fa fa-cog"></i><i
-                                                            class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-check"></i> Complete
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-pencil"></i> Edit
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-trash-o"></i> Cancel
-                                                        </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="task-checkbox">
-                                                <input type="checkbox" class="liChild" value=""/>
-                                            </div>
-                                            <div class="task-title">
-													<span class="task-title-sp"> Sign-Off The Comercial
-														Agreement With AutoSmart </span> <span
-                                                    class="label label-sm label-default">AutoSmart</span> <span
-                                                    class="task-bell"> <i class="fa fa-bell-o"></i>
-													</span>
-                                            </div>
-                                            <div class="task-config">
-                                                <div class="task-config-btn btn-group">
-                                                    <a class="btn btn-xs default" href="javascript:;"
-                                                       data-toggle="dropdown" data-hover="dropdown"
-                                                       data-close-others="true"> <i class="fa fa-cog"></i><i
-                                                            class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-check"></i> Complete
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-pencil"></i> Edit
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-trash-o"></i> Cancel
-                                                        </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="task-checkbox">
-                                                <input type="checkbox" class="liChild" value=""/>
-                                            </div>
-                                            <div class="task-title">
-                                                <span class="task-title-sp"> Company Staff Meeting </span>
-                                                <span class="label label-sm label-success">Cruise</span> <span
-                                                    class="task-bell"> <i class="fa fa-bell-o"></i>
-													</span>
-                                            </div>
-                                            <div class="task-config">
-                                                <div class="task-config-btn btn-group">
-                                                    <a class="btn btn-xs default" href="javascript:;"
-                                                       data-toggle="dropdown" data-hover="dropdown"
-                                                       data-close-others="true"> <i class="fa fa-cog"></i><i
-                                                            class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-check"></i> Complete
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-pencil"></i> Edit
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-trash-o"></i> Cancel
-                                                        </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="last-line">
-                                            <div class="task-checkbox">
-                                                <input type="checkbox" class="liChild" value=""/>
-                                            </div>
-                                            <div class="task-title">
-													<span class="task-title-sp"> KeenThemes Investment
-														Discussion </span> <span class="label label-sm label-warning">KeenThemes
-													</span>
-                                            </div>
-                                            <div class="task-config">
-                                                <div class="task-config-btn btn-group">
-                                                    <a class="btn btn-xs default" href="javascript:;"
-                                                       data-toggle="dropdown" data-hover="dropdown"
-                                                       data-close-others="true"> <i class="fa fa-cog"></i><i
-                                                            class="fa fa-angle-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-check"></i> Complete
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-pencil"></i> Edit
-                                                        </a></li>
-                                                        <li><a href="javascript:;"> <i
-                                                                class="fa fa-trash-o"></i> Cancel
-                                                        </a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <!-- END START TASK LIST -->
-                                </div>
-                            </div>
-                            <div class="task-footer">
-                                <div class="btn-arrow-link pull-right">
-                                    <a href="javascript:;">See All Tasks</a>
-                                </div>
-                            </div>
+                            城市：<span id="city">成都</span><br>
+                            <HR>
+                            当前：<span id="current_date"></span><br>
+                            &nbsp &nbsp &nbsp <span id="high"></span><br>
+                            &nbsp &nbsp &nbsp <span id="low"></span><br>
+                            &nbsp &nbsp &nbsp 风向：<span id="fengxiang"></span><br>
+                            <HR>
+                            明天：<span id="tomorrow_date"></span><br>
+                            &nbsp &nbsp &nbsp <span id="tomorrow_high"></span><br>
+                            &nbsp &nbsp &nbsp <span id="tomorrow_low"></span><br>
+                            &nbsp &nbsp &nbsp 风向：<span id="tomorrow_fengxiang"></span><br>
                         </div>
                     </div>
                     <!-- END PORTLET-->
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <!-- BEGIN PORTLET-->
-                    <div class="portlet light">
+                    <div style="height: 340px" class="portlet light">
                         <div class="portlet-title">
                             <div class="caption caption-md">
                                 <i class="icon-bar-chart theme-font-color hide"></i> <span
                                     class="caption-subject theme-font-color bold uppercase">财经新闻</span>
-                                <span class="caption-helper">显示新闻数</span>
-                            </div>
-                            <div class="inputs">
-                                <div class="portlet-input input-inline input-small ">
-                                    <div class="input-icon right">
-                                        <i class="icon-magnifier"></i>
-                                        <input type="text" class="form-control form-control-solid" placeholder="search...">
-                                    </div>
-                                </div>
+                                <span class="caption-helper">财经新闻网站入口</span>
                             </div>
                         </div>
                         <div class="portlet-body">
-                            <div class="scroller" style="height: 305px;"
-                                 data-always-visible="1" data-rail-visible1="0"
-                                 data-handle-color="#D7DCE2">
+                            <div class="scroller" style="height: 305px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2">
                                 <div class="general-item-list">
                                     <div class="item">
                                         <div class="item-head">
                                             <div class="item-details">
-                                                <img class="item-pic"
-                                                     src="assets/admin/layout3/img/avatar4.jpg"> <a
-                                                    href="" class="item-name primary-link">Nick Larson</a> <span
-                                                    class="item-label">3 hrs ago</span>
+                                                <a href="https://money.163.com/" class="item-name primary-link">网易财经新闻</a>
+                                                <span class="item-label">有态度的财经门户</span>
                                             </div>
                                             <span class="item-status"><span
                                                     class="badge badge-empty badge-success"></span> Open</span>
                                         </div>
-                                        <div class="item-body">Lorem ipsum dolor sit amet,
-                                            consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                            tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                        </div>
                                     </div>
                                     <div class="item">
                                         <div class="item-head">
                                             <div class="item-details">
-                                                <img class="item-pic"
-                                                     src="assets/admin/layout3/img/avatar3.jpg"> <a
-                                                    href="" class="item-name primary-link">Mark</a> <span
-                                                    class="item-label">5 hrs ago</span>
-                                            </div>
-                                            <span class="item-status"><span
-                                                    class="badge badge-empty badge-warning"></span> Pending</span>
-                                        </div>
-                                        <div class="item-body">Lorem ipsum dolor sit amet,
-                                            consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                            tincidunt ut laoreet dolore magna aliquam erat volutpat
-                                            tincidunt ut laoreet.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic"
-                                                     src="assets/admin/layout3/img/avatar6.jpg"> <a
-                                                    href="" class="item-name primary-link">Nick Larson</a> <span
-                                                    class="item-label">8 hrs ago</span>
-                                            </div>
-                                            <span class="item-status"><span
-                                                    class="badge badge-empty badge-primary"></span> Closed</span>
-                                        </div>
-                                        <div class="item-body">Lorem ipsum dolor sit amet,
-                                            consectetuer adipiscing elit, sed diam nonummy nibh.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic"
-                                                     src="assets/admin/layout3/img/avatar7.jpg"> <a
-                                                    href="" class="item-name primary-link">Nick Larson</a> <span
-                                                    class="item-label">12 hrs ago</span>
-                                            </div>
-                                            <span class="item-status"><span
-                                                    class="badge badge-empty badge-danger"></span> Pending</span>
-                                        </div>
-                                        <div class="item-body">Consectetuer adipiscing elit
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                                            sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                                            magna aliquam erat volutpat.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic"
-                                                     src="assets/admin/layout3/img/avatar9.jpg"> <a
-                                                    href="" class="item-name primary-link">Richard Stone</a> <span
-                                                    class="item-label">2 days ago</span>
-                                            </div>
-                                            <span class="item-status"><span
-                                                    class="badge badge-empty badge-danger"></span> Open</span>
-                                        </div>
-                                        <div class="item-body">Lorem ipsum dolor sit amet,
-                                            consectetuer adipiscing elit, ut laoreet dolore magna
-                                            aliquam erat volutpat.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic"
-                                                     src="assets/admin/layout3/img/avatar8.jpg"> <a
-                                                    href="" class="item-name primary-link">Dan</a> <span
-                                                    class="item-label">3 days ago</span>
-                                            </div>
-                                            <span class="item-status"><span
-                                                    class="badge badge-empty badge-warning"></span> Pending</span>
-                                        </div>
-                                        <div class="item-body">Lorem ipsum dolor sit amet, sed
-                                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                            aliquam erat volutpat.
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="item-head">
-                                            <div class="item-details">
-                                                <img class="item-pic"
-                                                     src="assets/admin/layout3/img/avatar2.jpg"> <a
-                                                    href="" class="item-name primary-link">Larry</a> <span
-                                                    class="item-label">4 hrs ago</span>
+                                                <a href="https://finance.sina.com.cn/" class="item-name primary-link">新浪财经新闻</a>
+                                                <span class="item-label">新浪网</span>
                                             </div>
                                             <span class="item-status"><span
                                                     class="badge badge-empty badge-success"></span> Open</span>
                                         </div>
-                                        <div class="item-body">Lorem ipsum dolor sit amet,
-                                            consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                            tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                    </div>
+                                    <div class="item">
+                                        <div class="item-head">
+                                            <div class="item-details">
+                                                <a href="https://new.qq.com/ch/finance" class="item-name primary-link">腾讯财经新闻</a>
+                                                <span class="item-label">腾讯网</span>
+                                            </div>
+                                            <span class="item-status"><span
+                                                    class="badge badge-empty badge-success"></span> Open</span>
                                         </div>
                                     </div>
+                                    <div class="item">
+                                        <div class="item-head">
+                                            <div class="item-details">
+                                                <a href="http://www.cfi.cn/" class="item-name primary-link">中国财经信息网</a>
+                                                <span class="item-label">中国财经信息网络传媒</span>
+                                            </div>
+                                            <span class="item-status"><span
+                                                    class="badge badge-empty badge-success"></span> Open</span>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- END PORTLET-->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <!-- BEGIN REGIONAL STATS PORTLET-->
-                    <div class="portlet light ">
-                        <div class="portlet-title">
-                            <div class="caption caption-md">
-                                <i class="icon-bar-chart theme-font-color hide"></i> <span
-                                    class="caption-subject theme-font-color bold uppercase">Regional
-										Stats</span>
-                            </div>
-                            <div class="actions">
-                                <a class="btn btn-circle btn-icon-only btn-default"
-                                   href="javascript:;"> <i class="icon-cloud-upload"></i>
-                                </a> <a class="btn btn-circle btn-icon-only btn-default"
-                                        href="javascript:;"> <i class="icon-wrench"></i>
-                            </a> <a class="btn btn-circle btn-icon-only btn-default fullscreen"
-                                    href="javascript:;"> </a> <a
-                                    class="btn btn-circle btn-icon-only btn-default"
-                                    href="javascript:;"> <i class="icon-trash"></i>
-                            </a>
-                            </div>
-                        </div>
-                        <div class="portlet-body">
-                            <div id="region_statistics_loading">
-                                <img src="assets/admin/layout/img/loading.gif" alt="loading"/>
-                            </div>
-                            <div id="region_statistics_content" class="display-none">
-                                <div class="btn-toolbar margin-bottom-10">
-                                    <div class="btn-group btn-group-circle" data-toggle="buttons">
-                                        <a href="" class="btn grey-salsa btn-sm active"> Users </a> <a
-                                            href="" class="btn grey-salsa btn-sm"> Orders </a>
-                                    </div>
-                                    <div class="btn-group pull-right">
-                                        <a href=""
-                                           class="btn btn-circle grey-salsa btn-sm dropdown-toggle"
-                                           data-toggle="dropdown" data-hover="dropdown"
-                                           data-close-others="true"> Select Region <span
-                                                class="fa fa-angle-down"> </span>
-                                        </a>
-                                        <ul class="dropdown-menu pull-right">
-                                            <li><a href="javascript:;" id="regional_stat_world">
-                                                World </a></li>
-                                            <li><a href="javascript:;" id="regional_stat_usa">
-                                                USA </a></li>
-                                            <li><a href="javascript:;" id="regional_stat_europe">
-                                                Europe </a></li>
-                                            <li><a href="javascript:;" id="regional_stat_russia">
-                                                Russia </a></li>
-                                            <li><a href="javascript:;" id="regional_stat_germany">
-                                                Germany </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div id="vmap_world" class="vmaps display-none"></div>
-                                <div id="vmap_usa" class="vmaps display-none"></div>
-                                <div id="vmap_europe" class="vmaps display-none"></div>
-                                <div id="vmap_russia" class="vmaps display-none"></div>
-                                <div id="vmap_germany" class="vmaps display-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END REGIONAL STATS PORTLET-->
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <!-- BEGIN PORTLET-->
-                    <div class="portlet light">
-                        <div class="portlet-title tabbable-line">
-                            <div class="caption caption-md">
-                                <i class="icon-globe theme-font-color hide"></i> <span
-                                    class="caption-subject theme-font-color bold uppercase">Feeds</span>
-                            </div>
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_1_1" data-toggle="tab">
-                                    System </a></li>
-                                <li><a href="#tab_1_2" data-toggle="tab"> Activities </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="portlet-body">
-                            <!--BEGIN TABS-->
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab_1_1">
-                                    <div class="scroller" style="height: 337px;"
-                                         data-always-visible="1" data-rail-visible1="0"
-                                         data-handle-color="#D7DCE2">
-                                        <ul class="feeds">
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">
-                                                                You have 4 pending tasks. <span
-                                                                    class="label label-sm label-info"> Take action
-																		<i class="fa fa-share"></i>
-																	</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">Just now</div>
-                                                </div>
-                                            </li>
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New version v1.4 just lunched!
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">20 mins</div>
-                                                </div>
-                                            </a></li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-danger">
-                                                                <i class="fa fa-bolt"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">Database server #12 overloaded.
-                                                                Please fix the issue.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">24 mins</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-info">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New order received and pending
-                                                                for process.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">30 mins</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New payment refund and pending
-                                                                approval.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">40 mins</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-warning">
-                                                                <i class="fa fa-plus"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New member registered. Pending
-                                                                approval.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">1.5 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">
-                                                                Web server hardware needs to be upgraded. <span
-                                                                    class="label label-sm label-default "> Overdue
-																	</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">2 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-default">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">Prod01 database server is
-                                                                overloaded 90%.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">3 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-warning">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New group created. Pending
-                                                                manager review.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">5 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-info">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">Order payment failed.</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">18 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-default">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New application received.</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">21 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-info">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">Dev90 web server restarted.
-                                                                Pending overall system check.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">22 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-default">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New member registered. Pending
-                                                                approval
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">21 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-info">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">L45 Network failure. Schedule
-                                                                maintenance.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">22 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-default">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">Order canceled with failed
-                                                                payment.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">21 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-info">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">Web-A2 clound instance created.
-                                                                Schedule full scan.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">22 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-default">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">Member canceled. Schedule
-                                                                account review.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">21 hours</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-info">
-                                                                <i class="fa fa-bullhorn"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New order received. Please take
-                                                                care of it.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">22 hours</div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="tab_1_2">
-                                    <div class="scroller" style="height: 337px;"
-                                         data-always-visible="1" data-rail-visible1="0"
-                                         data-handle-color="#D7DCE2">
-                                        <ul class="feeds">
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New user registered</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">Just now</div>
-                                                </div>
-                                            </a></li>
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New order received</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">10 mins</div>
-                                                </div>
-                                            </a></li>
-                                            <li>
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-danger">
-                                                                <i class="fa fa-bolt"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">
-                                                                Order #24DOP4 has been rejected. <span
-                                                                    class="label label-sm label-danger "> Take
-																		action <i class="fa fa-share"></i>
-																	</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">24 mins</div>
-                                                </div>
-                                            </li>
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New user registered</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">Just now</div>
-                                                </div>
-                                            </a></li>
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New user registered</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">Just now</div>
-                                                </div>
-                                            </a></li>
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New user registered</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">Just now</div>
-                                                </div>
-                                            </a></li>
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New user registered</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">Just now</div>
-                                                </div>
-                                            </a></li>
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New user registered</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">Just now</div>
-                                                </div>
-                                            </a></li>
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New user registered</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">Just now</div>
-                                                </div>
-                                            </a></li>
-                                            <li><a href="javascript:;">
-                                                <div class="col1">
-                                                    <div class="cont">
-                                                        <div class="cont-col1">
-                                                            <div class="label label-sm label-success">
-                                                                <i class="fa fa-bell-o"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cont-col2">
-                                                            <div class="desc">New user registered</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col2">
-                                                    <div class="date">Just now</div>
-                                                </div>
-                                            </a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--END TABS-->
                         </div>
                     </div>
                     <!-- END PORTLET-->
@@ -2457,10 +1034,7 @@
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
     <div class="page-footer-inner">
-        2014 &copy; Metronic by keenthemes. <a
-            href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes"
-            title="Purchase Metronic just for 27$ and get lifetime updates for free"
-            target="_blank">Purchase Metronic!</a>
+        2020 &copy; XM20期货交易系统
     </div>
     <div class="scroll-to-top">
         <i class="icon-arrow-up"></i>
@@ -2503,7 +1077,7 @@
 <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
 <script src="assets/admin/layout2/scripts/quick-sidebar.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-<script src="assets/admin/pages/scripts/index3.js" type="text/javascript"></script>
+<script src="assets/admin/pages/scripts/index.js" type="text/javascript"></script>
 <script src="assets/admin/pages/scripts/tasks.js" type="text/javascript"></script>
 <script src="js/global/initializePage.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
@@ -2519,6 +1093,58 @@
     });
 </script>
 <!-- END JAVASCRIPTS -->
+<script type="text/javascript">
+    $.ajax({
+        url:'getWeatherServlet',
+        data:{
+            "city_name": $('#city_name').val()
+        },
+        type:'post',
+        data_type:'json',
+        global:false,
+        success:function (message){
+            console.log(message);
+            document.getElementById("city").textContent = message.city;
+            document.getElementById("current_date").textContent = message.current_date;
+            document.getElementById("high").textContent = message.high;
+            document.getElementById("low").textContent = message.low;
+            document.getElementById("fengxiang").textContent = message.fengxiang;
+            document.getElementById("tomorrow_date").textContent = message.tomorrow_date;
+            document.getElementById("tomorrow_high").textContent = message.tomorrow_high;
+            document.getElementById("tomorrow_low").textContent = message.tomorrow_low;
+            document.getElementById("tomorrow_fengxiang").textContent = message.tomorrow_fengxiang;
+        },
+        error:function (){
+            console.log("提交失败");
+        }
+    });
+
+    $('#search').click(function (){
+        $.ajax({
+            url:'getWeatherServlet',
+            data:{
+                "city_name": $('#city_name').val()
+            },
+            type:'post',
+            data_type:'json',
+            success:function (message){
+                console.log(message);
+                document.getElementById("city").textContent = message.city;
+                document.getElementById("current_date").textContent = message.current_date;
+                document.getElementById("high").textContent = message.high;
+                document.getElementById("low").textContent = message.low;
+                document.getElementById("fengxiang").textContent = message.fengxiang;
+                document.getElementById("tomorrow_date").textContent = message.tomorrow_date;
+                document.getElementById("tomorrow_high").textContent = message.tomorrow_high;
+                document.getElementById("tomorrow_low").textContent = message.tomorrow_low;
+                document.getElementById("tomorrow_fengxiang").textContent = message.tomorrow_fengxiang;
+            },
+            error:function (){
+                console.log("提交失败");
+            }
+        });
+    });
+</script>
 </body>
 <!-- END BODY -->
 </html>

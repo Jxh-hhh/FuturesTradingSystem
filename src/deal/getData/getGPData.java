@@ -1,4 +1,4 @@
-package deal.getGPData;
+package deal.getData;
 
 import deal.util.JDBCUtil;
 
@@ -90,6 +90,8 @@ public class getGPData {
                         + code[i] + "','" + gpData[0] + "','" + gpData[1] + "','" + gpData[2] + "','" + gpData[3] + "','" + gpData[4]+ "','" + gpData[5] + "')";
                 sm.executeUpdate(sql);
             }
+            con.close();
+            sm.close();
         }catch (Exception e){
             e.printStackTrace();
         }

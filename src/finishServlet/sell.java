@@ -22,6 +22,9 @@ public class sell extends HttpServlet {
     public ResultSet rs = null;
     public String sql = null;
     public String m_id = null;
+    public String gp_CT = null;
+    public String gp_ON = null;
+    public String gp_FI = null;
     public String gp_OP = null;
     public String gp_NP = null;
     public int gp_NM = 0;
@@ -35,16 +38,17 @@ public class sell extends HttpServlet {
         Connection con = JDBCUtil.getConnection();
         try {
             sm = con.createStatement();
-            sql = "select gp_OP,gp_NP,gp_NM,username from gp_ordermanagement where gp_OI='"+ m_id +"'";
+            sql = "select * from gp_ordermanagement where gp_OI='"+ m_id +"'";
             rs = sm.executeQuery(sql);
             while (rs.next()){
+                gp_CT = rs.getString("gp_CT");
+                gp_ON = rs.getString("gp_ON");
+                gp_FI = rs.getString("gp_FI");
                 gp_OP = rs.getString("gp_OP");
                 gp_NP = rs.getString("gp_NP");
                 username = rs.getString("username");
                 gp_NM = rs.getInt("gp_NM");
             }
-            sql = "delete from gp_ordermanagement where gp_OI='"+ m_id +"'";
-            sm.executeUpdate(sql);
             Double gp_op = Double.parseDouble(gp_OP);
             Double gp_np = Double.parseDouble(gp_NP);
             int money = (int)(gp_np * gp_NM);
@@ -72,6 +76,12 @@ public class sell extends HttpServlet {
                 data.put("msg","亏了" + -1 * yingkui);
                 out.print(data);
             }
+            sql = "insert into gp_ordermanagement_history(gp_OI,gp_FI,gp_CT,gp_ON,gp_OP,gp_NM,username,yingkui) values('"
+                    + m_id + "','" + gp_FI + "','" + gp_CT +"','" + gp_ON +"','" + gp_OP +"','" + gp_NM +"','" + username +"'" +
+                    ",'" + yingkui + "')";
+            sm.executeUpdate(sql);
+            sql = "delete from gp_ordermanagement where gp_OI='"+ m_id +"'";
+            sm.executeUpdate(sql);
             rs.close();
             sm.close();
             con.close();

@@ -63,8 +63,17 @@
         <url-pattern>/sell</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>getWeatherServlet</servlet-name>
+        <servlet-class>deal.getData.getWeatherServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getWeatherServlet</servlet-name>
+        <url-pattern>/getWeatherServlet</url-pattern>
+    </servlet-mapping>
+
     <listener>
-        <listener-class>listener.GetGPListener</listener-class>
+        <listener-class>listener.GetListener</listener-class>
     </listener>
 
 </web-app>
