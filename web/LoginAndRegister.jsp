@@ -73,11 +73,11 @@
 		<div class="form-group">
 			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 			<label class="control-label visible-ie8 visible-ie9">Username</label>
-			<input id="login-username" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="login_username" />
+			<input id="login-username" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username(管理员账号：admin)" name="login_username" />
 		</div>
 		<div class="form-group">
 			<label class="control-label visible-ie8 visible-ie9">Password</label>
-			<input id="login-password" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="login_password" />
+			<input id="login-password" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password(管理员密码：12345678)" name="login_password" />
 		</div>
 		<div class="form-actions">
 			<button id="login-submit-btn" type="button" class="btn btn-success uppercase">Login</button>

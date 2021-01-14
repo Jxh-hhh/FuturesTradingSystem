@@ -271,22 +271,20 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="col-md-2 control-label">请输入充值额度: </label>
+                                                    <label class="col-md-2 control-label">请输入充值/提现额度: </label>
                                                     </label>
                                                     <div class="col-md-10">
                                                         <input id="input_money" name="input_money" type="text" class="form-control" placeholder="">
                                                     </div>
                                                     <div align="center" style="margin-top: 50px">
-                                                        <button type="submit" name="submit_btn" onclick="deposit_ok()">提交</button>
+                                                        <button class="btn-circle-left" type="submit" name="submit_btn" onclick="deposit_ok('1')">充值</button>
+                                                        <button class="btn-circle-right" type="submit" name="submit_btn" onclick="deposit_ok('2')">提现</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div name="deposit_ok" class="tabbable" style="display: none">
-                                充值成功！
                             </div>
                         </div>
                     </form>

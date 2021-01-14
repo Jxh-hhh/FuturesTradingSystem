@@ -15,6 +15,7 @@
 <%@page language="java"
         import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
+<%@ page import="deal.util.JDBCUtil" %>
 <jsp:useBean id="usershow" scope="page" class="deal.daoimpl.usershowImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
 <<<<<<< HEAD
@@ -333,7 +334,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                 int pageSize = 15;
                                 int totalPage = 0;
                                 totalPage = pg.getTotalPage(pageSize);
-
+                                Connection con = JDBCUtil.getConnection();
+                                Statement sm = con.createStatement();
+                                String sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) WHERE (SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) IS NULL";
+                                sm.executeUpdate(sql);
+                                sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) WHERE (SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) IS NULL";
+                                sm.executeUpdate(sql);
+                                sm.close();
+                                con.close();
                                 int prePage = start - 1 >= 0 ? start - 1 : start + 1;
                                 int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
                                 request.setAttribute("totalPage", totalPage);
