@@ -1,10 +1,4 @@
 #输出
 /out/
-#模板
-/web/templates/
-/web/assets/
-/web/sass/
-#数据库代码不修改
-/src/deal/util/
 #class后缀文件不上传
 *.class
