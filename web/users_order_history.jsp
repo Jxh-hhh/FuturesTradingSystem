@@ -1,6 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: jxh
+  Date: 2021-01-13
+  Time: 17:29
+  To change this template use File | Settings | File Templates.
+--%>
+<%--
+  Created by IntelliJ IDEA.
+  User: jxh
   Date: 2020/11/8
   Time: 15:46
   To change this template use File | Settings | File Templates.
@@ -8,7 +15,7 @@
 <%@page language="java"
         import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="order" scope="page" class="deal.daoimpl.orderImpl"/>
+<jsp:useBean id="order_history" scope="page" class="deal.daoimpl.order_historyImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
 
 <%
@@ -183,11 +190,11 @@ License: You must have a valid license purchased only from themeforest(the above
                         <%--					<span class="arrow"></span>--%>
                     </a>
                 </li>
-                <li>
+                <li class="active open">
                     <a href="javascript:;">
                         <i class="icon-user"></i>
                         <span class="title">个人信息</span>
-                        <span class="arrow"></span>
+                        <span class="arrow open"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
@@ -201,16 +208,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </li>
                     </ul>
                 </li>
-                <li class="active open">
-                    <a href="javascript:;"> <i class="icon-users"></i>
-                        <span class="title">后台管理</span>
-                        <span class="arrow open"></span>
-                    </a>
-                    <ul class="sub-menu">
-                        <li><a href="users_management.jsp">用户管理</a></li>
-                        <li><a href="buy_management.jsp">订单管理</a></li>
-                        <li><a href="buy_management_history.jsp">历史订单管理</a></li>
-                    </ul>
+                <li id="menu_admin">
                 </li>
 
             </ul>
@@ -264,174 +262,175 @@ License: You must have a valid license purchased only from themeforest(the above
                     <a href="#">订单管理</a>
                 </li>
             </ul>
-                <!-- END PAGE TITLE -->
-                <div class="portlet light ">
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="icon-basket font-green-sharp"></i>
-                            <span class="caption-subject font-green-sharp bold uppercase">订单信息列表</span>
-                            <span class="caption-helper"></span>
-                        </div>
-                        <div class="actions">
-                            <a href="javascript:;" class="btn btn-circle btn-default">
-                                <i class="fa fa-plus"></i>
-                                <span class="hidden-480">新增订单</span>
-                            </a>
-                            <a href="javascript:;" class="btn btn-circle btn-default">
-                                <i class="fa fa-minus"></i>
-                                <span class="hidden-480">删除订单</span>
-                            </a>
-                            <div class="btn-group">
-                                <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">
-                                    <i class="fa fa-share"></i>
-                                    <span class="hidden-480">工具 </span>
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="dropdown-menu pull-right">
-                                    <li>
-                                        <a href="javascript:;" onclick="window.open('exportExcel.jsp')">导出到excel </a>
-                                    </li>
-                                    <li class="divider">
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;" id="buyManagement" onclick="jumpToPrint(id)" >打印 </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+            <!-- END PAGE TITLE -->
+            <div class="portlet light ">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-basket font-green-sharp"></i>
+                        <span class="caption-subject font-green-sharp bold uppercase">订单信息列表</span>
+                        <span class="caption-helper"></span>
                     </div>
-                    <div class="portlet-body">
-                        <div class="row number-stats margin-bottom-30"></div>
-                        <div class="table-scrollable table-scrollable-borderless">
-                            <table class="table table-hover table-light">
-                                <thead>
-                                <tr class="uppercase">
-                                    <th>订单号</th>
-                                    <th>期货编号</th>
-                                    <th>开仓价</th>
-                                    <th>最新价</th>
-                                    <th>创建时间</th>
-                                    <th>数量</th>
-                                    <th>用户名</th>
-                                </tr>
-                                </thead>
-                                <%
-                                    request.setCharacterEncoding("UTF-8");
-                                    int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
-
-
-                                    int pageSize = 15;
-                                    int totalPage = 0;
-                                    totalPage = pg.getTotalPage(pageSize);
-
-                                    int prePage = start - 1 >= 0 ? start - 1 : start + 1;
-                                    int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
-                                    request.setAttribute("totalPage", totalPage);
-                                    request.setAttribute("prePage", prePage);
-                                    request.setAttribute("nextPage", nextPage);
-                                    Page pg1 = new Page(start, pageSize);
-                                    List<order> currentOrder = (List<order>) order.queryOrderByPage(pg1);
-                                    //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-                                    for (order u : currentOrder){
-                                %>
-                                <tr>
-                                    <td><%=u.getorder_OI()%>
-                                    </td>
-                                    <td><%=u.getorder_FI()%>
-                                    </td>
-                                    <td><%=u.getorder_OP()%>
-                                    </td>
-                                    <td><%=u.getorder_NP()%>
-                                    </td>
-                                    <td><%=u.getorder_CT()%>
-                                    </td>
-                                    <td><%=u.getorder_NM()%>
-                                    </td>
-                                    <td><%=u.getUsername()%>
-                                    </td>
-                                </tr>
-                                <%
-                                        }
-                                %>
-
-                            </table>
-                            <nav>
-                                <ul class="pagination">
-                                    <li><a href="buy_management.jsp?start=0"> <span>首页</span>
-                                    </a></li>
-                                    <li><a href="buy_management.jsp?start=${requestScope.prePage }">
-                                        <span>上一页</span>
-                                    </a></li>
-                                    <li><a href="buy_management.jsp?start=${requestScope.nextPage }">
-                                        <span>下一页</span>
-                                    </a></li>
-                                    <li><a
-                                            href="buy_management.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
-                                    </a></li>
-                                </ul>
-                            </nav>
+                    <div class="actions">
+                        <a href="javascript:;" class="btn btn-circle btn-default">
+                            <i class="fa fa-plus"></i>
+                            <span class="hidden-480">新增订单</span>
+                        </a>
+                        <a href="javascript:;" class="btn btn-circle btn-default">
+                            <i class="fa fa-minus"></i>
+                            <span class="hidden-480">删除订单</span>
+                        </a>
+                        <div class="btn-group">
+                            <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">
+                                <i class="fa fa-share"></i>
+                                <span class="hidden-480">工具 </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li>
+                                    <a href="javascript:;" onclick="window.open('exportExcelUOH.jsp')">导出到excel </a>
+                                </li>
+                                <li class="divider">
+                                </li>
+                                <li>
+                                    <a href="javascript:;" id="buyManagement" onclick="jumpToPrint(id)" >打印 </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-        </div>
-    </div>
-        <!-- END CONTENT -->
-    </div>
-    <!-- END CONTAINER -->
-    <!-- BEGIN FOOTER -->
-    <div class="page-footer">
-        <div class="page-footer-inner">
-            2020 &copy; XM20期货交易系统
-        </div>
-        <div class="scroll-to-top">
-            <i class="icon-arrow-up"></i>
-        </div>
-    </div>
-    <!-- END FOOTER -->
-    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-    <!-- BEGIN CORE PLUGINS -->
-    <!--[if lt IE 9]>
-    <script src="assets/global/plugins/respond.min.js"></script>
-    <script src="assets/global/plugins/excanvas.min.js"></script>
-    <![endif]-->
-    <script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
-    <!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-    <script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-    <script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
-    <script type="text/javascript" src="assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-    <script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
-    <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
-    <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
-    <script src="assets/global/scripts/datatable.js"></script>
-    <script src="assets/admin/pages/scripts/ecommerce-orders.js"></script>
-    <!-- END PAGE LEVEL SCRIPTS -->
-    <script src="js/global/initializePage.js" type="text/javascript"></script>
-    <script src="js/buy_management.js" type="text/javascript"></script>
-    <script src="js/global/Printing.js" type="text/javascript"></script>
-    <script>
-        jQuery(document).ready(function() {
-            Metronic.init(); // init metronic core components
-            Layout.init(); // init current layout
-            Demo.init(); // init demo features
-            EcommerceOrders.init();
-        });
-    </script>
+                <div class="portlet-body">
+                    <div class="row number-stats margin-bottom-30"></div>
+                    <div class="table-scrollable table-scrollable-borderless">
+                        <table class="table table-hover table-light">
+                            <thead>
+                            <tr class="uppercase">
+                                <th>订单号</th>
+                                <th>期货编号</th>
+                                <th>开仓价</th>
+                                <th>最新价</th>
+                                <th>创建时间</th>
+                                <th>数量</th>
+                                <th>盈亏</th>
+                            </tr>
+                            </thead>
+                            <%
+                                request.setCharacterEncoding("UTF-8");
+                                int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
 
-    <!-- END JAVASCRIPTS -->
+
+                                int pageSize = 15;
+                                int totalPage = 0;
+                                totalPage = pg.getTotalPage(pageSize);
+
+                                int prePage = start - 1 >= 0 ? start - 1 : start + 1;
+                                int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
+                                request.setAttribute("totalPage", totalPage);
+                                request.setAttribute("prePage", prePage);
+                                request.setAttribute("nextPage", nextPage);
+                                Page pg1 = new Page(start, pageSize);
+                                List<order_history> currentOrder = (List<order_history>) order_history.queryOrderByPage(pg1);
+                                //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
+                                for (order_history u : currentOrder)if(u.getUsername().equals(name)){
+                            %>
+                            <tr>
+                                <td><%=u.getorder_OI()%>
+                                </td>
+                                <td><%=u.getorder_FI()%>
+                                </td>
+                                <td><%=u.getorder_OP()%>
+                                </td>
+                                <td><%=u.getorder_NP()%>
+                                </td>
+                                <td><%=u.getorder_CT()%>
+                                </td>
+                                <td><%=u.getorder_NM()%>
+                                </td>
+                                <td>
+                                    <%=u.getYingkui()%>
+                                </td>
+                            </tr>
+                            <%
+                                }
+                            %>
+
+                        </table>
+                        <nav>
+                            <ul class="pagination">
+                                <li><a href="buy_management_history.jsp?start=0"> <span>首页</span>
+                                </a></li>
+                                <li><a href="buy_management_history.jsp?start=${requestScope.prePage }">
+                                    <span>上一页</span>
+                                </a></li>
+                                <li><a href="buy_management_history.jsp?start=${requestScope.nextPage }">
+                                    <span>下一页</span>
+                                </a></li>
+                                <li><a
+                                        href="buy_management_history.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+                                </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END CONTENT -->
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<div class="page-footer">
+    <div class="page-footer-inner">
+        2020 &copy; XM20期货交易系统
+    </div>
+    <div class="scroll-to-top">
+        <i class="icon-arrow-up"></i>
+    </div>
+</div>
+<!-- END FOOTER -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script src="assets/global/plugins/respond.min.js"></script>
+<script src="assets/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<script src="assets/global/plugins/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE PLUGINS -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<script type="text/javascript" src="assets/global/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
+<script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
+<script src="assets/global/scripts/datatable.js"></script>
+<script src="assets/admin/pages/scripts/ecommerce-orders.js"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+<script src="js/global/initializePage.js" type="text/javascript"></script>
+<script src="js/buy_management.js" type="text/javascript"></script>
+<script src="js/global/Printing.js" type="text/javascript"></script>
+<script>
+    jQuery(document).ready(function() {
+        Metronic.init(); // init metronic core components
+        Layout.init(); // init current layout
+        Demo.init(); // init demo features
+        EcommerceOrders.init();
+    });
+</script>
+
+<!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
 </html>

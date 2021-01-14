@@ -8,7 +8,7 @@
 <%@page language="java"
         import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="order" scope="page" class="deal.daoimpl.orderImpl"/>
+<jsp:useBean id="order_history" scope="page" class="deal.daoimpl.order_historyImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
 
 <%
@@ -209,7 +209,6 @@ License: You must have a valid license purchased only from themeforest(the above
                     <ul class="sub-menu">
                         <li><a href="users_management.jsp">用户管理</a></li>
                         <li><a href="buy_management.jsp">订单管理</a></li>
-                        <li><a href="buy_management_history.jsp">历史订单管理</a></li>
                     </ul>
                 </li>
 
@@ -313,6 +312,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <th>创建时间</th>
                                     <th>数量</th>
                                     <th>用户名</th>
+                                    <th>盈亏</th>
                                 </tr>
                                 </thead>
                                 <%
@@ -330,9 +330,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                     request.setAttribute("prePage", prePage);
                                     request.setAttribute("nextPage", nextPage);
                                     Page pg1 = new Page(start, pageSize);
-                                    List<order> currentOrder = (List<order>) order.queryOrderByPage(pg1);
+                                    List<order_history> currentOrder = (List<order_history>) order_history.queryOrderByPage(pg1);
                                     //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-                                    for (order u : currentOrder){
+                                    for (order_history u : currentOrder){
                                 %>
                                 <tr>
                                     <td><%=u.getorder_OI()%>
@@ -349,6 +349,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </td>
                                     <td><%=u.getUsername()%>
                                     </td>
+                                    <td><%=u.getYingkui()%></td>
                                 </tr>
                                 <%
                                         }
