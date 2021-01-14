@@ -1,8 +1,10 @@
 <%@page language="java"
         import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
+<%@ page import="deal.util.JDBCUtil" %>
 <jsp:useBean id="gp" scope="page" class="deal.daoimpl.GpDaoImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
+<jsp:useBean id="weather" scope="page" class="deal.getData.getWeatherData"/>
 
 <%
     //判断是否未登录，用的session判断，可用filter，之后再说
@@ -321,9 +323,20 @@
                         <div class="display">
                             <div class="number">
                                 <h3 class="font-green-sharp">
-                                    7800<small class="font-green-sharp">$</small>
+                                    <%
+                                        Connection con = JDBCUtil.getConnection();
+                                        Statement sm = con.createStatement();
+                                        String sql = "select money from users where username='" + name + "'";
+                                        ResultSet rs = sm.executeQuery(sql);
+                                        int money = 0;
+                                        while(rs.next()){
+                                            money = rs.getInt("money");
+                                        }
+                                    %>
+                                    <%=money%>
+                                    <small class="font-green-sharp">$</small>
                                 </h3>
-                                <small>TOTAL PROFIT</small>
+                                <small>账户余额</small>
                             </div>
                             <div class="icon">
                                 <i class="icon-pie-chart"></i>
@@ -347,8 +360,18 @@
                     <div class="dashboard-stat2">
                         <div class="display">
                             <div class="number">
-                                <h3 class="font-red-haze">1349</h3>
-                                <small>NEW FEEDBACKS</small>
+                                <%
+                                    sql = "select sum(yingkui) yk from gp_ordermanagement_history where username='"+name+"'";
+                                    rs = sm.executeQuery(sql);
+                                    Double yingkui = null;
+                                    while (rs.next()){
+                                        yingkui = rs.getDouble("yk");
+                                    }
+                                %>
+                                <h3 class="font-red-haze"><%=yingkui%>
+                                    <small class="font-red-haze">$</small>
+                                </h3>
+                                <small>总盈亏</small>
                             </div>
                             <div class="icon">
                                 <i class="icon-like"></i>
@@ -372,8 +395,18 @@
                     <div class="dashboard-stat2">
                         <div class="display">
                             <div class="number">
-                                <h3 class="font-blue-sharp">567</h3>
-                                <small>NEW ORDERS</small>
+                                <h3 class="font-blue-sharp">
+                                    <%
+                                        sql = "select count(*) count from gp_ordermanagement where username='"+name+"'";
+                                        rs = sm.executeQuery(sql);
+                                        int count_o = 0;
+                                        while (rs.next()){
+                                            count_o = rs.getInt("count");
+                                        }
+                                    %>
+                                    <%=count_o%>
+                                </h3>
+                                <small>订单数</small>
                             </div>
                             <div class="icon">
                                 <i class="icon-basket"></i>
@@ -397,8 +430,18 @@
                     <div class="dashboard-stat2">
                         <div class="display">
                             <div class="number">
-                                <h3 class="font-purple-soft">276</h3>
-                                <small>NEW USERS</small>
+                                <h3 class="font-purple-soft">
+                                    <%
+                                        sql = "select count(*) count from gp_ordermanagement_history where username='"+name+"'";
+                                        rs = sm.executeQuery(sql);
+                                        int count_oh = 0;
+                                        while (rs.next()){
+                                            count_oh = rs.getInt("count");
+                                        }
+                                    %>
+                                    <%=count_oh%>
+                                </h3>
+                                <small>历史订单数</small>
                             </div>
                             <div class="icon">
                                 <i class="icon-user"></i>

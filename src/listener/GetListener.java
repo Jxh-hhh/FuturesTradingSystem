@@ -57,16 +57,6 @@ public class GetListener implements ServletContextListener,
             }
         }, defaultdate,  60 * 1000);// 定时每1min
 
-        Timer hTimer = new Timer();
-        hTimer.schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-                // TODO 写你的逻辑
-                getWeatherData.getWeatherToDB();
-                System.out.println("每3h运行一次");
-            }
-        }, defaultdate,  3 * 60 * 60 * 1000);// 定时每3h运行一次
     }
 
     public void contextDestroyed(ServletContextEvent sce) {

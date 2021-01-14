@@ -8,6 +8,7 @@
 <%@page language="java"
         import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
+<%@ page import="deal.util.JDBCUtil" %>
 <jsp:useBean id="order" scope="page" class="deal.daoimpl.orderImpl"/>
 <jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
 
@@ -329,6 +330,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                     request.setAttribute("totalPage", totalPage);
                                     request.setAttribute("prePage", prePage);
                                     request.setAttribute("nextPage", nextPage);
+                                    Connection con = JDBCUtil.getConnection();
+                                    Statement sm = con.createStatement();
+                                    String sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) WHERE (SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) IS NULL";
+                                    sm.executeUpdate(sql);
+                                    sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) WHERE (SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) IS NULL";
+                                    sm.executeUpdate(sql);
+                                    sm.close();
+                                    con.close();
                                     Page pg1 = new Page(start, pageSize);
                                     List<order> currentOrder = (List<order>) order.queryOrderByPage(pg1);
                                     //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
