@@ -1,23 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: jxh
-  Date: 2021-01-13
-  Time: 17:29
+  Date: 2021-01-17
+  Time: 3:16
   To change this template use File | Settings | File Templates.
 --%>
-<%--
-  Created by IntelliJ IDEA.
-  User: jxh
-  Date: 2020/11/8
-  Time: 15:46
-  To change this template use File | Settings | File Templates.
---%>
-<%@page language="java"
-        import="java.util.*,java.sql.*,tools.entity.*,tools.dao.*,tools.daoimpl.*"
-        contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="order_history" scope="page" class="tools.daoimpl.order_historyImpl"/>
-<jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="java.sql.*,java.io.*"%>
+<%@ page import="tools.util.JDBCUtil" %>
 <%
     //判断是否未登录，用的session判断，可用filter，之后再说
     String name=(String)session.getAttribute("loginUsername");
@@ -64,6 +54,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css" href="assets/global/plugins/select2/select2.css"/>
     <link rel="stylesheet" type="text/css" href="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css"/>
+    <link href="assets/global/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet" type="text/css"/>
     <!-- END PAGE LEVEL STYLES -->
     <!-- BEGIN THEME STYLES -->
     <link href="assets/global/css/components-rounded.css" id="style_components" rel="stylesheet" type="text/css"/>
@@ -86,6 +78,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo " onload="initPage('<%=authority%>','<%=name%>')">
+
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
@@ -193,10 +186,10 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                 </li>
                 <li class="active open">
-                    <a href="javascript:;">
+                    <a href="">
                         <i class="icon-user"></i>
                         <span class="title">个人信息</span>
-                        <span class="arrow open"></span>
+                        <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
                         <li>
@@ -215,12 +208,10 @@ License: You must have a valid license purchased only from themeforest(the above
                 </li>
                 <li id="menu_admin">
                 </li>
-
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>
     </div>
-
     <!-- END SIDEBAR -->
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
@@ -247,154 +238,91 @@ License: You must have a valid license purchased only from themeforest(the above
             </div>
             <!-- /.modal -->
             <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-            <!-- BEGIN PAGE HEADER-->
-            <!-- BEGIN PAGE HEAD -->
-            <div class="page-head">
-                <div class="page-title">
-                    <h1>历史订单管理 <small>订单信息列表</small></h1>
-                </div>
-            </div>
-            <ul class="page-breadcrumb breadcrumb">
-                <li>
-                    <a href="index.jsp">主页</a>
-                    <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <a href="#">个人信息</a>
-                    <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <a href="#">历史订单管理</a>
-                </li>
-            </ul>
-            <!-- END PAGE TITLE -->
-            <div class="portlet light ">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="icon-basket font-green-sharp"></i>
-                        <span class="caption-subject font-green-sharp bold uppercase">订单信息列表</span>
-                        <span class="caption-helper"></span>
-                    </div>
-                    <div class="actions">
-                        <a href="futures_menu.jsp" class="btn btn-circle btn-default">
-                            <i class="fa fa-plus"></i>
-                            <span class="hidden-480">新增订单</span>
-                        </a>
-                        <div class="btn-group">
-                            <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">
-                                <i class="fa fa-share"></i>
-                                <span class="hidden-480">工具 </span>
-                                <i class="fa fa-angle-down"></i>
-                            </a>
-                            <ul class="dropdown-menu pull-right">
-                                <li>
-                                    <a href="javascript:;" onclick="window.open('exportExcelUOH.jsp')">导出到excel </a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="javascript:;" id="buyManagement" onclick="jumpToPrint(id)" >打印 </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="portlet-body">
-                    <div class="row number-stats margin-bottom-30"></div>
-                    <div class="table-scrollable table-scrollable-borderless">
-                        <table class="table table-hover table-light">
-                            <thead>
-                            <tr class="uppercase">
-                                <th>订单号</th>
-                                <th>期货编号</th>
-                                <th>期货名称</th>
-                                <th>开仓价</th>
-                                <th>卖出价</th>
-                                <th>创建时间</th>
-                                <th>数量</th>
-                                <th>盈亏</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
+            <!-- BEGIN PAGE CONTENT-->
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="form_deposit"class="form-horizontal form-row-seperated" action="">
+                        <div class="portlet light">
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="icon-basket font-green-sharp"></i>
+                                    <span>充值</span>
+                                </div>
+                                <div class="actions btn-set">
+                                    <div class="btn-group">
+                                    </div>
+                                </div>
+                            </div>
                             <%
-                                request.setCharacterEncoding("UTF-8");
-                                int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
-
-
-                                int pageSize = 15;
-                                int totalPage = 0;
-                                totalPage = pg.getTotalPage(pageSize);
-
-                                int prePage = start - 1 >= 0 ? start - 1 : start + 1;
-                                int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
-                                request.setAttribute("totalPage", totalPage);
-                                request.setAttribute("prePage", prePage);
-                                request.setAttribute("nextPage", nextPage);
-                                Page pg1 = new Page(start, pageSize);
-                                List<order_history> currentOrder = (List<order_history>) order_history.queryOrderByPage(pg1);
-                                //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-                                for (order_history u : currentOrder)if(u.getUsername().equals(name)){
-                            %>
-                            <tr>
-                                <td><%=u.getorder_OI()%>
-                                </td>
-                                <td><%=u.getorder_FI()%>
-                                </td>
-                                <td><%=u.getorder_ON()%>
-                                </td>
-                                <td><%=u.getorder_OP()%>
-                                </td>
-                                <td><%=u.getorder_NP()%>
-                                </td>
-                                <td><%=u.getorder_CT()%>
-                                </td>
-                                <td><%=u.getorder_NM()%>
-                                </td>
-                                <td>
-                                    <%=u.getYingkui()%>
-                                </td>
-                                <td>
-                                    <button onclick="delete_order(<%=u.getorder_OI()%>)">删除</button>
-                                </td>
-                            </tr>
-                            <%
+                                Connection con = JDBCUtil.getConnection();
+                                Statement stat = con.createStatement();
+                                String sql = "select * from users where username = " + " '" + name + "'";
+                                ResultSet rs = stat.executeQuery(sql);
+                                int money = 99999;
+                                // TODO 获取用户所有信息，填入下方input中
+                                while(rs.next())
+                                {
+                                    money = rs.getInt("money");
                                 }
                             %>
-
-                        </table>
-                        <nav>
-                            <ul class="pagination">
-                                <li><a href="buy_management_history.jsp?start=0"> <span>首页</span>
-                                </a></li>
-                                <li><a href="buy_management_history.jsp?start=${requestScope.prePage }">
-                                    <span>上一页</span>
-                                </a></li>
-                                <li><a href="buy_management_history.jsp?start=${requestScope.nextPage }">
-                                    <span>下一页</span>
-                                </a></li>
-                                <li><a
-                                        href="buy_management_history.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
-                                </a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                            <div class="portlet-body">
+                                <div id="deposit" class="tabbable">
+                                    <div class="tab-content no-space">
+                                        <div class="tab-pane active" id="tab_general">
+                                            <div class="form-body">
+                                                <div class="form-group" >
+                                                    <label class="col-md-2 control-label">您的id为: </label>
+                                                    <div class="col-md-10">
+                                                        <input id="user_id" name="remain_money" class="form-control"readonly="readonly" value='<%=money%>'>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" >
+                                                    <label class="col-md-2 control-label">您的用户名为: </label>
+                                                    <div class="col-md-10">
+                                                        <input id="username" name="Username" class="form-control" value='<%=name%>'>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" >
+                                                    <label class="col-md-2 control-label">您的密码为:(如要修改请去登录界面) </label>
+                                                    <div class="col-md-10">
+                                                        <input id="password" name="Username" class="form-control" readonly="readonly" value='<%=name%>'>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" >
+                                                    <label class="col-md-2 control-label">您的创建时间为:</label>
+                                                    <div class="col-md-10">
+                                                        <input id="createtime" name="Username" class="form-control" readonly="readonly" value='<%=name%>'>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" >
+                                                    <label class="col-md-2 control-label">您的余额为:(如要充值提现，请去资产管理)</label>
+                                                    <div class="col-md-10">
+                                                        <input id="remain_money" name="remain_money" class="form-control" readonly="readonly" value='<%=money%>'>
+                                                    </div>
+                                                </div>
+                                                    <div align="center" style="margin-top: 50px">
+                                                        <%
+                                                            // TODO update_user()这个函数在用户管理中也有，参数为用户名，密码，权限。和那玩意用一个函数，用一个servlet（虽然这个只能修改用户名hhh）
+                                                        %>
+                                                        <button onclick="update_user()">修改您的用户名</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END CONTENT -->
 </div>
+
+
+<!-- END CONTENT -->
 <!-- END CONTAINER -->
-<!-- BEGIN FOOTER -->
-<div class="page-footer">
-    <div class="page-footer-inner">
-        2020 &copy; XM20期货交易系统
-    </div>
-    <div class="scroll-to-top">
-        <i class="icon-arrow-up"></i>
-    </div>
-</div>
-<!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 <!-- BEGIN CORE PLUGINS -->
 <!--[if lt IE 9]>
@@ -418,36 +346,43 @@ License: You must have a valid license purchased only from themeforest(the above
 <script type="text/javascript" src="assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
 <script type="text/javascript" src="assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+<script src="assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script>
+<script type="text/javascript" src="assets/global/plugins/fancybox/source/jquery.fancybox.pack.js"></script>
+<script src="assets/global/plugins/plupload/js/plupload.full.min.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script src="assets/global/scripts/metronic.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/layout.js" type="text/javascript"></script>
 <script src="assets/admin/layout4/scripts/demo.js" type="text/javascript"></script>
 <script src="assets/global/scripts/datatable.js"></script>
-<script src="assets/admin/pages/scripts/ecommerce-orders.js"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
+<script src="assets/admin/pages/scripts/ecommerce-products-edit.js"></script>
 <script src="js/global/initializePage.js" type="text/javascript"></script>
-<script src="js/buy_management.js" type="text/javascript"></script>
-<script src="js/global/Printing.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL SCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>
+<script type="text/javascript" src="js/global/getUrlParam.js"></script>
+<script type="text/javascript" src="js/users_money.js"></script>
 <script>
     jQuery(document).ready(function() {
         Metronic.init(); // init metronic core components
         Layout.init(); // init current layout
         Demo.init(); // init demo features
-        EcommerceOrders.init();
+        EcommerceProductsEdit.init();
     });
 </script>
-
 <!-- END JAVASCRIPTS -->
-</body>
-<!-- END BODY -->
-</html>
 <script type="text/javascript">
-    function delete_order(order_id){
+
+    function update_user(username, password, authority){
         $.ajax({
-            url:'delete_order_history',
+            url:'update_user',
             data:{
-                "order_id": order_id
+                "username": username,
+                "password": password,
+                "authority": authority
             },
             type:'post',
             data_type:'json',
@@ -461,3 +396,4 @@ License: You must have a valid license purchased only from themeforest(the above
         });
     }
 </script>
+

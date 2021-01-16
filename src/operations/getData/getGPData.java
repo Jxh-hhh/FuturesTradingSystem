@@ -87,9 +87,11 @@ public class getGPData {
                 url = url + code[i];
                 String data = getReturnData(url, "gb2312");
                 String[] gpData = getGPData(data);
-                String sql = "replace into " + tableName + "(gp_id, gp_name, gp_price_today, gp_price_yesterday, gp_price_current, gp_price_MAX, gp_price_MIN) values('"
-                        + code[i] + "','" + gpData[0] + "','" + gpData[1] + "','" + gpData[2] + "','" + gpData[3] + "','" + gpData[4]+ "','" + gpData[5] + "')";
-                sm.executeUpdate(sql);
+                if(gpData.length > 2) {
+                    String sql = "replace into " + tableName + "(gp_id, gp_name, gp_price_today, gp_price_yesterday, gp_price_current, gp_price_MAX, gp_price_MIN) values('"
+                            + code[i] + "','" + gpData[0] + "','" + gpData[1] + "','" + gpData[2] + "','" + gpData[3] + "','" + gpData[4] + "','" + gpData[5] + "')";
+                    sm.executeUpdate(sql);
+                }
             }
             con.close();
             sm.close();

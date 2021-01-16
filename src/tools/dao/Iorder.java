@@ -8,4 +8,5 @@ import tools.entity.Page;
 
 public interface Iorder {
     public List<order> queryOrderByPage(Page page) throws SQLException;
+    public void delete(String order_id);
 }

@@ -13,6 +13,8 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @WebServlet(name = "sell")
 public class sell extends HttpServlet {
@@ -75,6 +77,8 @@ public class sell extends HttpServlet {
                 data.put("msg","亏了" + -1 * yingkui);
                 out.print(data);
             }
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+            gp_CT = df.format(new Date());
             sql = "insert into gp_ordermanagement_history(gp_OI,gp_FI,gp_CT,gp_ON,gp_OP,gp_NM,username,yingkui) values('"
                     + m_id + "','" + gp_FI + "','" + gp_CT +"','" + gp_ON +"','" + gp_OP +"','" + gp_NM +"','" + username +"'" +
                     ",'" + yingkui + "')";

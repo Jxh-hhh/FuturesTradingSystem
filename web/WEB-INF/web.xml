@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app>
+    <welcome-file-list>
+        <welcome-file>LoginAndRegister.jsp</welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>sendMailServlet</servlet-name>
         <servlet-class>operations.LoginAndRegister.sendMail.sendMailServlet</servlet-class>
@@ -70,6 +73,15 @@
     <servlet-mapping>
         <servlet-name>getWeatherServlet</servlet-name>
         <url-pattern>/getWeatherServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>delete_order_history</servlet-name>
+        <servlet-class>operations.trade.delete_order_history</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>delete_order_history</servlet-name>
+        <url-pattern>/delete_order_history</url-pattern>
     </servlet-mapping>
 
     <listener>

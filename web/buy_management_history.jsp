@@ -130,6 +130,9 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li><a href="users_order.jsp"> <i class="icon-envelope-open"></i>
                                 我的订单
                             </a></li>
+                            <li><a href="users_information.jsp"> <i class="icon-envelope-open"></i>
+                                我的信息
+                            </a></li>
                             <li class="divider"></li>
                             <li>
                                 <a href="LoginAndRegister.jsp"><i class="icon-key"></i> 注销 </a>
@@ -190,6 +193,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     </a>
                     <ul class="sub-menu">
                         <li>
+                            <a href="users_information.jsp">个人信息</a>
+                        </li>
+                        <li>
                             <a href="users_money.jsp">资产管理</a>
                         </li>
                         <li>
@@ -208,6 +214,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <ul class="sub-menu">
                         <li><a href="users_management.jsp">用户管理</a></li>
                         <li><a href="buy_management.jsp">订单管理</a></li>
+                        <li><a href="buy_management_history.jsp">历史订单管理</a></li>
                     </ul>
                 </li>
 
@@ -246,7 +253,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN PAGE HEAD -->
             <div class="page-head">
                 <div class="page-title">
-                    <h1>订单管理 <small>订单信息列表</small></h1>
+                    <h1>历史订单管理 <small>订单信息列表</small></h1>
                 </div>
             </div>
             <ul class="page-breadcrumb breadcrumb">
@@ -259,7 +266,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
-                    <a href="#">订单管理</a>
+                    <a href="#">历史订单管理</a>
                 </li>
             </ul>
                 <!-- END PAGE TITLE -->
@@ -271,13 +278,9 @@ License: You must have a valid license purchased only from themeforest(the above
                             <span class="caption-helper"></span>
                         </div>
                         <div class="actions">
-                            <a href="javascript:;" class="btn btn-circle btn-default">
+                            <a href="futures_menu.jsp" class="btn btn-circle btn-default">
                                 <i class="fa fa-plus"></i>
                                 <span class="hidden-480">新增订单</span>
-                            </a>
-                            <a href="javascript:;" class="btn btn-circle btn-default">
-                                <i class="fa fa-minus"></i>
-                                <span class="hidden-480">删除订单</span>
                             </a>
                             <div class="btn-group">
                                 <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">
@@ -306,12 +309,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <tr class="uppercase">
                                     <th>订单号</th>
                                     <th>期货编号</th>
+                                    <th>期货名称</th>
                                     <th>开仓价</th>
-                                    <th>最新价</th>
+                                    <th>卖出价</th>
                                     <th>创建时间</th>
                                     <th>数量</th>
                                     <th>用户名</th>
                                     <th>盈亏</th>
+                                    <th>操作</th>
                                 </tr>
                                 </thead>
                                 <%
@@ -338,6 +343,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                     </td>
                                     <td><%=u.getorder_FI()%>
                                     </td>
+                                    <td><%=u.getorder_ON()%>
+                                    </td>
                                     <td><%=u.getorder_OP()%>
                                     </td>
                                     <td><%=u.getorder_NP()%>
@@ -349,6 +356,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <td><%=u.getUsername()%>
                                     </td>
                                     <td><%=u.getYingkui()%></td>
+                                    <td>
+                                        <button onclick="delete_order(<%=u.getorder_OI()%>)">删除</button>
+                                    </td>
                                 </tr>
                                 <%
                                         }
@@ -365,8 +375,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <li><a href="buy_management.jsp?start=${requestScope.nextPage }">
                                         <span>下一页</span>
                                     </a></li>
-                                    <li><a
-                                            href="buy_management.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+                                    <li><a href="buy_management.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
                                     </a></li>
                                 </ul>
                             </nav>
@@ -435,3 +444,22 @@ License: You must have a valid license purchased only from themeforest(the above
 </body>
 <!-- END BODY -->
 </html>
+<script type="text/javascript">
+    function delete_order(order_id){
+        $.ajax({
+            url:'delete_order_history',
+            data:{
+                "order_id": order_id
+            },
+            type:'post',
+            data_type:'json',
+            global:false,
+            success:function (message){
+                alert(message.msg);
+            },
+            error:function (){
+                console.log("提交失败");
+            }
+        });
+    }
+</script>

@@ -47,4 +47,14 @@ public class usershowImpl implements Iuser {
         }
         return arr;
     }
+
+    @Override
+    public void delete(int user_id) {
+        // TODO 删除用户函数，sql实现
+    }
+
+    @Override
+    public void update(String username, String password, String authority) {
+        // TODO 更新用户函数，sql实现
+    }
 }

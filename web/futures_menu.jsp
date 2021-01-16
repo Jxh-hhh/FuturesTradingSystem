@@ -3,6 +3,7 @@
 		contentType="text/html; charset=UTF-8" %>
 <jsp:useBean id="gp" scope="page" class="tools.daoimpl.GpDaoImpl"/>
 <jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
+<jsp:useBean id="future" scope="page" class="tools.daoimpl.FutureDaoImpl"/>
 <%
 	//判断是否未登录，用的session判断，可用filter，之后再说
 	String name=(String)session.getAttribute("loginUsername");
@@ -123,6 +124,9 @@ License: You must have a valid license purchased only from themeforest(the above
 							<li><a href="users_order.jsp"> <i class="icon-envelope-open"></i>
 								我的订单
 							</a></li>
+							<li><a href="users_information.jsp"> <i class="icon-envelope-open"></i>
+								我的信息
+							</a></li>
 							<li class="divider"></li>
 							<li>
 								<a href="LoginAndRegister.jsp"><i class="icon-key"></i> 注销 </a>
@@ -181,6 +185,9 @@ License: You must have a valid license purchased only from themeforest(the above
 						<span class="arrow"></span>
 					</a>
 					<ul class="sub-menu">
+						<li>
+							<a href="users_information.jsp">个人信息</a>
+						</li>
 						<li>
 							<a href="users_money.jsp">资产管理</a>
 						</li>
@@ -257,6 +264,9 @@ License: You must have a valid license purchased only from themeforest(the above
 								<li>
 									<a href="#SZA" data-toggle="tab">深指</a>
 								</li>
+								<li>
+									<a href="#future" data-toggle="tab">期货</a>
+								</li>
 							</ul>
 							<div class="tab-content">
 							<div id="SHA" class="table-container tab-pane active">
@@ -331,7 +341,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</td>
 									<td>
 										<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price_current()%>'">开仓</button>
-										<button onclick="window.open('http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif')">K线图</button>
+										<button onclick="window.open('K.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>')">K线图</button>
 									</td>
 								</tr>
 								<%
@@ -343,16 +353,16 @@ License: You must have a valid license purchased only from themeforest(the above
 								</table>
 								<nav>
 									<ul class="pagination">
-										<li><a href="futures_menu.jsp?start=0"> <span>首页</span>
+										<li><a href="futures_menu.jsp?start=0"#SHA> <span>首页</span>
 										</a></li>
-										<li><a href="futures_menu.jsp?start=${requestScope.prePage }">
+										<li><a href="futures_menu.jsp?start=${requestScope.prePage}#SHA">
 											<span>上一页</span>
 										</a></li>
-										<li><a href="futures_menu.jsp?start=${requestScope.nextPage }">
+										<li><a href="futures_menu.jsp?start=${requestScope.nextPage}#SHA">
 											<span>下一页</span>
 										</a></li>
 										<li><a
-												href="futures_menu.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+												href="futures_menu.jsp?start=${requestScope.totalPage-1}#SHA "> <span>尾页</span>
 										</a></li>
 									</ul>
 								</nav>
@@ -388,11 +398,19 @@ License: You must have a valid license purchased only from themeforest(the above
 									</tr>
 									<%
 										request.setCharacterEncoding("UTF-8");
-										totalPage = pg.getTotalPage(pageSize);
-										request.setAttribute("totalPage", totalPage);
-										request.setAttribute("prePage", prePage);
-										request.setAttribute("nextPage", nextPage);
-										Page pg2 = new Page(start, pageSize);
+										int start1 = request.getParameter("start1") == null ? 0 : Integer.parseInt(request.getParameter("start1"));
+
+
+										int pageSize1 = 15;
+										int totalPage1 = 0;
+										totalPage1 = pg.getTotalPage(pageSize1);
+
+										int prePage1 = start1 - 1 >= 0 ? start1 - 1 : start1 + 1;
+										int nextPage1 = start1 + 1 < totalPage1 ? start1 + 1 : totalPage1 - 1;
+										request.setAttribute("totalPage1", totalPage1);
+										request.setAttribute("prePage1", prePage1);
+										request.setAttribute("nextPage1", nextPage1);
+										Page pg2 = new Page(start1, pageSize1);
 										List<gp> currentGp1 = (List<gp>) gp.queryGpByPage(pg2, "SZA");
 										//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
 										for (gp u : currentGp1) {
@@ -421,7 +439,7 @@ License: You must have a valid license purchased only from themeforest(the above
 										</td>
 										<td>
 											<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price_current()%>'">开仓</button>
-											<button onclick="window.open('http://image.sinajs.cn/newchart/daily/n/<%=u.getgp_id()%>.gif')">K线图</button>
+											<button onclick="window.open('K.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>')">K线图</button>
 										</td>
 									</tr>
 									<%
@@ -433,20 +451,118 @@ License: You must have a valid license purchased only from themeforest(the above
 								</table>
 								<nav>
 									<ul class="pagination">
-										<li><a href="futures_menu.jsp?start=0"> <span>首页</span>
+										<li><a href="futures_menu.jsp?start1=0#SZA"> <span>首页</span>
 										</a></li>
-										<li><a href="futures_menu.jsp?start=${requestScope.prePage }">
+										<li><a href="futures_menu.jsp?start1=${requestScope.prePage1 }#SZA">
 											<span>上一页</span>
 										</a></li>
-										<li><a href="futures_menu.jsp?start=${requestScope.nextPage }">
+										<li><a href="futures_menu.jsp?start1=${requestScope.nextPage1 }#SZA">
 											<span>下一页</span>
 										</a></li>
 										<li><a
-												href="futures_menu.jsp?start=${requestScope.totalPage-1} "> <span>尾页</span>
+												href="futures_menu.jsp?start1=${requestScope.totalPage1-1}#SZA"> <span>尾页</span>
 										</a></li>
 									</ul>
 								</nav>
 							</div>
+								<div id="future" class="table-container tab-pane active">
+									<table class="table table-striped table-bordered table-hover" id="datatable_future">
+										<thead>
+										<tr role="row" class="heading">
+											<th width="10%">
+												期货编号
+											</th>
+											<th width="10%">
+												股票名称
+											</th>
+											<th width="10%">
+												今日开盘价
+											</th>
+											<th width="10%">
+												昨日收盘价
+											</th>
+											<th width="10%">
+												当前价
+											</th>
+											<th width="10%">
+												今日最高价
+											</th>
+											<th width="10%">
+												今日最低价
+											</th>
+											<th width="10%">
+												操作
+											</th>
+										</tr>
+										<%
+											request.setCharacterEncoding("UTF-8");
+											int start2 = request.getParameter("start2") == null ? 0 : Integer.parseInt(request.getParameter("start2"));
+
+
+											int pageSize2 = 15;
+											int totalPage2 = 0;
+											totalPage2 = pg.getTotalPage(pageSize2);
+
+											int prePage2 = start2 - 1 >= 0 ? start2 - 1 : start2 + 1;
+											int nextPage2 = start2 + 1 < totalPage2 ? start2 + 1 : totalPage2 - 1;
+											request.setAttribute("totalPage2", totalPage2);
+											request.setAttribute("prePage2", prePage2);
+											request.setAttribute("nextPage2", nextPage2);
+											Page pg3 = new Page(start2, pageSize2);
+											List<future> currentfuture = (List<future>) future.queryFutureByPage(pg3);
+											//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
+											for (future u : currentfuture) {
+										%>
+										<tr role="row" class="filter">
+											<td>
+												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_id()%>">
+											</td>
+											<td>
+												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_name()%>">
+											</td>
+											<td>
+												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_price_today()%>">
+											</td>
+											<td>
+												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_price_yesterday()%>">
+											</td>
+											<td>
+												<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getFuture_price_current()%>">
+											</td>
+											<td>
+												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_price_MAX()%>">
+											</td>
+											<td>
+												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_price_MIN()%>">
+											</td>
+											<td>
+												<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getFuture_id()%>&gp_name=<%=u.getFuture_name()%>&gp_price=<%=u.getFuture_price_current()%>'">开仓</button>
+												<button onclick="window.open('K_future.jsp?future_id=<%=u.getFuture_id()%>&future_name=<%=u.getFuture_name()%>')">K线图</button>
+											</td>
+										</tr>
+										<%
+											}
+										%>
+										</thead>
+										<tbody>
+										</tbody>
+									</table>
+									<nav>
+										<ul class="pagination">
+											<li><a href="futures_menu.jsp?start2=0"#future> <span>首页</span>
+											</a></li>
+											<li><a href="futures_menu.jsp?start2=${requestScope.prePage2}#future">
+												<span>上一页</span>
+											</a></li>
+											<li><a href="futures_menu.jsp?start2=${requestScope.nextPage2}#future">
+												<span>下一页</span>
+											</a></li>
+											<li><a
+													href="futures_menu.jsp?start2=${requestScope.totalPage2-1}#future "> <span>尾页</span>
+											</a></li>
+										</ul>
+									</nav>
+								</div>
 							</div>
 						</div>
 					</div>

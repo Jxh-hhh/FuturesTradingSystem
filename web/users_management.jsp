@@ -143,6 +143,9 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li><a href="users_order.jsp"> <i class="icon-envelope-open"></i>
                                 我的订单
                             </a></li>
+                            <li><a href="users_information.jsp"> <i class="icon-envelope-open"></i>
+                                我的信息
+                            </a></li>
                             <li class="divider"></li>
                             <li>
                                 <a href="LoginAndRegister.jsp"><i class="icon-key"></i> 注销 </a>
@@ -202,6 +205,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
+                        <li>
+                            <a href="users_information.jsp">个人信息</a>
+                        </li>
                         <li>
                             <a href="users_money.jsp">资产管理</a>
                         </li>
@@ -284,14 +290,6 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="caption-helper"></span>
                     </div>
                     <div class="actions">
-                        <a href="javascript:;" class="btn btn-circle btn-default">
-                            <i class="fa fa-plus"></i>
-                            <span class="hidden-480">新增用户</span>
-                        </a>
-                        <a href="javascript:;" class="btn btn-circle btn-default">
-                            <i class="fa fa-minus"></i>
-                            <span class="hidden-480">删除用户</span>
-                        </a>
                         <div class="btn-group">
                             <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">
                                 <i class="fa fa-share"></i>
@@ -316,6 +314,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="table-scrollable table-scrollable-borderless">
                         <table class="table table-hover table-light">
                             <thead>
+                            <%
+                                // TODO 用户管理翻页异常，建议修改bug
+                            %>
                             <tr class="uppercase">
                                 <th>用户id</th>
                                 <th>用户名</th>
@@ -323,6 +324,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <th>角色</th>
                                 <th>创建时间</th>
                                 <th>余额</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <%
@@ -333,14 +335,6 @@ License: You must have a valid license purchased only from themeforest(the above
                                 int pageSize = 15;
                                 int totalPage = 0;
                                 totalPage = pg.getTotalPage(pageSize);
-                                Connection con = JDBCUtil.getConnection();
-                                Statement sm = con.createStatement();
-                                String sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) WHERE (SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) IS NULL";
-                                sm.executeUpdate(sql);
-                                sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) WHERE (SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) IS NULL";
-                                sm.executeUpdate(sql);
-                                sm.close();
-                                con.close();
                                 int prePage = start - 1 >= 0 ? start - 1 : start + 1;
                                 int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
                                 request.setAttribute("totalPage", totalPage);
@@ -352,17 +346,22 @@ License: You must have a valid license purchased only from themeforest(the above
                                 for (usershow u : currentUsershow) {
                             %>
                             <tr>
-                                <td><%=u.getshow_userid()%>
+                                <td><input type="text" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_userid()%>">
                                 </td>
-                                <td><%=u.getshow_username()%>
+                                <td><input type="text" class="form-control form-filter input-sm" value="<%=u.getshow_username()%>">
                                 </td>
-                                <td><%=u.getshow_password()%>
+                                <td><input type="text" class="form-control form-filter input-sm" value="<%=u.getshow_password()%>">
                                 </td>
-                                <td><%=u.getshow_authority()%>
+                                <td>
+                                    <input type="text" class="form-control form-filter input-sm" value="<%=u.getshow_authority()%>">
                                 </td>
-                                <td><%=u.getshow_createTime()%>
+                                <td><input type="text" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_createTime()%>">
                                 </td>
-                                <td><%=u.getshow_money()%>
+                                <td><input type="text" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_money()%>">
+                                </td>
+                                <td>
+                                    <button onclick="delete_user(<%=u.getshow_userid()%>)">删除</button>
+                                    <button onclick="update_user(<%=u.getshow_username()%>,<%=u.getshow_password()%>, <%=u.getshow_authority()%>)">修改</button>
                                 </td>
                             </tr>
                             <%
@@ -453,3 +452,42 @@ License: You must have a valid license purchased only from themeforest(the above
 </body>
 <!-- END BODY -->
 </html>
+<script type="text/javascript">
+    function delete_user(user_id){
+        $.ajax({
+            url:'delete_user',
+            data:{
+                "user_id": user_id
+            },
+            type:'post',
+            data_type:'json',
+            global:false,
+            success:function (message){
+                alert(message.msg);
+            },
+            error:function (){
+                console.log("提交失败");
+            }
+        });
+    }
+
+    function update_user(username, password, authority){
+        $.ajax({
+            url:'update_user',
+            data:{
+                "username": username,
+                "password": password,
+                "authority": authority
+            },
+            type:'post',
+            data_type:'json',
+            global:false,
+            success:function (message){
+                alert(message.msg);
+            },
+            error:function (){
+                console.log("提交失败");
+            }
+        });
+    }
+</script>

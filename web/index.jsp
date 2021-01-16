@@ -138,6 +138,9 @@
                             <li><a href="users_order.jsp"> <i class="icon-envelope-open"></i>
                                 我的订单
                             </a></li>
+                            <li><a href="users_information.jsp"> <i class="icon-envelope-open"></i>
+                                我的信息
+                            </a></li>
                             <li class="divider"></li>
                             <li>
                                 <a href="LoginAndRegister.jsp"><i class="icon-key"></i> 注销 </a>
@@ -196,6 +199,9 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
+                        <li>
+                            <a href="users_information.jsp">个人信息</a>
+                        </li>
                         <li>
                             <a href="users_money.jsp">资产管理</a>
                         </li>

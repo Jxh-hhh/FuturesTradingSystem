@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface Iorder_history {
     public List<order_history> queryOrderByPage(Page page) throws SQLException;
+    public void delete(String order_id);
 }

@@ -8,6 +8,7 @@
 <%@page language="java"
         import="java.util.*,java.sql.*,tools.entity.*,tools.dao.*,tools.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
+<%@ page import="tools.util.JDBCUtil" %>
 <jsp:useBean id="order" scope="page" class="tools.daoimpl.orderImpl"/>
 <jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
 
@@ -130,6 +131,9 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li><a href="users_order.jsp"> <i class="icon-envelope-open"></i>
                                 我的订单
                             </a></li>
+                            <li><a href="users_information.jsp"> <i class="icon-envelope-open"></i>
+                                我的信息
+                            </a></li>
                             <li class="divider"></li>
                             <li>
                                 <a href="LoginAndRegister.jsp"><i class="icon-key"></i> 注销 </a>
@@ -189,6 +193,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="arrow open"></span>
                     </a>
                     <ul class="sub-menu">
+                        <li>
+                            <a href="users_information.jsp">个人信息</a>
+                        </li>
                         <li>
                             <a href="users_money.jsp">资产管理</a>
                         </li>
@@ -263,13 +270,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="caption-helper"></span>
                     </div>
                     <div class="actions">
-                        <a href="javascript:;" class="btn btn-circle btn-default">
+                        <a href="futures_menu.jsp" class="btn btn-circle btn-default">
                             <i class="fa fa-plus"></i>
                             <span class="hidden-480">新增订单</span>
-                        </a>
-                        <a href="javascript:;" class="btn btn-circle btn-default">
-                            <i class="fa fa-minus"></i>
-                            <span class="hidden-480">删除订单</span>
                         </a>
                         <div class="btn-group">
                             <a class="btn btn-default btn-circle" href="javascript:;" data-toggle="dropdown">
@@ -297,8 +300,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <thead>
                             <tr class="uppercase">
                                 <th>订单号</th>
-                                <th>期货编号</th>
-                                <th>股票名称</th>
+                                <th>期货/股票编号</th>
+                                <th>期货/股票名称</th>
                                 <th>开仓价</th>
                                 <th>最新价</th>
                                 <th>创建时间</th>
@@ -314,6 +317,16 @@ License: You must have a valid license purchased only from themeforest(the above
                                 int pageSize = 15;
                                 int totalPage = 0;
                                 totalPage = pg.getTotalPage(pageSize);
+                                Connection con = JDBCUtil.getConnection();
+                                Statement sm = con.createStatement();
+                                String sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) WHERE (SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) IS NULL AND (select future.future_price_current from future where gp_ordermanagement.gp_ON=future.future_name) is null";
+                                sm.executeUpdate(sql);
+                                sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) WHERE (SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) IS NULL AND (select future.future_price_current from future where gp_ordermanagement.gp_ON=future.future_name) is null";
+                                sm.executeUpdate(sql);
+                                sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT future.future_price_current FROM future WHERE gp_ordermanagement.gp_ON=future.future_name) WHERE (SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) IS NULL AND (SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) IS NULL";
+                                sm.executeUpdate(sql);
+                                sm.close();
+                                con.close();
 
                                 int prePage = start - 1 >= 0 ? start - 1 : start + 1;
                                 int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;

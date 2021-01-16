@@ -1,5 +1,6 @@
 package listener;
 
+import operations.getData.getFutureData;
 import operations.getData.getGPData;
 
 import javax.servlet.ServletContextEvent;
@@ -51,6 +52,7 @@ public class GetListener implements ServletContextListener,
                 // TODO 这里是定时任务代码处
                 getGPData.getDataToDB("SZA");
                 getGPData.getDataToDB("SHA");
+                getFutureData.getFutureDataToDB();
                 System.out.println("每1min运行一次");
             }
         }, defaultdate,  60 * 1000);// 定时每1min

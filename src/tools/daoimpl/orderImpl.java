@@ -48,4 +48,9 @@ public class orderImpl implements Iorder {
         }
         return arr;
     }
+
+    @Override
+    public void delete(String order_id) {
+        // TODO 这里写sql删除语句并更新数据库
+    }
 }
