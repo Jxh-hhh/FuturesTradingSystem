@@ -1,10 +1,10 @@
 <%@page language="java"
-        import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
+        import="java.util.*,java.sql.*,tools.entity.*,tools.dao.*,tools.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<%@ page import="deal.util.JDBCUtil" %>
-<jsp:useBean id="gp" scope="page" class="deal.daoimpl.GpDaoImpl"/>
-<jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
-<jsp:useBean id="weather" scope="page" class="deal.getData.getWeatherData"/>
+<%@ page import="tools.util.JDBCUtil" %>
+<jsp:useBean id="gp" scope="page" class="tools.daoimpl.GpDaoImpl"/>
+<jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
+<jsp:useBean id="weather" scope="page" class="operations.getData.getWeatherData"/>
 
 <%
     //判断是否未登录，用的session判断，可用filter，之后再说
@@ -120,7 +120,6 @@
                     <li class="separator hide"></li>
                     <!-- BEGIN NOTIFICATION DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <!-- END TODO DROPDOWN -->
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     <li class="dropdown dropdown-user dropdown-dark"><a

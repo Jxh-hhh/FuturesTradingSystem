@@ -2,7 +2,7 @@
 <web-app>
     <servlet>
         <servlet-name>sendMailServlet</servlet-name>
-        <servlet-class>deal.sendMail.sendMailServlet</servlet-class>
+        <servlet-class>operations.LoginAndRegister.sendMail.sendMailServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>sendMailServlet</servlet-name>
@@ -20,7 +20,7 @@
 
     <servlet>
         <servlet-name>deposit</servlet-name>
-        <servlet-class>finishServlet.deposit</servlet-class>
+        <servlet-class>operations.trade.deposit</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>deposit</servlet-name>
@@ -29,7 +29,7 @@
 
     <servlet>
         <servlet-name>buy</servlet-name>
-        <servlet-class>finishServlet.buy</servlet-class>
+        <servlet-class>operations.trade.buy</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>buy</servlet-name>
@@ -38,7 +38,7 @@
 
     <servlet>
         <servlet-name>register</servlet-name>
-        <servlet-class>deal.register.register</servlet-class>
+        <servlet-class>operations.LoginAndRegister.register.register</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>register</servlet-name>
@@ -47,7 +47,7 @@
 
     <servlet>
         <servlet-name>resetPasswordServlet</servlet-name>
-        <servlet-class>deal.resetPassword.resetPasswordServlet</servlet-class>
+        <servlet-class>operations.LoginAndRegister.resetPassword.resetPasswordServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>resetPasswordServlet</servlet-name>
@@ -56,7 +56,7 @@
 
     <servlet>
         <servlet-name>sell</servlet-name>
-        <servlet-class>finishServlet.sell</servlet-class>
+        <servlet-class>operations.trade.sell</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>sell</servlet-name>
@@ -65,7 +65,7 @@
 
     <servlet>
         <servlet-name>getWeatherServlet</servlet-name>
-        <servlet-class>deal.getData.getWeatherServlet</servlet-class>
+        <servlet-class>operations.getData.getWeatherServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>getWeatherServlet</servlet-name>
