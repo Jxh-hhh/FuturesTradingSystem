@@ -23,7 +23,7 @@ public class UserDAOImpl implements UserDAO {
 		java.sql.ResultSet resultSet = null;
 		try {
 			connection = JDBCUtil.getConnection();
-			preparedStatement = connection.prepareStatement("select userid,username,password,authority from users where username=? and password=?");
+			preparedStatement =  connection.prepareStatement("select userid,username,password,authority from users where username=? and password=?");
 			preparedStatement.setObject(1, username);
 			preparedStatement.setObject(2, password);
 			resultSet = preparedStatement.executeQuery();

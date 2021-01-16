@@ -9,9 +9,9 @@ public class JDBCUtil {
 	private static final String driver="com.mysql.jdbc.Driver";
 	//数据库名称填写自己的：这里是mytest，上文有提到
 	//TODO 这里修改数据库地址，账号密码
-	private static final String url="jdbc:mysql://localhost:3306/ftsdb?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
+	private static final String url="jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8";
 	private static final String user="root";
-	private static final String password="12345678";
+	private static final String password="z9682576";
 	static{
 		try {
 			Class.forName(driver);

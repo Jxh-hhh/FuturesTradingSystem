@@ -15,7 +15,7 @@ public class order_historyImpl implements Iorder_history {
     public Statement sm=null;
     public ResultSet rs=null;
     @Override
-    public List<order_history> queryOrderByPage(Page page) throws SQLException {
+    public List<order_history> queryHistoryOrderByPage(Page page) throws SQLException {
         List<order_history> arr = new ArrayList();
 
         try{
