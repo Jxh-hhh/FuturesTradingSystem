@@ -2,3 +2,6 @@
 /out/
 #class后缀文件不上传
 *.class
+/web/sass/
+/web/assets/
+/web/templates/

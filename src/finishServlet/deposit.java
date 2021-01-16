@@ -34,7 +34,7 @@ public class deposit extends HttpServlet {
         input_money = request.getParameter("input_money");
         String type = request.getParameter("type");
         request.setCharacterEncoding("UTF-8");
-
+        System.out.println(type);
         Connection con = JDBCUtil.getConnection();
         try {
             sm = con.createStatement();
@@ -51,7 +51,7 @@ public class deposit extends HttpServlet {
             else{
                 message = "2";
                 out.println(message);
-                if(type.equals('1')) sum_money = a + b;
+                if(type.equals("1")) sum_money = a + b;
                 else sum_money = a - b;
                 String sql = "UPDATE users SET money = "+ sum_money + " WHERE username = '"+ name + "'";
                 sm.executeUpdate(sql);
