@@ -1,8 +1,8 @@
 <%@page language="java"
-		import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
+		import="java.util.*,java.sql.*,tools.entity.*,tools.dao.*,tools.daoimpl.*"
 		contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="gp" scope="page" class="deal.daoimpl.GpDaoImpl"/>
-<jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
+<jsp:useBean id="gp" scope="page" class="tools.daoimpl.GpDaoImpl"/>
+<jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
 <%
 	//判断是否未登录，用的session判断，可用filter，之后再说
 	String name=(String)session.getAttribute("loginUsername");
@@ -105,7 +105,6 @@ License: You must have a valid license purchased only from themeforest(the above
 					<li class="separator hide"></li>
 					<!-- BEGIN NOTIFICATION DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-					<!-- END TODO DROPDOWN -->
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 					<li class="dropdown dropdown-user dropdown-dark"><a

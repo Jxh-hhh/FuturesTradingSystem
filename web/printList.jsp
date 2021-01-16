@@ -6,11 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@page language="java"
-        import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
+        import="java.util.*,java.sql.*,tools.entity.*,tools.dao.*,tools.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="usershow" scope="page" class="deal.daoimpl.usershowImpl"/>
-<jsp:useBean id="order" scope="page" class="deal.daoimpl.orderImpl"/>
-<jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
+<jsp:useBean id="usershow" scope="page" class="tools.daoimpl.usershowImpl"/>
+<jsp:useBean id="order" scope="page" class="tools.daoimpl.orderImpl"/>
+<jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
 
 <%
     //判断是否未登录，用的session判断，可用filter，之后再说

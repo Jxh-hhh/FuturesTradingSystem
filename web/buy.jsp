@@ -104,7 +104,6 @@ License: You must have a valid license purchased only from themeforest(the above
 					<li class="separator hide"></li>
 					<!-- BEGIN NOTIFICATION DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-					<!-- END TODO DROPDOWN -->
 					<!-- BEGIN USER LOGIN DROPDOWN -->
 					<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 					<li class="dropdown dropdown-user dropdown-dark"><a

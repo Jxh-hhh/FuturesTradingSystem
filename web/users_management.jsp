@@ -13,13 +13,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@page language="java"
-        import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
+        import="java.util.*,java.sql.*,tools.entity.*,tools.dao.*,tools.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<%@ page import="deal.util.JDBCUtil" %>
-<jsp:useBean id="usershow" scope="page" class="deal.daoimpl.usershowImpl"/>
-<jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
+<%@ page import="tools.util.JDBCUtil" %>
+<jsp:useBean id="usershow" scope="page" class="tools.daoimpl.usershowImpl"/>
+<jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
 <<<<<<< HEAD
-<jsp:useBean id="user" scope="page" class="deal.daoimpl.UserDAOImpl"/>
+<jsp:useBean id="user" scope="page" class="tools.daoimpl.UserDAOImpl"/>
 =======
 
 >>>>>>> zjj
@@ -125,7 +125,6 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li class="separator hide"></li>
                     <!-- BEGIN NOTIFICATION DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                    <!-- END TODO DROPDOWN -->
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     <li class="dropdown dropdown-user dropdown-dark"><a

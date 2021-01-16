@@ -1,9 +1,7 @@
 package listener;
 
-import deal.getData.getGPData;
-import deal.getData.getWeatherData;
+import operations.getData.getGPData;
 
-import javax.net.ssl.HandshakeCompletedEvent;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -50,7 +48,7 @@ public class GetListener implements ServletContextListener,
 
             @Override
             public void run() {
-                // TODO 写你的逻辑
+                // TODO 这里是定时任务代码处
                 getGPData.getDataToDB("SZA");
                 getGPData.getDataToDB("SHA");
                 System.out.println("每1min运行一次");

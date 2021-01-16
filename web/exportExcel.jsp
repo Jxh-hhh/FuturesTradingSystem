@@ -1,8 +1,8 @@
 <%@page language="java"
-        import="java.util.*,java.sql.*,deal.entity.*,deal.dao.*,deal.daoimpl.*"
+        import="java.util.*,java.sql.*,tools.entity.*,tools.dao.*,tools.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="order" scope="page" class="deal.daoimpl.orderImpl"/>
-<jsp:useBean id="pg" scope="page" class="deal.daoimpl.PageDaoImpl"/>
+<jsp:useBean id="order" scope="page" class="tools.daoimpl.orderImpl"/>
+<jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
