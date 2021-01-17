@@ -465,7 +465,7 @@ License: You must have a valid license purchased only from themeforest(the above
 									</ul>
 								</nav>
 							</div>
-								<div id="future" class="table-container tab-pane active">
+								<div id="future" class="table-container tab-pane">
 									<table class="table table-striped table-bordered table-hover" id="datatable_future">
 										<thead>
 										<tr role="row" class="heading">
@@ -473,7 +473,7 @@ License: You must have a valid license purchased only from themeforest(the above
 												期货编号
 											</th>
 											<th width="10%">
-												股票名称
+												期货名称
 											</th>
 											<th width="10%">
 												今日开盘价
