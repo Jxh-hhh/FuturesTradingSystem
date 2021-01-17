@@ -9,5 +9,5 @@ import tools.entity.Page;
 public interface Iuser {
     public List<usershow> queryUsershowByPage(Page page) throws SQLException;
     public void delete(int user_id);
-    public void update(String username, String password, String authority);
+    public void update(int user_id, String username, String password, String authority);
 }

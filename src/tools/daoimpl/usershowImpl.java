@@ -54,7 +54,7 @@ public class usershowImpl implements Iuser {
     }
 
     @Override
-    public void update(String username, String password, String authority) {
+    public void update(int user_id, String username, String password, String authority) {
         // TODO 更新用户函数，sql实现
     }
 }

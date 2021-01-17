@@ -361,7 +361,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </td>
                                 <td>
                                     <button onclick="delete_user(<%=u.getshow_userid()%>)">删除</button>
-                                    <button onclick="update_user(<%=u.getshow_username()%>,<%=u.getshow_password()%>, <%=u.getshow_authority()%>)">修改</button>
+                                    <button onclick="update_user(<%=u.getshow_userid()%>,<%=u.getshow_username()%>,<%=u.getshow_password()%>, <%=u.getshow_authority()%>)">修改</button>
                                 </td>
                             </tr>
                             <%
@@ -471,10 +471,11 @@ License: You must have a valid license purchased only from themeforest(the above
         });
     }
 
-    function update_user(username, password, authority){
+    function update_user(user_id, username, password, authority){
         $.ajax({
             url:'update_user',
             data:{
+                "user_id": user_id,
                 "username": username,
                 "password": password,
                 "authority": authority

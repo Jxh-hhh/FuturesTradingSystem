@@ -12,7 +12,7 @@ public class update_user extends HttpServlet {
         super.doPost(request, response);
         // TODO 删除用户
         /*
-            1. 前端返回的数据为username，password，authority均为String类型
+            1. 前端返回的数据为username，password，authority均为String类型,user_id int类型用来区分是哪个用户
             2. 修改用户信息的逻辑：获取前端用户输入的值，更新数据库
             3. 后端返回数据为JSONObject，key为"msg"
             4. 而后端的value有以下几种：①用户名相同返回：修改失败，原因：用户名重复
