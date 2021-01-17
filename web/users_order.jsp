@@ -323,7 +323,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 sm.executeUpdate(sql);
                                 sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) WHERE (SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) IS NULL AND (select future.future_price_current from future where gp_ordermanagement.gp_ON=future.future_name) is null";
                                 sm.executeUpdate(sql);
-                                sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT future.future_price_current FROM future WHERE gp_ordermanagement.gp_ON=future.future_name) WHERE (SELECT gp_SHA.gp_price_current FROM gp_SHA WHERE gp_ordermanagement.gp_ON=gp_SHA.gp_name) IS NULL AND (SELECT gp_SZA.gp_price_current FROM gp_SZA WHERE gp_ordermanagement.gp_ON=gp_SZA.gp_name) IS NULL";
+                                sql = "UPDATE gp_ordermanagement SET gp_ordermanagement.gp_NP=(SELECT future.future_price_current FROM future WHERE gp_ordermanagement.gp_ON=future.future_name) WHERE (SELECT future.future_price_current FROM future WHERE gp_ordermanagement.gp_ON=future.future_name) IS NOT NULL;";
                                 sm.executeUpdate(sql);
                                 sm.close();
                                 con.close();
