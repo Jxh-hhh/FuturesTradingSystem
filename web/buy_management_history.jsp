@@ -467,7 +467,7 @@ License: You must have a valid license purchased only from themeforest(the above
             },
             type:'post',
             data_type:'json',
-            global:false,
+            global:true,
             success:function (message){
                 alert(message.msg);
             },

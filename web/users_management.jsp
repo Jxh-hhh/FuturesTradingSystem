@@ -348,7 +348,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </td>
                                 <td><input type="text" id="<%="update_user_password"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_password()%>"/>
                                 </td>
-                                <td><input type="text" id="<%="update_user_authority"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_authority()%>"/>
+                                <td><input type="text" id="<%="update_user_authority"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_authority()%>"/>
                                 </td>
                                 <td><input type="text" id="<%="update_user_createTime"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_createTime()%>"/>
                                 </td>
@@ -463,6 +463,7 @@ License: You must have a valid license purchased only from themeforest(the above
             global:false,
             success:function (message){
                 alert(message.msg);
+                window.location.href="users_management.jsp";
             },
             error:function (){
                 console.log("提交失败");
@@ -488,6 +489,7 @@ License: You must have a valid license purchased only from themeforest(the above
             global:false,
             success:function (message){
                 alert(message.msg);
+                window.location.href="users_management.jsp";
             },
             error:function (){
                 console.log("提交失败");

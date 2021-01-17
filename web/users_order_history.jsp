@@ -465,9 +465,10 @@ License: You must have a valid license purchased only from themeforest(the above
             },
             type:'post',
             data_type:'json',
-            global:false,
+            global:true,
             success:function (message){
                 alert(message.msg);
+                window.location.href="users_order_history.jsp";
             },
             error:function (){
                 console.log("提交失败");

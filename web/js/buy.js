@@ -64,6 +64,7 @@ function buy_ok() {
         global:false,
         success:function (message){
             alert(message.msg);
+            window.location.href="futures_menu.jsp";
         },
         error:function (){
             console.log("提交失败");

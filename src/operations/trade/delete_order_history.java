@@ -12,9 +12,7 @@ import java.io.PrintWriter;
 import tools.daoimpl.*;
 
 public class delete_order_history extends HttpServlet {
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request, response);
         // TODO 写删除历史订单的servlet
         /*
             从前台收到的参数是 order_id 即订单号；
@@ -27,12 +25,8 @@ public class delete_order_history extends HttpServlet {
             PrintWriter out = response.getWriter();
 
             String order_id = request.getParameter("order_id");
-
-            //System.out.println(order_id);
-
             order_historyImpl order_history = new order_historyImpl();
             String result = order_history.delete(order_id);
-
             JSONObject returnData = new JSONObject();
             returnData.put("msg",result);
             out.print(returnData);
@@ -41,9 +35,7 @@ public class delete_order_history extends HttpServlet {
         }
     }
 
-    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
         doPost(req,resp);
     }
 }

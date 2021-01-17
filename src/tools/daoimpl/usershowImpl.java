@@ -58,6 +58,7 @@ public class usershowImpl implements Iuser {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        if(user_id.equals("1")) return UserDeleteEnum.USER_DELETE_FAIL.getValue();
         try {
             connection = JDBCUtil.getConnection();
             preparedStatement = connection.prepareStatement("delete from users where userid=?");
@@ -81,8 +82,8 @@ public class usershowImpl implements Iuser {
     @Override
     public String update(String user_id, String userName, String userPassword, String userAuthority) {
         // TODO 更新用户函数，sql实现
-//        System.out.println("这里是usershowImpl.update");
-//        System.out.println(userName+" "+userPassword+" "+userAuthority+" "+user_id);
+        Boolean multi = null;
+        if(user_id.equals("1")) return UserUpdateEnum.ADMIN_UPDATE_IS_BANNED.getValue();
         if(StringUtil.isEmpty(userName)){
             return UserUpdateEnum.USER_NAME_IS_NULL.getValue();
         }
@@ -104,12 +105,23 @@ public class usershowImpl implements Iuser {
         tools.entity.User user = null;
         Connection connection = null;
         PreparedStatement preparedStatement = null;
+        Statement sm = null;
+        ResultSet rs = null;
         int executeCount = 0;
 
         try {
             connection = JDBCUtil.getConnection();
-
-
+            sm = connection.createStatement();
+            String sql = "select * from users where username='" + userName + "' and userid!=" + user_id;
+            System.out.println(sql);
+            rs = sm.executeQuery(sql);
+            multi = rs.next();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        if(multi == true) return UserUpdateEnum.USER_NAME_IS_MULTI.getValue();
+        try{
             preparedStatement = connection.prepareStatement("update users set username=?,password=?,authority=? where userid=?");
             preparedStatement.setObject(1, userName);
             preparedStatement.setObject(2, userPassword);
@@ -119,7 +131,7 @@ public class usershowImpl implements Iuser {
             executeCount = preparedStatement.executeUpdate();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            return UserUpdateEnum.USER_NAME_IS_MULTI.getValue();
         }finally {
             JDBCUtil.closeUpdate(preparedStatement, connection);
         }

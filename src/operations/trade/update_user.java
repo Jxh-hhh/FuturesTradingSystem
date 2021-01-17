@@ -13,9 +13,7 @@ import tools.dao.Iuser;
 import tools.daoimpl.*;
 
 public class update_user extends HttpServlet {
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doPost(request, response);
         // TODO 更改用户
         /*
             1. 前端返回的数据为username，password，authority均为String类型,user_id int类型用来区分是哪个用户
@@ -51,9 +49,7 @@ public class update_user extends HttpServlet {
         }
     }
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        super.doGet(request, response);
         doPost(request,response);
     }
 }
