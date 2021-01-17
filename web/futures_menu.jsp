@@ -298,74 +298,10 @@ License: You must have a valid license purchased only from themeforest(the above
 										操作
 									</th>
 								</tr>
-								<%
-									request.setCharacterEncoding("UTF-8");
-									int start = request.getParameter("start") == null ? 0 : Integer.parseInt(request.getParameter("start"));
-
-
-									int pageSize = 15;
-									int totalPage = 0;
-									totalPage = pg.getTotalPage(pageSize);
-
-									int prePage = start - 1 >= 0 ? start - 1 : start + 1;
-									int nextPage = start + 1 < totalPage ? start + 1 : totalPage - 1;
-									request.setAttribute("totalPage", totalPage);
-									request.setAttribute("prePage", prePage);
-									request.setAttribute("nextPage", nextPage);
-									Page pg1 = new Page(start, pageSize);
-									List<gp> currentGp = (List<gp>) gp.queryGpByPage(pg1, "SHA");
-									//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-									for (gp u : currentGp) {
-								%>
-								<tr role="row" class="filter">
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_id()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_name()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_today()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_yesterday()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getgp_price_current()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MAX()%>">
-									</td>
-									<td>
-										<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MIN()%>">
-									</td>
-									<td>
-										<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price_current()%>'">开仓</button>
-										<button onclick="window.open('K.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>')">K线图</button>
-									</td>
-								</tr>
-								<%
-									}
-								%>
 								</thead>
 								<tbody>
 								</tbody>
 								</table>
-								<nav>
-									<ul class="pagination">
-										<li><a href="futures_menu.jsp?start=0"#SHA> <span>首页</span>
-										</a></li>
-										<li><a href="futures_menu.jsp?start=${requestScope.prePage}#SHA">
-											<span>上一页</span>
-										</a></li>
-										<li><a href="futures_menu.jsp?start=${requestScope.nextPage}#SHA">
-											<span>下一页</span>
-										</a></li>
-										<li><a
-												href="futures_menu.jsp?start=${requestScope.totalPage-1}#SHA "> <span>尾页</span>
-										</a></li>
-									</ul>
-								</nav>
 							</div>
 							<div id="SZA" class="table-container tab-pane">
 								<table class="table table-striped table-bordered table-hover" id="datatable_SZA">
@@ -396,74 +332,10 @@ License: You must have a valid license purchased only from themeforest(the above
 											操作
 										</th>
 									</tr>
-									<%
-										request.setCharacterEncoding("UTF-8");
-										int start1 = request.getParameter("start1") == null ? 0 : Integer.parseInt(request.getParameter("start1"));
-
-
-										int pageSize1 = 15;
-										int totalPage1 = 0;
-										totalPage1 = pg.getTotalPage(pageSize1);
-
-										int prePage1 = start1 - 1 >= 0 ? start1 - 1 : start1 + 1;
-										int nextPage1 = start1 + 1 < totalPage1 ? start1 + 1 : totalPage1 - 1;
-										request.setAttribute("totalPage1", totalPage1);
-										request.setAttribute("prePage1", prePage1);
-										request.setAttribute("nextPage1", nextPage1);
-										Page pg2 = new Page(start1, pageSize1);
-										List<gp> currentGp1 = (List<gp>) gp.queryGpByPage(pg2, "SZA");
-										//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-										for (gp u : currentGp1) {
-									%>
-									<tr role="row" class="filter">
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_id()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_name()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_today()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_yesterday()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_current()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getgp_price_MAX()%>">
-										</td>
-										<td>
-											<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="11<%=u.getgp_price_MIN()%>">
-										</td>
-										<td>
-											<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>&gp_price=<%=u.getgp_price_current()%>'">开仓</button>
-											<button onclick="window.open('K.jsp?gp_id=<%=u.getgp_id()%>&gp_name=<%=u.getgp_name()%>')">K线图</button>
-										</td>
-									</tr>
-									<%
-										}
-									%>
 									</thead>
 									<tbody>
 									</tbody>
 								</table>
-								<nav>
-									<ul class="pagination">
-										<li><a href="futures_menu.jsp?start1=0#SZA"> <span>首页</span>
-										</a></li>
-										<li><a href="futures_menu.jsp?start1=${requestScope.prePage1 }#SZA">
-											<span>上一页</span>
-										</a></li>
-										<li><a href="futures_menu.jsp?start1=${requestScope.nextPage1 }#SZA">
-											<span>下一页</span>
-										</a></li>
-										<li><a
-												href="futures_menu.jsp?start1=${requestScope.totalPage1-1}#SZA"> <span>尾页</span>
-										</a></li>
-									</ul>
-								</nav>
 							</div>
 								<div id="future" class="table-container tab-pane">
 									<table class="table table-striped table-bordered table-hover" id="datatable_future">
@@ -494,74 +366,10 @@ License: You must have a valid license purchased only from themeforest(the above
 												操作
 											</th>
 										</tr>
-										<%
-											request.setCharacterEncoding("UTF-8");
-											int start2 = request.getParameter("start2") == null ? 0 : Integer.parseInt(request.getParameter("start2"));
-
-
-											int pageSize2 = 15;
-											int totalPage2 = 0;
-											totalPage2 = pg.getTotalPage(pageSize2);
-
-											int prePage2 = start2 - 1 >= 0 ? start2 - 1 : start2 + 1;
-											int nextPage2 = start2 + 1 < totalPage2 ? start2 + 1 : totalPage2 - 1;
-											request.setAttribute("totalPage2", totalPage2);
-											request.setAttribute("prePage2", prePage2);
-											request.setAttribute("nextPage2", nextPage2);
-											Page pg3 = new Page(start2, pageSize2);
-											List<future> currentfuture = (List<future>) future.queryFutureByPage(pg3);
-											//List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-											for (future u : currentfuture) {
-										%>
-										<tr role="row" class="filter">
-											<td>
-												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_id()%>">
-											</td>
-											<td>
-												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_name()%>">
-											</td>
-											<td>
-												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_price_today()%>">
-											</td>
-											<td>
-												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_price_yesterday()%>">
-											</td>
-											<td>
-												<input type="text" class="form-control form-filter input-sm"readonly=“readonly” value="<%=u.getFuture_price_current()%>">
-											</td>
-											<td>
-												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_price_MAX()%>">
-											</td>
-											<td>
-												<input type="text" class="form-control form-filter input-sm" readonly=“readonly” value="<%=u.getFuture_price_MIN()%>">
-											</td>
-											<td>
-												<button onclick="window.location.href = 'buy.jsp?gp_id=<%=u.getFuture_id()%>&gp_name=<%=u.getFuture_name()%>&gp_price=<%=u.getFuture_price_current()%>'">开仓</button>
-												<button onclick="window.open('K_future.jsp?future_id=<%=u.getFuture_id()%>&future_name=<%=u.getFuture_name()%>')">K线图</button>
-											</td>
-										</tr>
-										<%
-											}
-										%>
 										</thead>
 										<tbody>
 										</tbody>
 									</table>
-									<nav>
-										<ul class="pagination">
-											<li><a href="futures_menu.jsp?start2=0"#future> <span>首页</span>
-											</a></li>
-											<li><a href="futures_menu.jsp?start2=${requestScope.prePage2}#future">
-												<span>上一页</span>
-											</a></li>
-											<li><a href="futures_menu.jsp?start2=${requestScope.nextPage2}#future">
-												<span>下一页</span>
-											</a></li>
-											<li><a
-													href="futures_menu.jsp?start2=${requestScope.totalPage2-1}#future "> <span>尾页</span>
-											</a></li>
-										</ul>
-									</nav>
 								</div>
 							</div>
 						</div>
@@ -630,3 +438,156 @@ License: You must have a valid license purchased only from themeforest(the above
 </body>
 <!-- END BODY -->
 </html>
+<script type="text/javascript">
+	var list_sha = [
+		<%
+			List<gp> all_sha = gp.queryAll("SHA");
+			for (gp u : all_sha) {
+	%>
+		{"id": "<%=u.getgp_id()%>", "name": "<%=u.getgp_name()%>", "today": "<%=u.getgp_price_today()%>", "yesterday":
+			"<%=u.getgp_price_yesterday()%>", "current": "<%=u.getgp_price_current()%>", "MAX": "<%=u.getgp_price_MAX()%>",
+				"MIN": "<%=u.getgp_price_MIN()%>"},
+		<%
+                    }
+        %>
+	];
+	var list_sza = [
+		<%
+        List<gp> all_sza = gp.queryAll("SZA");
+        for (gp u : all_sza) {
+%>
+		{"id": "<%=u.getgp_id()%>", "name": "<%=u.getgp_name()%>", "today": "<%=u.getgp_price_today()%>", "yesterday":
+					"<%=u.getgp_price_yesterday()%>", "current": "<%=u.getgp_price_current()%>", "MAX": "<%=u.getgp_price_MAX()%>",
+			"MIN": "<%=u.getgp_price_MIN()%>"},
+		<%
+                    }
+        %>
+	];
+	var list_future = [
+		<%
+        List<future> all_future = future.queryAll();
+        for (future u : all_future) {
+%>
+		{"id": "<%=u.getFuture_id()%>", "name": "<%=u.getFuture_name()%>", "today": "<%=u.getFuture_price_today()%>", "yesterday":
+					"<%=u.getFuture_price_yesterday()%>", "current": "<%=u.getFuture_price_current()%>", "MAX": "<%=u.getFuture_price_MAX()%>",
+			"MIN": "<%=u.getFuture_price_MIN()%>"},
+		<%
+                    }
+        %>
+	];
+	$("#datatable_SHA").dataTable({
+		lengthMenu: [10, 20, 30, 40],
+		data: list_sha,
+		paging: true,
+		searching: true,
+		columns: [
+			{ "data": "id"},
+			{ "data": "name"},
+			{ "data": "today"},
+			{ "data": "yesterday"},
+			{ "data": "current"},
+			{ "data": "MAX"},
+			{ "data": "MIN"},
+			{ "data": null, "render": function (data, type, row, meta){
+				var html = "<button onclick=\"buy('" + row.id + "','" + row.name + "','" + row.current + "')\">开仓</button><button onclick=\"Kmap('" + row.id + "','" + row.name + "')\">K线图</button>";
+				return html;
+				}}
+		],
+		language:{
+			paginate:{
+				previous: "上一页",
+				next:"下一页",
+				first:"首页",
+				last:"尾页"
+			},
+			search: '<span class="label label-success">搜索：</span>',
+			zeroRecords: "无",
+			info: "总共_PAGES_页，显示第_START_到第_END_，筛选之后得到_TOTAL_条，初始_MAX_条 ",
+			infoEmpty: "0条记录",
+			infoFiltered: ""
+		},
+		paging: true,
+		pagingType: "full_numbers",//分页样式的类型
+	});
+	$("#datatable_SZA").dataTable({
+		lengthMenu: [10, 20, 30, 40],
+		data: list_sza,
+		paging: true,
+		searching: true,
+		columns: [
+			{ "data": "id"},
+			{ "data": "name"},
+			{ "data": "today"},
+			{ "data": "yesterday"},
+			{ "data": "current"},
+			{ "data": "MAX"},
+			{ "data": "MIN"},
+			{ "data": null, "render": function (data, type, row, meta){
+					var html = "<button onclick=\"buy('" + row.id + "','" + row.name + "','" + row.current + "')\">开仓</button><button onclick=\"Kmap('" + row.id + "','" + row.name + "')\">K线图</button>";
+					return html;
+				}}
+		],
+		language:{
+			paginate:{
+				previous: "上一页",
+				next:"下一页",
+				first:"首页",
+				last:"尾页"
+			},
+			search: '<span class="label label-success">搜索：</span>',
+			zeroRecords: "无",
+			info: "总共_PAGES_页，显示第_START_到第_END_，筛选之后得到_TOTAL_条，初始_MAX_条 ",
+			infoEmpty: "0条记录",
+			infoFiltered: ""
+		},
+		paging: true,
+		pagingType: "full_numbers",//分页样式的类型
+	});
+	$("#datatable_future").dataTable({
+		lengthMenu: [10, 20, 30, 40],
+		data: list_future,
+		paging: true,
+		searching: true,
+		columns: [
+			{ "data": "id"},
+			{ "data": "name"},
+			{ "data": "today"},
+			{ "data": "yesterday"},
+			{ "data": "current"},
+			{ "data": "MAX"},
+			{ "data": "MIN"},
+			{ "data": null, "render": function (data, type, row, meta){
+					var html = "<button onclick=\"buy('" + row.id + "','" + row.name + "','" + row.current + "')\">开仓</button><button onclick=\"Kfuturemap('" + row.id + "','" + row.name + "')\">K线图</button>";
+					return html;
+				}}
+		],
+		language:{
+			paginate:{
+				previous: "上一页",
+				next:"下一页",
+				first:"首页",
+				last:"尾页"
+			},
+			search: '<span class="label label-success">搜索：</span>',
+			zeroRecords: "无",
+			info: "总共_PAGES_页，显示第_START_到第_END_，筛选之后得到_TOTAL_条，初始_MAX_条 ",
+			infoEmpty: "0条记录",
+			infoFiltered: ""
+		},
+		paging: true,
+		pagingType: "full_numbers",//分页样式的类型
+	});
+
+	function buy(id,name,current){
+		url = "buy.jsp?gp_id=" + id + "&gp_name=" + name + "&gp_price=" + current;
+		window.location.href=url;
+	}
+	function Kmap(id,name){
+		url = "K.jsp?gp_id=" + id + "&gp_name=" + name;
+		window.location.href=url;
+	}
+	function Kfuturemap(id,name){
+		url = "K_future.jsp?future_id=" + id + "&future_name=" + name;
+		window.location.href=url;
+	}
+</script>

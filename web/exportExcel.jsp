@@ -66,8 +66,7 @@
     <%
         }
     %>
-</table>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+
 
 <%
     if (exportToExcel == null) {

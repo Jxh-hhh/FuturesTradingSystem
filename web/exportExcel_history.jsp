@@ -1,8 +1,24 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 周佳杰1699
+  Date: 2021/1/16
+  Time: 18:36
+  To change this template use File | Settings | File Templates.
+--%>
 <%@page language="java"
         import="java.util.*,java.sql.*,tools.entity.*,tools.dao.*,tools.daoimpl.*"
         contentType="text/html; charset=UTF-8" %>
-<jsp:useBean id="usershow" scope="page" class="tools.daoimpl.usershowImpl"/>
 <jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
+<jsp:useBean id="order_history" scope="page" class="tools.daoimpl.order_historyImpl"/>
+<jsp:useBean id="usershow" scope="page" class="tools.daoimpl.usershowImpl"/>
+<%
+    //判断是否未登录，用的session判断，可用filter，之后再说
+    String name=(String)session.getAttribute("loginUsername");
+    String authority=(String)session.getAttribute("Authority");
+    if(name==null){
+        response.sendRedirect("LoginAndRegister.jsp");
+    }
+%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -22,11 +38,14 @@
 <table align="left" border="2">
     <thead>
     <tr bgcolor="lightgreen">
-        <th>用户id</th>
-        <th>用户名</th>
-        <th>密码</th>
-        <th>角色</th>
+        <th>订单号</th>
+        <th>期货编号</th>
+        <th>开仓价</th>
+        <th>最新价</th>
         <th>创建时间</th>
+        <th>数量</th>
+        <th>用户名</th>
+        <th>盈亏</th>
     </tr>
     </thead>
     <%
@@ -44,33 +63,41 @@
         request.setAttribute("prePage", prePage);
         request.setAttribute("nextPage", nextPage);
         Page pg1 = new Page(start, pageSize);
-        List<usershow> currentUsershow = (List<usershow>) usershow.queryUsershowByPage(pg1);
+        List<order_history> currentOrder = (List<order_history>) order_history.queryOrderByPage(pg1);
         //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-        for (usershow u : currentUsershow) {
+        for (order_history u : currentOrder){
     %>
     <tr>
-        <td><%=u.getshow_userid()%>
+        <td><%=u.getorder_OI()%>
         </td>
-        <td><%=u.getshow_username()%>
+        <td><%=u.getorder_FI()%>
         </td>
-        <td><%=u.getshow_password()%>
+        <td><%=u.getorder_OP()%>
         </td>
-        <td><%=u.getshow_authority()%>
+        <td><%=u.getorder_NP()%>
         </td>
-        <td><%=u.getshow_createTime()%>
+        <td><%=u.getorder_CT()%>
+        </td>
+        <td><%=u.getorder_NM()%>
+        </td>
+        </td>
+        <td><%=u. getUsername()%>
+        </td>
+        <td>
+            <%=u.getYingkui()%>
         </td>
     </tr>
     <%
-        }
+            }
     %>
+
 
 <%
     if (exportToExcel == null) {
 %>
-<a href="exportExcel1.jsp?exportToExcel=YES">Export to Excel</a>
+<a href="exportExcel_history.jsp?exportToExcel=YES">Export to Excel</a>
 <%
     }
 %>
 </body>
 </html>
-

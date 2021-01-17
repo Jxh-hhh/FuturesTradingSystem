@@ -8,4 +8,5 @@ import tools.entity.Page;
 
 public interface Igp {
 	public List<gp> queryGpByPage(Page page, String type) throws SQLException;
+	public List<gp> queryAll(String type) throws SQLException;
 }

@@ -8,6 +8,8 @@ import tools.entity.Page;
 import tools.entity.gp;
 import tools.util.JDBCUtil;
 
+import javax.xml.transform.Result;
+
 
 public class GpDaoImpl implements Igp{
 	public Connection con=null;
@@ -54,6 +56,36 @@ public class GpDaoImpl implements Igp{
 				con.close();
 			}
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return arr;
+	}
+
+	@Override
+	public List<gp> queryAll(String type) throws SQLException {
+		List<gp> arr = new ArrayList();
+
+		try {
+			con = JDBCUtil.getConnection();
+			Statement stat = con.createStatement();
+			String tableName = null;
+			if (type.equals("SHA")) {
+				tableName = "gp_SHA";
+			} else if (type.equals("SZA")) {
+				tableName = "gp_SZA";
+			} else {
+				System.out.println("无");
+			}
+			String sql = "select * from " + tableName;
+			ResultSet rs = stat.executeQuery(sql);
+			while(rs.next()){
+				gp temp = new gp(rs.getString("gp_id"),rs.getString("gp_name"),rs.getString("gp_price_today"),rs.getString("gp_price_yesterday"),rs.getString("gp_price_current"),rs.getString("gp_price_MAX"),rs.getString("gp_price_MIN"));
+				arr.add(temp);
+			}
+			rs.close();
+			stat.close();
+			con.close();
+		}catch (Exception e){
 			e.printStackTrace();
 		}
 		return arr;

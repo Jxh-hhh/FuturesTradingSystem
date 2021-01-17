@@ -51,4 +51,37 @@ public class FutureDaoImpl implements Ifuture {
         }
         return arr;
     }
+
+    @Override
+    public List<future> queryAll() throws SQLException {
+        List<future> arr = new ArrayList();
+
+        Connection con = null;
+        ResultSet rs = null;
+        Statement stat = null;
+        try{
+            con = JDBCUtil.getConnection();
+            stat = con.createStatement();
+            String sql = "select * from future";
+            rs = stat.executeQuery(sql);
+            while(rs.next()){
+                future temp = new future(rs.getString("future_id"),rs.getString("future_name"),rs.getString("future_price_today"),rs.getString("future_price_yesterday"),rs.getString("future_price_current"),rs.getString("future_price_MAX"),rs.getString("future_price_MIN"));
+                arr.add(temp);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {//关闭连接
+            if (rs != null) {
+                rs.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+            stat.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return arr;
+    }
 }
