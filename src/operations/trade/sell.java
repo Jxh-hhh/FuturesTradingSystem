@@ -79,8 +79,8 @@ public class sell extends HttpServlet {
             }
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
             gp_CT = df.format(new Date());
-            sql = "insert into gp_ordermanagement_history(gp_OI,gp_FI,gp_CT,gp_ON,gp_OP,gp_NM,username,yingkui) values('"
-                    + m_id + "','" + gp_FI + "','" + gp_CT +"','" + gp_ON +"','" + gp_OP +"','" + gp_NM +"','" + username +"'" +
+            sql = "insert into gp_ordermanagement_history(gp_OI,gp_FI,gp_NP,gp_CT,gp_ON,gp_OP,gp_NM,username,yingkui) values('"
+                    + m_id + "','" + gp_FI + "','" + gp_NP + "','" + gp_CT +"','" + gp_ON +"','" + gp_OP +"','" + gp_NM +"','" + username +"'" +
                     ",'" + yingkui + "')";
             sm.executeUpdate(sql);
             sql = "delete from gp_ordermanagement where gp_OI='"+ m_id +"'";
