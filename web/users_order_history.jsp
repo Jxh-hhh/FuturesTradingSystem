@@ -293,7 +293,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <li class="divider">
                                 </li>
                                 <li>
-                                    <a href="javascript:;" id="buyManagement" onclick="jumpToPrint(id)" >打印 </a>
+                                    <a href="javascript:;" id="buyManagement_History" onclick="printCurrentPage()" >打印 </a>
                                 </li>
                             </ul>
                         </div>
@@ -331,7 +331,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 request.setAttribute("prePage", prePage);
                                 request.setAttribute("nextPage", nextPage);
                                 Page pg1 = new Page(start, pageSize);
-                                List<order_history> currentOrder = (List<order_history>) order_history.queryOrderByPage(pg1);
+                                List<order_history> currentOrder = (List<order_history>) order_history.queryHistoryOrderByPage(pg1);
                                 //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
                                 for (order_history u : currentOrder)if(u.getUsername().equals(name)){
                             %>
@@ -363,7 +363,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                         </table>
                         <nav>
-                            <ul class="pagination">
+                            <ul class="pagination" id="turnThePage">
                                 <li><a href="buy_management_history.jsp?start=0"> <span>首页</span>
                                 </a></li>
                                 <li><a href="buy_management_history.jsp?start=${requestScope.prePage }">
@@ -436,6 +436,20 @@ License: You must have a valid license purchased only from themeforest(the above
         Demo.init(); // init demo features
         EcommerceOrders.init();
     });
+
+    function printCurrentPage(){
+        //window.print();
+        var oldHtml = $("body").innerHTML;
+
+        jQuery('#turnThePage').hide();
+
+        var printbox = $(".table-scrollable").innerHTML;
+        console.log(printbox);
+        $("body").innerHTML = printbox;
+        window.print();
+
+        $("body").innerHTML = oldHtml;
+    }
 </script>
 
 <!-- END JAVASCRIPTS -->

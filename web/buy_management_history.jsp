@@ -295,7 +295,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <li class="divider">
                                     </li>
                                     <li>
-                                        <a href="javascript:;" id="buyManagement" onclick="jumpToPrint(id)" >打印 </a>
+                                        <a href="javascript:;" id="buyManagement_history" onclick="printCurrentPage()" >打印 </a>
                                     </li>
                                 </ul>
                             </div>
@@ -308,8 +308,8 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <thead>
                                 <tr class="uppercase">
                                     <th>订单号</th>
-                                    <th>期货编号</th>
-                                    <th>期货名称</th>
+                                    <th>期货/股票编号</th>
+                                    <th>期货/股票名称</th>
                                     <th>开仓价</th>
                                     <th>卖出价</th>
                                     <th>创建时间</th>
@@ -334,7 +334,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     request.setAttribute("prePage", prePage);
                                     request.setAttribute("nextPage", nextPage);
                                     Page pg1 = new Page(start, pageSize);
-                                    List<order_history> currentOrder = (List<order_history>) order_history.queryOrderByPage(pg1);
+                                    List<order_history> currentOrder = (List<order_history>) order_history.queryHistoryOrderByPage(pg1);
                                     //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
                                     for (order_history u : currentOrder){
                                 %>
@@ -366,7 +366,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             </table>
                             <nav>
-                                <ul class="pagination">
+                                <ul class="pagination" id="turnThePage">
                                     <li><a href="buy_management.jsp?start=0"> <span>首页</span>
                                     </a></li>
                                     <li><a href="buy_management.jsp?start=${requestScope.prePage }">
@@ -438,6 +438,20 @@ License: You must have a valid license purchased only from themeforest(the above
             Demo.init(); // init demo features
             EcommerceOrders.init();
         });
+
+        function printCurrentPage(){
+            //window.print();
+            var oldHtml = $("body").innerHTML;
+
+            jQuery('#turnThePage').hide();
+
+            var printbox = $(".table-scrollable").innerHTML;
+            console.log(printbox);
+            $("body").innerHTML = printbox;
+            window.print();
+
+            $("body").innerHTML = oldHtml;
+        }
     </script>
 
     <!-- END JAVASCRIPTS -->

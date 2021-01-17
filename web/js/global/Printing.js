@@ -1,7 +1,22 @@
 function jumpToPrint(id){
     window.open('printList.jsp?pageId='+id);
 }
+function jumpToOrderHistoryPrint(id){
+    window.open('printOrderHistoryList.jsp?pageId='+id);
+}
+function printCurrentPage(){
+    //window.print();
+    var oldHtml = $("body").innerHTML;
 
+    jQuery('#turnThePage').hide();
+
+    var printbox = $(".table-scrollable").innerHTML;
+    console.log(printbox);
+    $("body").innerHTML = printbox;
+    window.print();
+
+    $("body").innerHTML = oldHtml;
+}
 
 function $(selector){
     return document.querySelector(selector);

@@ -18,11 +18,7 @@
 <%@ page import="tools.util.JDBCUtil" %>
 <jsp:useBean id="usershow" scope="page" class="tools.daoimpl.usershowImpl"/>
 <jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
-<<<<<<< HEAD
 <jsp:useBean id="user" scope="page" class="tools.daoimpl.UserDAOImpl"/>
-=======
-
->>>>>>> zjj
 <%
     //判断是否未登录，用的session判断，可用filter，之后再说
     String name=(String)session.getAttribute("loginUsername");
@@ -447,6 +443,7 @@ License: You must have a valid license purchased only from themeforest(the above
         Demo.init(); // init demo features
         EcommerceOrders.init();
     });
+
 </script>
 <!-- END JAVASCRIPTS -->
 </body>
