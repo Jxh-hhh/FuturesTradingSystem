@@ -3,6 +3,14 @@
         contentType="text/html; charset=UTF-8" %>
 <jsp:useBean id="order" scope="page" class="tools.daoimpl.orderImpl"/>
 <jsp:useBean id="pg" scope="page" class="tools.daoimpl.PageDaoImpl"/>
+<%
+    //判断是否未登录，用的session判断，可用filter，之后再说
+    String name=(String)session.getAttribute("loginUsername");
+    String authority=(String)session.getAttribute("Authority");
+    if(name==null){
+        response.sendRedirect("LoginAndRegister.jsp");
+    }
+%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -47,7 +55,7 @@
         Page pg1 = new Page(start, pageSize);
         List<order> currentOrder = (List<order>) order.queryOrderByPage(pg1);
         //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
-        for (order u : currentOrder) {
+        for (order u : currentOrder) if(u.getUsername().equals(name)){
     %>
     <tr>
         <td><%=u.getorder_OI()%>

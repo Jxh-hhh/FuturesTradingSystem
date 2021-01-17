@@ -410,6 +410,10 @@ License: You must have a valid license purchased only from themeforest(the above
             global:false,
             success:function (message){
                 alert(message.msg);
+                if(message.msg == "更改用户数据成功"){
+                    alert("请重新登录！修改后的用户名：" + username);
+                    window.location.href="LoginAndRegister.jsp";
+                }
             },
             error:function (){
                 console.log("提交失败");
