@@ -84,6 +84,25 @@
         <url-pattern>/delete_order_history</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>delete_user</servlet-name>
+        <servlet-class>operations.trade.delete_user</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>delete_user</servlet-name>
+        <url-pattern>/delete_user</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>update_user</servlet-name>
+        <servlet-class>operations.trade.update_user</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>update_user</servlet-name>
+        <url-pattern>/update_user</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>listener.GetListener</listener-class>
     </listener>

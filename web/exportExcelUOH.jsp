@@ -61,7 +61,7 @@
         request.setAttribute("prePage", prePage);
         request.setAttribute("nextPage", nextPage);
         Page pg1 = new Page(start, pageSize);
-        List<order_history> currentOrder = (List<order_history>) order_history.queryHistoryOrderByPage(pg1);
+        List<order_history> currentOrder = (List<order_history>) order_history.queryOrderByPage(pg1);
         //List<gp> currentGp = (List<gp>) request.getAttribute("gpList");
         for (order_history u : currentOrder)if(u.getUsername().equals(name)){
     %>
