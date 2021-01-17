@@ -8,8 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page import="java.sql.*,java.io.*"%>
 <%@ page import="tools.util.JDBCUtil" %>
+<%@ page import="tools.entity.User" %>
+
 <%
     //判断是否未登录，用的session判断，可用filter，之后再说
+    String id = (String)session.getAttribute("loginUserID");
     String name=(String)session.getAttribute("loginUsername");
     String authority=(String)session.getAttribute("Authority");
     if(name==null){
@@ -256,13 +259,20 @@ License: You must have a valid license purchased only from themeforest(the above
                             <%
                                 Connection con = JDBCUtil.getConnection();
                                 Statement stat = con.createStatement();
-                                String sql = "select * from users where username = " + " '" + name + "'";
+                                String sql = "select * from users where userid = " + " '" + id + "'";
                                 ResultSet rs = stat.executeQuery(sql);
                                 int money = 99999;
+
+                                String password="";
+                                String createTime="";
                                 // TODO 获取用户所有信息，填入下方input中
                                 while(rs.next())
                                 {
+                                    name = rs.getString("username");
                                     money = rs.getInt("money");
+                                    password = rs.getString("password");
+                                    createTime = rs.getString("createTime");
+                                    authority = rs.getString("authority");
                                 }
                             %>
                             <div class="portlet-body">
@@ -273,25 +283,26 @@ License: You must have a valid license purchased only from themeforest(the above
                                                 <div class="form-group" >
                                                     <label class="col-md-2 control-label">您的id为: </label>
                                                     <div class="col-md-10">
-                                                        <input id="user_id" name="remain_money" class="form-control"readonly="readonly" value='<%=money%>'>
+                                                        <input id="user_id" name="remain_money" class="form-control"readonly="readonly" value='<%=id%>'>
                                                     </div>
                                                 </div>
                                                 <div class="form-group" >
                                                     <label class="col-md-2 control-label">您的用户名为: </label>
                                                     <div class="col-md-10">
-                                                        <input id="username" name="Username" class="form-control" value='<%=name%>'>
+                                                        <input id="username1" name="Username" class="form-control" value='<%=name%>'>
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group" >
                                                     <label class="col-md-2 control-label">您的密码为:(如要修改请去登录界面) </label>
                                                     <div class="col-md-10">
-                                                        <input id="password" name="Username" class="form-control" readonly="readonly" value='<%=name%>'>
+                                                        <input id="password" name="Username" class="form-control" readonly="readonly" value='<%=password%>'>
                                                     </div>
                                                 </div>
                                                 <div class="form-group" >
                                                     <label class="col-md-2 control-label">您的创建时间为:</label>
                                                     <div class="col-md-10">
-                                                        <input id="createtime" name="Username" class="form-control" readonly="readonly" value='<%=name%>'>
+                                                        <input id="createtime" name="Username" class="form-control" readonly="readonly" value='<%=createTime%>'>
                                                     </div>
                                                 </div>
                                                 <div class="form-group" >
@@ -300,12 +311,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         <input id="remain_money" name="remain_money" class="form-control" readonly="readonly" value='<%=money%>'>
                                                     </div>
                                                 </div>
-                                                    <div align="center" style="margin-top: 50px">
-                                                        <%
-                                                            // TODO update_user()这个函数在用户管理中也有，参数为用户名，密码，权限。和那玩意用一个函数，用一个servlet（虽然这个只能修改用户名hhh）
-                                                        %>
-                                                        <button onclick="update_user()">修改您的用户名</button>
-                                                    </div>
+                                                <div align="center" style="margin-top: 50px">
+                                                    <%
+                                                        // TODO update_user()这个函数在用户管理中也有，参数为用户名，密码，权限。和那玩意用一个函数，用一个servlet（虽然这个只能修改用户名hhh）
+                                                    %>
+                                                    <button onclick="update_user('<%=id%>','<%=authority%>')">修改您的用户名</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -376,13 +386,24 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END JAVASCRIPTS -->
 <script type="text/javascript">
 
-    function update_user(username, password, authority){
+    function update_user(user_id,authority){
+        if (authority == "manager"){
+            alert("管理员账号无法修改");
+        }
+        else {
+            return;
+        }
+
+        var username = jQuery("#username").val();
+        var password = jQuery("#password").val();
+        console.log(user_id);
         $.ajax({
             url:'update_user',
             data:{
+                "user_id":user_id,
                 "username": username,
                 "password": password,
-                "authority": authority
+                "authority": authority,
             },
             type:'post',
             data_type:'json',
