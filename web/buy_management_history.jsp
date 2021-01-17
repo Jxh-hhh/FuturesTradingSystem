@@ -460,7 +460,7 @@ License: You must have a valid license purchased only from themeforest(the above
 </html>
 <script type="text/javascript">
     function delete_order(order_id){
-        $.ajax({
+        jQuery.ajax({
             url:'delete_order_history',
             data:{
                 "order_id": order_id

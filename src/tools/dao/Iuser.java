@@ -8,6 +8,6 @@ import tools.entity.Page;
 
 public interface Iuser {
     public List<usershow> queryUsershowByPage(Page page) throws SQLException;
-    public void delete(int user_id);
-    public void update(int user_id, String username, String password, String authority);
+    public String delete(String user_id);
+    public String update(String user_id, String username, String password, String authority);
 }

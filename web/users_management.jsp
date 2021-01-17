@@ -342,22 +342,24 @@ License: You must have a valid license purchased only from themeforest(the above
                                 for (usershow u : currentUsershow) {
                             %>
                             <tr>
-                                <td><input type="text" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_userid()%>">
+                                <td><input type="text" id="<%="update_userID"+u.getshow_userid()%>" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_userid()%>"/>
                                 </td>
-                                <td><input type="text" class="form-control form-filter input-sm" value="<%=u.getshow_username()%>">
+                                <td><input type="text" id="<%="update_user_name"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_username()%>"/>
                                 </td>
-                                <td><input type="text" class="form-control form-filter input-sm" value="<%=u.getshow_password()%>">
+                                <td><input type="text" id="<%="update_user_password"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_password()%>"/>
+                                </td>
+                                <td><input type="text" id="<%="update_user_authority"+u.getshow_userid()%>" class="form-control form-filter input-sm" value="<%=u.getshow_authority()%>"/>
+                                </td>
+                                <td><input type="text" id="<%="update_user_createTime"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_createTime()%>"/>
+                                </td>
+                                <td><input type="text" id="<%="update_user_money"+u.getshow_userid()%>" readonly="readonly" class="form-control form-filter input-sm" value="<%=u.getshow_money()%>"/>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control form-filter input-sm" value="<%=u.getshow_authority()%>">
+                                    <button class="btn btn-success uppercase" onclick="deleteUser('<%=u.getshow_userid()%>')">删除用户</button>
                                 </td>
-                                <td><input type="text" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_createTime()%>">
-                                </td>
-                                <td><input type="text" class="form-control form-filter input-sm" readonly="readonly" value="<%=u.getshow_money()%>">
-                                </td>
+
                                 <td>
-                                    <button onclick="delete_user(<%=u.getshow_userid()%>)">删除</button>
-                                    <button onclick="update_user(<%=u.getshow_userid()%>,<%=u.getshow_username()%>,<%=u.getshow_password()%>, <%=u.getshow_authority()%>)">修改</button>
+                                    <button class="btn btn-success uppercase" onclick="updateUser('<%=u.getshow_userid()%>')">更改信息</button>
                                 </td>
                             </tr>
                             <%
@@ -450,11 +452,11 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END BODY -->
 </html>
 <script type="text/javascript">
-    function delete_user(user_id){
-        $.ajax({
+    function deleteUser(user_id){
+        jQuery.ajax({
             url:'delete_user',
             data:{
-                "user_id": user_id
+                "user_id": user_id,
             },
             type:'post',
             data_type:'json',
@@ -468,14 +470,18 @@ License: You must have a valid license purchased only from themeforest(the above
         });
     }
 
-    function update_user(user_id, username, password, authority){
-        $.ajax({
+    function updateUser(user_id){
+
+        var username ='#update_user_name'+user_id;
+        var userpassword = '#update_user_password'+user_id;
+        var userauthority = '#update_user_authority'+user_id;
+        jQuery.ajax({
             url:'update_user',
             data:{
-                "user_id": user_id,
-                "username": username,
-                "password": password,
-                "authority": authority
+                "user_id":user_id,
+                "username":jQuery(username).val(),
+                "password":jQuery(userpassword).val(),
+                "authority":jQuery(userauthority).val(),
             },
             type:'post',
             data_type:'json',
